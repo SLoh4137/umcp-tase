@@ -2,7 +2,7 @@ const config = {
     siteTitle: "UMCP TASE", // Site title.
     siteTitleShort: "UMCP TASE", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
     siteTitleAlt: "UMCP Taiwanese American Student Association", // Alternative site title for SEO.
-    siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
+    siteLogo: "src/logos/logo-black.png", // Logo used for SEO and manifest.
     siteUrl: "umcptase.netlify.com", // Domain of your website without pathPrefix.
     pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
     fixedFooter: false, // Whether the footer component is fixed, i.e. always visible

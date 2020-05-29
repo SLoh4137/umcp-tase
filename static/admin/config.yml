@@ -1,0 +1,40 @@
+backend:
+  name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
+  branch: master # Branch to update
+  repo: SLoh4137/umcp-tase # Repo for pushing new commits. Make sure to replace with your repo!
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: events
+    label: "Events"
+    folder: "content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Category", name: "category", widget: "hidden", default: "event"}
+      - {label: "Tags", name: "tags", widget: "select", multiple: true,
+          options: ["reflections", "friendship", 
+            "relationships", "educational", 
+            "recommendations", "media", 
+            "questions", "personalitytest", 
+            "guest", "travel", 
+            "tasa", "postgrad", 
+            "careers", "creative"], 
+          }
+      - {label: "Facebook Event Page Link", name: "link", widget: "string", minimal: true}
+      - {label: "Description", name: "body", widget: "markdown"}
+  - name: bios
+    identifier_field: name
+    label: "Bios"
+    folder: "content/bios"
+    create: false
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Category", name: "category", widget: "hidden", default: "bio"}
+      - {label: "Profile Picture", name: "propic", widget: "image"}
+      - {label: "Description", name: "body", widget: "markdown"}
