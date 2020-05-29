@@ -1,22 +1,32 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "umcp-tase",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "An example template for the UMCP TASA website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Stephan Loh <sloh4137@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.21.37",
+    "gatsby-alias-imports": "^1.0.4",
     "gatsby-image": "^2.4.4",
     "gatsby-plugin-manifest": "^2.4.5",
+    "gatsby-plugin-material-ui": "^2.1.9",
+    "gatsby-plugin-netlify-cms": "^4.3.3",
     "gatsby-plugin-offline": "^3.2.3",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.3.1",
     "gatsby-plugin-sharp": "^2.6.4",
     "gatsby-source-filesystem": "^2.3.4",
+    "gatsby-transformer-remark": "^2.8.13",
     "gatsby-transformer-sharp": "^2.5.2",
+    "moment": "^2.26.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "react-md": "^1.16.1",
+    "react-spring": "^8.0.27"
   },
   "devDependencies": {
     "prettier": "2.0.5"
