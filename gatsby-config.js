@@ -10,13 +10,14 @@ module.exports = {
     description: config.siteDescriptionShort,
   },
   plugins: [
+    "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-material-ui",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: "${__dirname}/src/images",
+        path: `${__dirname}/src/images`,
       },
     },
     {
