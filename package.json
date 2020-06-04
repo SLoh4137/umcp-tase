@@ -6,6 +6,7 @@
   "author": "Stephan Loh <sloh4137@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.10.0",
+    "@material-ui/icons": "^4.9.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.20",
     "gatsby-alias-imports": "^1.0.4",
