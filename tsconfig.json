@@ -20,6 +20,7 @@
         "noUnusedParameters": true,
         "preserveConstEnums": true,
         "noEmit": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true, // So that we can just write 'import React from "react";' again 
     }
 }
