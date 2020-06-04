@@ -1,5 +1,9 @@
 # UMCP TASE
 
+# Typescript Module Resolution
+https://www.typescriptlang.org/docs/handbook/module-resolution.html
+Change in tsconfig.json
+
 
 # Gatsby's Default README
 

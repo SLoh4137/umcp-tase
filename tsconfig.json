@@ -9,6 +9,11 @@
             "dom",
             "es2017"
         ],
+        "baseUrl": "./",
+        "paths": {
+            "components/*": [ "src/components/*" ],
+            "pages/*": [ "src/pages/*" ],
+        },
         // "allowJs": true,
         // "checkJs": true,
         "jsx": "react",

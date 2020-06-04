@@ -1,3 +1,4 @@
+const path = require("path");
 const urljoin = require("url-join");
 const config = require("./site-config");
 require("dotenv").config() // for later use with environment variables
@@ -11,8 +12,17 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-typescript",
+    "gatsby-plugin-graphql-codegen",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-material-ui",
+    {
+      resolve: `gatsby-alias-imports`,
+      options: {
+        aliases: {
+          root: path.resolve(__dirname),
+        }
+      }
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {

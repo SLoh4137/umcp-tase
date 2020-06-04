@@ -10,6 +10,9 @@ import React from 'react'
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+// Import types
+import { SeoQuery} from "graphql-types"
+
 type MetaType = {
   name: string,
   content: string,
@@ -22,21 +25,11 @@ type SEOProps = {
   title: string
 };
 
-type StaticQuery =
-{
-  site: {
-    siteMetadata: {
-      title: string, 
-      description: string,
-    }
-  }
-}
-
 const SEO = (props: SEOProps) => {
   const { lang = 'en', meta = [], description = '', title } = props; // assignment means default props
-  const { site } = useStaticQuery<StaticQuery>(
+  const { site } = useStaticQuery<SeoQuery>(
     graphql`
-      query {
+      query SEO {
         site {
           siteMetadata {
             title
@@ -46,6 +39,11 @@ const SEO = (props: SEOProps) => {
       }
     `
   )
+
+  if(!site?.siteMetadata?.title || !site?.siteMetadata?.description)
+  {
+    throw new Error("Either title or description not defined in siteMetadata. Check gatsby-config")
+  }
 
   const metaDescription = description || site.siteMetadata.description
 
