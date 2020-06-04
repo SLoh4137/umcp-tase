@@ -10,24 +10,6 @@ const config = {
     siteDescriptionLong: "University of Maryland, College Park Taiwanese American Student Association", // Website description used for RSS feeds/meta description tag.
     dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
     dateFormat: "MMM D, YYYY", // Date format for display.
-    // Links to social profiles/projects you want to display in the author segment/navigation bar.
-    // userLinks: [
-    //   {
-    //     label: "Facebook",
-    //     url: "https://www.facebook.com/movingoolong/",
-    //     iconClassName: "fa fa-facebook"
-    //   },
-    //   {
-    //     label: "Instagram",
-    //     url: "https://www.instagram.com/movingoolongpod/",
-    //     iconClassName: "fa fa-instagram"
-    //   },
-    //   {
-    //     label: "Email",
-    //     url: "mailto:movingoolong@gmail.com",
-    //     iconClassName: "fa fa-envelope"
-    //   }
-    // ],
     copyright: "Copyright © 2020. UMCP TASE" // Copyright string for the footer of the website and RSS feed.
 };
 

@@ -9,6 +9,9 @@ module.exports = {
     siteUrl: urljoin(config.pathPrefix, config.siteUrl),
     title: config.siteTitle,
     description: config.siteDescriptionShort,
+    dateFromFormat: config.dateFromFormat,
+    dateFormat: config.dateFormat,
+    copyright: config.copyright,
   },
   plugins: [
     "gatsby-plugin-typescript",

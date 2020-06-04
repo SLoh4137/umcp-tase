@@ -4,6 +4,7 @@
 https://www.typescriptlang.org/docs/handbook/module-resolution.html
 Change in tsconfig.json
 
+[When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
 
 # Gatsby's Default README
 
