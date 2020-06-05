@@ -5,7 +5,7 @@ import { Container } from "@material-ui/core";
 // Components
 type Props = PageProps
 
-function PostPageTemplate(props: Props) {
+function EventPageTemplate(props: Props) {
   const { data, pageContext, location } = props;
 
   //const title = data.markdownRemark.frontmatter.title;
@@ -39,5 +39,5 @@ function PostPageTemplate(props: Props) {
 // }
 // `
 
-export default PostPageTemplate
+export default EventPageTemplate
 

@@ -6,6 +6,26 @@ Change in tsconfig.json
 
 [When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
 
+
+
+
+
+## Mailchimp Integration
+1. Add the Mailchimp endpoint to `gatsby-config.js` by following the instructions listed on [gatsby-plugin-mailchimp](https://www.gatsbyjs.org/packages/gatsby-plugin-mailchimp/) 
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Gatsby's Default README
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
