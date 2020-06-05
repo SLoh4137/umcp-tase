@@ -16,7 +16,6 @@ const styles = (theme: Theme) => createStyles({
     margin: theme.spacing(1),
     marginLeft: theme.spacing(2),
     display: 'inline',
-    fontFamily: "Passion One, cursive",
     textTransform: "uppercase",
     fontSize: "24px",
     [theme.breakpoints.down("sm")]: {
@@ -47,10 +46,10 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
-type Props = WithStyles<typeof styles>
+type Props = { title: string } & WithStyles<typeof styles>
 
 function Header(props: Props) {
-  const { classes } = props;
+  const { classes, title } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -69,9 +68,9 @@ function Header(props: Props) {
           <b>About</b>
         </Button>
       </Link>
-      <Link className={classes.link} to="/episodes">
+      <Link className={classes.link} to="/contact-us">
         <Button className={classes.button}>
-          <b>Episodes</b>
+          <b>Contact Us</b>
         </Button>
       </Link>
     </>
@@ -86,7 +85,7 @@ function Header(props: Props) {
       <Toolbar>
         <Link className={classes.link} to="/">
           <Logo />
-          <h2 className={classes.title}>Moving Oolong</h2>
+          <h2 className={classes.title}>{title}</h2>
         </Link>
 
         <div className={classes.grow} />

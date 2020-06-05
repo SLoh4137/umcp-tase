@@ -7,6 +7,7 @@
  */
 
 import React from "react"
+import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql, PageProps } from "gatsby"
 
 import Header from "./Header"
@@ -34,17 +35,15 @@ const Layout = (props: Props) => {
 
   return (
     <>
-      <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <Header title={data.site.siteMetadata.title} />
+      <Helmet defer={false}>
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Passion+One&display=swap" rel="stylesheet" />
+      </Helmet>
+      <div>
         <main>{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </>
   )
 }
