@@ -10,9 +10,6 @@ import React from 'react'
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-// Import types
-import { SeoQuery} from "graphql-types"
-
 type MetaType = {
   name: string,
   content: string,
@@ -27,7 +24,7 @@ type SEOProps = {
 
 const SEO = (props: SEOProps) => {
   const { lang = 'en', meta = [], description = '', title } = props; // assignment means default props
-  const { site } = useStaticQuery<SeoQuery>(
+  const { site } = useStaticQuery<GatsbyTypes.SEOQuery>(
     graphql`
       query SEO {
         site {

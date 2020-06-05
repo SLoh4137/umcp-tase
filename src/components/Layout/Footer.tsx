@@ -4,9 +4,6 @@ import { AppBar, IconButton, withStyles, Toolbar, createStyles, Theme, WithStyle
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-// Import types
-import { FooterQuery } from "graphql-types"
-
 const styles = (theme: Theme) => createStyles({
     root: {
         top: 'auto',
@@ -26,7 +23,7 @@ type Props = WithStyles<typeof styles>
 
 function Footer(props: Props) {
     const { classes } = props;
-    const { site } = useStaticQuery<FooterQuery>(
+    const { site } = useStaticQuery<GatsbyTypes.FooterQuery>(
         graphql`
             query Footer {
                 site {

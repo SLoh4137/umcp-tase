@@ -17,7 +17,6 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-typescript",
-    "gatsby-plugin-graphql-codegen",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-material-ui",
     {
@@ -70,6 +69,16 @@ module.exports = {
     "gatsby-plugin-netlify-cms",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-typegen",
+    // {
+    //   resolve: 'gatsby-plugin-typegen',
+    //   options: {
+    //     documentPaths: [
+    //       './src/**/*.{ts,tsx}',
+    //       './node_modules/gatsby-*/**/*.js',
+    //     ],
+    //   }
+    // },
     {
       resolve: "gatsby-plugin-manifest",
       options: {
