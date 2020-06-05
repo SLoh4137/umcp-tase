@@ -12,6 +12,8 @@ module.exports = {
     dateFromFormat: config.dateFromFormat,
     dateFormat: config.dateFormat,
     copyright: config.copyright,
+    facebook: config.facebookLink,
+    instagram: config.instagramLink,
   },
   plugins: [
     "gatsby-plugin-typescript",

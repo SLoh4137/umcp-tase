@@ -1781,6 +1781,11 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___title'
   | 'siteMetadata___description'
+  | 'siteMetadata___dateFromFormat'
+  | 'siteMetadata___dateFormat'
+  | 'siteMetadata___copyright'
+  | 'siteMetadata___facebook'
+  | 'siteMetadata___instagram'
   | 'port'
   | 'host'
   | 'pathPrefix'
@@ -2472,12 +2477,22 @@ export type SiteSiteMetadata = {
   siteUrl?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  dateFromFormat?: Maybe<Scalars['String']>;
+  dateFormat?: Maybe<Scalars['String']>;
+  copyright?: Maybe<Scalars['String']>;
+  facebook?: Maybe<Scalars['String']>;
+  instagram?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
   siteUrl?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  dateFromFormat?: Maybe<StringQueryOperatorInput>;
+  dateFormat?: Maybe<StringQueryOperatorInput>;
+  copyright?: Maybe<StringQueryOperatorInput>;
+  facebook?: Maybe<StringQueryOperatorInput>;
+  instagram?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -2497,6 +2512,11 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
+
+export type FooterQueryVariables = {};
+
+
+export type FooterQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'copyright' | 'facebook' | 'instagram'>> }> };
 
 export type SiteTitleQueryQueryVariables = {};
 
