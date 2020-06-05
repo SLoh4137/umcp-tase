@@ -18,13 +18,7 @@ collections:
       - {label: "Cover Image", name: "cover", widget: "image"}
       - {label: "Category", name: "category", widget: "hidden", default: "event"}
       - {label: "Tags", name: "tags", widget: "select", multiple: true,
-          options: ["reflections", "friendship", 
-            "relationships", "educational", 
-            "recommendations", "media", 
-            "questions", "personalitytest", 
-            "guest", "travel", 
-            "tasa", "postgrad", 
-            "careers", "creative"], 
+          options: ["cultural", "social"], # add more event tags here 
           }
       - {label: "Facebook Event Page Link", name: "link", widget: "string", minimal: true}
       - {label: "Description", name: "body", widget: "markdown"}

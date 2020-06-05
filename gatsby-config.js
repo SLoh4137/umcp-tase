@@ -66,6 +66,24 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-relative-images"
+          },
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 672
+            }
+          },
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-autolink-headers",
+        ]
+      }
+    },
     "gatsby-plugin-netlify-cms",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
