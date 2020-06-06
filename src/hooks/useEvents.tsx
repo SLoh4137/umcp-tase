@@ -12,7 +12,7 @@ export default function useEvents(tags?: string[]) {
   // Because static queries can't have parameters, we have to query for everything
   const data = useStaticQuery<GatsbyTypes.EventsQuery>(graphql`
     query Events {
-        allMarkdownRemark(filter: {frontmatter: {category: {eq: "events"}}}, sort: {order: DESC, fields: frontmatter___date}) {
+        allMarkdownRemark(filter: {frontmatter: {category: {eq: "event"}}}, sort: {order: DESC, fields: frontmatter___date}) {
           edges {
             node {
               fields {
@@ -94,6 +94,6 @@ export default function useEvents(tags?: string[]) {
   return eventsWithPhoto;
 }
 
-export type EventArrayType = ReturnType<typeof useEvents>; 
+export type EventArrayType = ReturnType<typeof useEvents>;
 
 export type EventType = EventArrayType[0];

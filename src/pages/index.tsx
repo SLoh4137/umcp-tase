@@ -4,6 +4,7 @@ import { Container, Theme, createStyles, withStyles, WithStyles } from "@materia
 
 // Components
 import SEO from "components/seo"
+import EventsGrid from "components/Events/EventsGrid"
 
 const styles = (theme: Theme) => createStyles({
   // Add styles here
@@ -17,6 +18,7 @@ const IndexPage = (__: PageProps) => (
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
+    <EventsGrid showDescription={true} />
   </Container>
 )
 
