@@ -1,24 +1,13 @@
 import React from "react"
-import { Link, PageProps } from "gatsby"
-import { Theme, createStyles, withStyles, WithStyles} from "@material-ui/core"
+import { PageProps } from "gatsby"
+import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
 
 // Components
 import SEO from "components/seo"
 import ContactUsForm from "components/ContactUs/Form"
 
 const styles = (theme: Theme) => createStyles({
-  root: {
-      top: 'auto',
-      bottom: 0,
-      padding: theme.spacing(1),
-  },
-  grow: {
-      flexGrow: 1,
-  },
-  copyright: {
-      marginLeft: theme.spacing(3),
-      color: theme.palette.primary.main,
-  },
+  // Add styles here
 });
 
 type Props = PageProps & WithStyles<typeof styles>;
@@ -32,4 +21,4 @@ function ContactUsPage(__: Props) {
   );
 }
 
-export default ContactUsPage
+export default withStyles(styles)(ContactUsPage)

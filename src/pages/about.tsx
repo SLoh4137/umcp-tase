@@ -1,15 +1,23 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, PageProps } from "gatsby"
+import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
 
 import SEO from "components/seo"
+
+const styles = (theme: Theme) => createStyles({
+  // Add styles here
+});
+
+type Props = WithStyles<typeof styles> & PageProps
 
 const AboutPage = () => (
   <>
     <SEO title="About Us" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
+    <h1>About Us Goes Here</h1>
+    {/*
+    * Add content for the about us page here 
+    */}
   </>
 )
 
-export default AboutPage
+export default withStyles(styles)(AboutPage)

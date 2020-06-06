@@ -6,6 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 // Page Components
 import Logo from "components/Logo/Logo"
 
+// Some example styles for the header
 const styles = (theme: Theme) => createStyles({
   root: {
     flexGrow: 1,
@@ -32,10 +33,8 @@ const styles = (theme: Theme) => createStyles({
   },
   button: {
     color: theme.palette.primary.dark,
-    //textTransform: 'lowercase',
   },
   menuButton: {
-    //color: "#ffffff",
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'none',
@@ -56,6 +55,7 @@ function Header(props: Props) {
     setMobileOpen(!mobileOpen);
   };
 
+  // You can add additional links here. Icons and the such also go here
   const links = (
     <>
       <Link className={classes.link} to="/">
@@ -88,9 +88,9 @@ function Header(props: Props) {
           <h2 className={classes.title}>{title}</h2>
         </Link>
 
-        <div className={classes.grow} />
+        <div className={classes.grow} /> {/* This is here to make sure everything else is right-aligned*/}
 
-        <Hidden xsDown>
+        <Hidden xsDown> {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
           {links}
         </Hidden>
 
@@ -104,6 +104,7 @@ function Header(props: Props) {
         </IconButton>
 
         <Hidden smUp>
+          {/* A drawer is the side-bar that opens. Here, it opens from the right */}
           <Drawer
             variant="temporary"
             classes={{
