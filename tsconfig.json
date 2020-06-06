@@ -13,6 +13,7 @@
         "paths": {
             "components/*": [ "src/components/*" ],
             "pages/*": [ "src/pages/*" ],
+            "hooks/*": [ "src/hooks/*" ],
         },
         "typeRoots": ["./node_modules/@types", "./src/declarations"],
         // "allowJs": true,
