@@ -38,7 +38,7 @@ function EventPageTemplate(props: Props) {
 }
 
 export const query = graphql`
-query EventPage($slug: String, $cover: String) {
+query EventPage($slug: String, $imgsrc: String) {
   markdownRemark(fields: { slug: { eq: $slug } }) {
     html
     id
@@ -49,7 +49,7 @@ query EventPage($slug: String, $cover: String) {
       link
     }
   }
-  file(relativePath: {eq: $cover}) {
+  file(relativePath: {eq: $imgsrc}) {
     childImageSharp {
         fluid {
             ...GatsbyImageSharpFluid

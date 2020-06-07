@@ -1,7 +1,7 @@
 ---
 name: UMCP TASA
 category: bio
-propic: assets/jiufen-teahouse-night.jpg
+imgsrc: assets/jiufen-teahouse-night.jpg
 position: Alumni Advisor
 majors: Computer Science, Music
 order: 1

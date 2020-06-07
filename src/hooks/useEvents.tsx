@@ -1,12 +1,6 @@
 import { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-// Normally, we would want to rely on the auto-generated type
-// But since we're reconstructing the events and matching up with their corresponding images,
-// we're going to define our own return type here
-
-
-
 export default function useEvents(tags?: string[]) {
 
   // Because static queries can't have parameters, we have to query for everything
@@ -23,7 +17,7 @@ export default function useEvents(tags?: string[]) {
                 tags
                 date
                 category
-                cover
+                imgsrc
               }
               html
               id
