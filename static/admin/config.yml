@@ -26,9 +26,22 @@ collections:
     identifier_field: name
     label: "Bios"
     folder: "content/bios"
-    create: false
+    create: true
     fields:
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Category", name: "category", widget: "hidden", default: "bio"}
       - {label: "Profile Picture", name: "propic", widget: "image"}
+
+      # This could be changed to a select widget that provides a dropdown of possible positions. 
+      # You would have to update the list of positions in this file though
+      # https://www.netlifycms.org/docs/widgets/#select
+      - {label: "Position", name: "position", widget: "string"} 
+
+      - {label: "Major(s)", name: "majors", widget: "string", hint: "Separate multiple majors with commas"}
+
+      # Currently a sort of bad way of determining sort order since changing order of one would require going
+      # through each one and changing. 
+      # An alternative is defining our own order somewhere else and syncing up with the list of possible values here
+      # That means someone who wants to change the display order would have to change it in code though and not via Netlify CMS
+      - {label: "Site Display Order", name: "order", widget: "number", default: 100, valueType: "int", min: 1}
       - {label: "Description", name: "body", widget: "markdown"}
