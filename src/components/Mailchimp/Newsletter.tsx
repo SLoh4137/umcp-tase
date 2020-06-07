@@ -1,8 +1,15 @@
 import React, { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
-import { Button, Container, Theme, createStyles, WithStyles, withStyles, TextField } from "@material-ui/core"
+import { Button, Container, Grid, Theme, createStyles, WithStyles, withStyles, TextField } from "@material-ui/core"
 
-const styles = (__: Theme) => createStyles({});
+const styles = (theme: Theme) => createStyles({
+    root: {
+
+    },
+    title: {
+        color: theme.palette.primary.main,
+    },
+});
 
 type Props = {} & WithStyles<typeof styles>;
 
@@ -33,18 +40,28 @@ function Newsletter(props: Props) {
     };
 
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className={classes.root}>
+            <h1 className={classes.title}>Sign up for our newsletter!</h1>
+
             <form onSubmit={handleSubmit}>
-                <TextField 
-                    required 
-                    label="Email"
-                    name="email"
-                    variant="outlined"
-                    fullWidth
-                    value={email}
-                    onChange={handleChange}
-                />
-                <Button disabled={disabled}>Sign up</Button>
+                <Grid container spacing={1} alignItems="center">
+                    <Grid item xs={12} sm={3}>
+                        <TextField
+                            required
+                            label="Email"
+                            name="email"
+                            variant="outlined"
+                            fullWidth
+                            value={email}
+                            onChange={handleChange}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={1}>
+                        <Button disabled={disabled} fullWidth>Sign up</Button>
+                    </Grid>
+                </Grid>
+
+
             </form>
         </Container>
     );

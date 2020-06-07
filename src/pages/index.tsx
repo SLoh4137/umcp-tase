@@ -3,13 +3,14 @@ import { PageProps } from "gatsby"
 import { Container, Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
 
 // https://www.react-spring.io/docs/props/parallax
-import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons"
+// import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons"
 
 
 // Components
 import SEO from "components/seo"
 import EventsGrid from "components/Events/EventsGrid"
 import Welcome from "components/General/Welcome"
+import Newsletter from "components/Mailchimp/Newsletter"
 
 const styles = (theme: Theme) => createStyles({
   firstBackground: {
