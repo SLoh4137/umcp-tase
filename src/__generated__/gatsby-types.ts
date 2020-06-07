@@ -3028,6 +3028,8 @@ type SiteTitleQueryVariables = {};
 
 type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
+type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
 type BioQueryVariables = {};
 
 
@@ -3036,7 +3038,7 @@ type BioQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ 
         & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'majors' | 'name' | 'position' | 'imgsrc' | 'category' | 'order'>> }
       ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<File, 'id' | 'relativePath'>
-        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'presentationWidth'>> }> }
+        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }
       ) }> } };
 
 type EventsQueryVariables = {};
@@ -3049,8 +3051,6 @@ type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray
         Pick<File, 'id' | 'relativePath'>
         & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }
       ) }> } };
-
-type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type EventPageQueryVariables = {
   slug: Maybe<Scalars['String']>;

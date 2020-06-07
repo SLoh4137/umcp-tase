@@ -68,6 +68,11 @@ function Header(props: Props) {
           <b>About</b>
         </Button>
       </Link>
+      <Link className={classes.link} to="/board">
+        <Button className={classes.button}>
+          <b>Board</b>
+        </Button>
+      </Link>
       <Link className={classes.link} to="/contact-us">
         <Button className={classes.button}>
           <b>Contact Us</b>

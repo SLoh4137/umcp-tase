@@ -69,18 +69,18 @@ export default function useEvents(tags?: string[]) {
   // A better search would use the fact that allFile returns sorted results and use binary search to find the matching image
   // Note this is harder because absolutePath 
   const eventsWithPhoto = events.map(eventNode => {
-    if (!eventNode.node.frontmatter?.cover) {
+    if (!eventNode.node.frontmatter?.imgsrc) {
       throw new Error("Node does not have an image associated with it.");
     }
 
-    const image = findImage(eventNode.node.frontmatter?.cover);
+    const image = findImage(eventNode.node.frontmatter?.imgsrc);
     if (!image) {
       throw new Error("Tried to find an associated image, but failed");
     }
 
     return {
       node: eventNode.node,
-      image: image?.node,
+      image: image.node,
     }
 
   });

@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
 
 import { EventType } from "hooks/useEvents"
-import EventImage from "./EventImage"
+import Image from "components/General/Image"
 
 import moment from "moment";
 
@@ -118,7 +118,7 @@ function EventPreview(props: Props) {
             <div className={classes.content}>
                 <Link className={classes.link} to={slug}>
                     <CardActionArea>
-                        <EventImage image={event.image} />
+                        <Image image={event.image} />
                         <CardContent className={classes.header}>
                             <h2 className={classes.title}>{title}</h2>
                             <h4 className={classes.date}>{moment(date).format(

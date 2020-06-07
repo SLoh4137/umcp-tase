@@ -7,29 +7,29 @@ export default function useBios() {
             allMarkdownRemark(filter: {frontmatter: {category: {eq: "bio"}}}, sort: {fields: frontmatter___order, order: ASC}) {
             edges {
                 node {
-                id
-                frontmatter {
-                    majors
-                    name
-                    position
-                    imgsrc
-                    category
-                    order
-                }
-                html
+                    id
+                    frontmatter {
+                        majors
+                        name
+                        position
+                        imgsrc
+                        category
+                        order
+                    }
+                    html
                 }
             }
             }
             allFile(sort: {fields: relativePath, order: ASC}, filter: {absolutePath: {regex: "static/assets/"}}) {
             edges {
                 node {
-                id
-                relativePath
-                childImageSharp {
-                    fluid {
-                    presentationWidth
+                    id
+                    relativePath
+                    childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid
+                        }
                     }
-                }
                 }
             }
             }
@@ -40,5 +40,39 @@ export default function useBios() {
         throw new Error("Error in formation of Bio query")
     }
 
-    let bio = data.allMarkdownRemark.edges;
+    let bios = data.allMarkdownRemark.edges;
+
+    // Can make this faster by using binary search
+    const findImage = (imgSrc: string) => {
+        return data.allFile.edges.find(file => file.node.relativePath == imgSrc)
+    }
+
+    // This matches up each image with its proper event
+    // This is inefficient because it goes through every image to find the right one for this event
+    // A better search would use the fact that allFile returns sorted results and use binary search to find the matching image
+    // Note this is harder because absolutePath 
+    const bioWithPhoto = bios.map(eventNode => {
+        if (!eventNode.node.frontmatter?.imgsrc) {
+            throw new Error("Node does not have an image associated with it.");
+        }
+
+        const image = findImage(eventNode.node.frontmatter?.imgsrc);
+        if (!image) {
+            throw new Error("Tried to find an associated image, but failed");
+        }
+
+        return {
+            node: eventNode.node,
+            image: image.node,
+        }
+
+    });
+
+    return bioWithPhoto;
 }
+
+export type BioArrayType = ReturnType<typeof useBios>;
+
+export type BioType = BioArrayType[0];
+
+export type BioImageType = BioType["image"]
