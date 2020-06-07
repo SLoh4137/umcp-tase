@@ -97,3 +97,5 @@ export default function useEvents(tags?: string[]) {
 export type EventArrayType = ReturnType<typeof useEvents>;
 
 export type EventType = EventArrayType[0];
+
+export type ImageType = EventType["image"]
