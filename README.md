@@ -31,7 +31,7 @@ Change in tsconfig.json
 3. Use the [`Newsletter.tsx`](/src/components/Mailchimp/Newsletter.tsx) component where you want to display it
 
 # Adding New Events
-Through Netlify CMS, we have a nice interface to add events. You can access it by following the url of the site `[url]/admin`. Then, sign in with an account that has access to the repository. Once you're in, you should see ![Netlify CMS admin panel](/docs/netlify-cms-events.png)
+Through Netlify CMS, we have a nice interface to add events. You can access it by following the url of the site `[url]/admin` Then, sign in with an account that has access to the repository. Once you're in, you should see ![Netlify CMS admin panel](/docs/netlify-cms-events.png)
 
 You can click on an existing event to edit it or on "New Events" to create a new event. From there, you should see ![Netlify CMS add event](/docs/netlify-cms-events-edit.png). Once all the fields are filled out, hit publish and a markdown file and image file should be added to the GitHub repository! Then, Netlify will rebuild the site with the new content.
 
