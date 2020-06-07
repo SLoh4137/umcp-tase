@@ -50,6 +50,6 @@ The [`EventPreview.tsx`](/src/components/Events/EventPreview.tsx) component disp
 Similar to adding events, go to the Netlify CMS admin panel. Click on the bios section on the side, and you should be able to add new bios and edit existing ones.
 
 ## How does it work?
-We get all the bios using the [`useBios.tsx](/src/hooks/useBios.tsx) hook. Like the useEvents hook, it runs a static query that gets all the content labeled bio and links them together with their associated images. Then, we can use the [`Bio.tsx`](/src/components/Bios/Bio.tsx) component to display the data.
+We get all the bios using the [`useBios.tsx`](/src/hooks/useBios.tsx) hook. Like the useEvents hook, it runs a static query that gets all the content labeled bio and links them together with their associated images. Then, we can use the [`Bio.tsx`](/src/components/Bios/Bio.tsx) component to display the data.
 
 We can change how the bios look on the site by editing [`Bio.tsx`](/src/components/Bios/Bio.tsx). 
