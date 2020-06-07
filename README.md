@@ -2,9 +2,11 @@
 # Table of Contents
 1. [Installation](#installation)
     1. [Gatsby](#gatsby)
-2. [Mailchimp Integration](#mailchimp-integration)
-3. [Adding New Events](#adding-new-events)
-4. [Editing Bios](#editing-bios)
+2. [Customizing Theme and Styling](#customizing-theme-and-styling)
+3. [Mailchimp Integration](#mailchimp-integration)
+4. [Adding New Events](#adding-new-events)
+5. [Editing Bios](#editing-bios)
+
 
 # Installation
 Everything is already set-up in the [package.json](package.json) so all you have to do is
@@ -24,6 +26,19 @@ Change in tsconfig.json
 
 [When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
 
+# Customizing Theme and Styling
+This site uses [Material-UI](https://material-ui.com/) components for styling. The theme can be modified in [`theme.js`](/src/theme.js) to change the primary and secondary colors, the spacing used throughout the site, and typography. More info about customizing theme can be found on the [official Material-UI cutomization guide](https://material-ui.com/customization/theming/). The theme is provided to all the pages in [`gatsby-browser.js`](gatsby-browser.js) via ThemeProvider.
+
+The Material-UI framework relies on the idea of [css-in-js](https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/). In particular, we use Material-UI's [withStyles](https://material-ui.com/styles/basics/) method of adding styles. 
+
+We can add styles to components by defining CSS in the `styles` object. There's a slight difference in naming between usual CSS fields and CSS-in-JS fields, but that's usually replacing - with camelCase. We can also use media queries to use different styles depending on the size of the screen! Examples can be seen in the [`Header.tsx`](src/components/Layout/Header.tsx) component where it sets the fontsize to be "18px" if the screen is smaller than the "sm" size defined in the theme. 
+```
+[theme.breakpoints.down("sm")]: {
+    fontSize: "18px",
+},
+```
+
+The styles object takes in the optional theme parameter to use information specified by our theme. We use the `createStyles` function so that TypeScript can properly recognize the type of the styles object. We then use `WithStyles<typeof styles>` to get the type of the styles object. The withStyles function passes down `classes` as a prop to the component (this is known as [higher order composition](https://medium.com/@rossbulat/how-to-use-react-higher-order-components-c0be6821eb6c)), and the component can then use the `classes` object to extract out the classNames. 
 
 # Mailchimp Integration
 1. Add the Mailchimp endpoint to `gatsby-config.js` by following the instructions listed on [gatsby-plugin-mailchimp](https://www.gatsbyjs.org/packages/gatsby-plugin-mailchimp/) 
@@ -53,3 +68,5 @@ Similar to adding events, go to the Netlify CMS admin panel. Click on the bios s
 We get all the bios using the [`useBios.tsx`](/src/hooks/useBios.tsx) hook. Like the useEvents hook, it runs a static query that gets all the content labeled bio and links them together with their associated images. Then, we can use the [`Bio.tsx`](/src/components/Bios/Bio.tsx) component to display the data.
 
 We can change how the bios look on the site by editing [`Bio.tsx`](/src/components/Bios/Bio.tsx). 
+
+
