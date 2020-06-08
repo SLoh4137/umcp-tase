@@ -36,7 +36,7 @@ function Welcome(props: Props) {
                 <animated.svg style={{ transform, opacity }} viewBox="0 0 1278 446">
                     <defs>
                         <filter id="water">
-                            <AnimFeTurbulence type="fractalNoise" baseFrequency={freq} numOctaves="1.5" result="TURB" seed="8" />
+                            <AnimFeTurbulence type="fractalNoise" baseFrequency={freq} numOctaves={1} result="TURB" seed="8" />
                             <AnimFeDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="TURB" result="DISP" scale={scale} />
                         </filter>
                     </defs>
