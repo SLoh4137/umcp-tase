@@ -46,13 +46,30 @@ This site uses [Material-UI](https://material-ui.com/) components for styling. T
 The Material-UI framework relies on the idea of [css-in-js](https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/). In particular, we use Material-UI's [withStyles](https://material-ui.com/styles/basics/) method of adding styles. 
 
 We can add styles to components by defining CSS in the `styles` object. There's a slight difference in naming between usual CSS fields and CSS-in-JS fields, but that's usually replacing - with camelCase. We can also use media queries to use different styles depending on the size of the screen! Examples can be seen in the [`Header.tsx`](src/components/Layout/Header.tsx) component where it sets the fontsize to be "18px" if the screen is smaller than the "sm" size defined in the theme. 
-```
+```javascript
 [theme.breakpoints.down("sm")]: {
     fontSize: "18px",
 },
 ```
 
 The styles object takes in the optional theme parameter to use information specified by our theme. We use the `createStyles` function so that TypeScript can properly recognize the type of the styles object. We then use `WithStyles<typeof styles>` to get the type of the styles object. The withStyles function passes down `classes` as a prop to the component (this is known as [higher order composition](https://medium.com/@rossbulat/how-to-use-react-higher-order-components-c0be6821eb6c)), and the component can then use the `classes` object to extract out the classNames. 
+
+All h1, h2, h3, etc elements can be customized across the site in themes as well. Here's the example from the [Material-UI documentation](https://material-ui.com/customization/typography/)
+```javascript
+const theme = createMuiTheme({
+  typography: {
+    subtitle1: {
+      fontSize: 12,
+    },
+    body1: {
+      fontWeight: 500,
+    },
+    button: {
+      fontStyle: 'italic',
+    },
+  },
+});
+```
 
 # Mailchimp Integration
 1. Add the Mailchimp endpoint to `gatsby-config.js` by following the instructions listed on [gatsby-plugin-mailchimp](https://www.gatsbyjs.org/packages/gatsby-plugin-mailchimp/) 
