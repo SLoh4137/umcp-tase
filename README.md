@@ -35,6 +35,8 @@ You also can find the original [Gatsby's original README.md here](https://github
     2. In particular, add any new tags you'd like to add to events. See [Netlify CMS](#netlify-cms)
 4. [`theme.js`](src/theme.js)
     1. The theme used throughout our site. Add primary and secondary colors and any new fonts. Be sure to add fonts to the `gatsby-plugin-prefetch-google-fonts` too.
+5. [`Header.tsx`](src/components/Layout/Header.tsx)
+    1. When you add pages, be sure to add the links to them here!
 5. Everything else is individual components on the site!
 
 
