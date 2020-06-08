@@ -23,12 +23,6 @@ Their website has a nice [tutorial](https://www.gatsbyjs.org/tutorial/) which I 
 
 You also can find the original [Gatsby's original README.md here](https://github.com/gatsbyjs/gatsby-starter-hello-world). That doc details a quick look at some file structure and basic files for this repo 
 
-# Typescript Module Resolution
-https://www.typescriptlang.org/docs/handbook/module-resolution.html
-Change in tsconfig.json
-
-[When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
-
 # Files to Change
 1. [`site-config.js`](site-config.js)
     1. Contains config information about our site like site Title, description, URL, preferred date formats, links
@@ -96,3 +90,12 @@ We can change how the bios look on the site by editing [`Bio.tsx`](/src/componen
 # Link Shortening 
 With Netlify, we can make our own link shortening service! The magic all happens in our [`_redirects`](/static/_redirects) file. In that file, we can add a URL on our site, and redirect it to another URL! For example,
 `/l/fb      https://www.facebook.com/umcptasa/` redirects from `umcp-tase.netlify.app/l/fn` to the TASA Facebook page. I chose to add `/l/` in front to make it clear that the link is shortened and not a page on our site. This isn't necessary, but it helps separate out links and ensure we can add shortened URLs with the same name as a page on our site. 
+
+
+
+# Miscellaneous
+## Typescript Module Resolution
+https://www.typescriptlang.org/docs/handbook/module-resolution.html
+Change in tsconfig.json
+
+[When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
