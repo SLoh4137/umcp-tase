@@ -8,6 +8,7 @@
 
 import React from "react"
 import { useStaticQuery, graphql, PageProps } from "gatsby"
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import Header from "./Header"
 import Footer from "./Footer"
@@ -18,6 +19,9 @@ type Props = {
 
 const Layout = (props: Props) => {
   const { children } = props;
+  const scrollTrigger = useScrollTrigger({
+    threshold: 100, // 100 is the default
+  });
   const data = useStaticQuery<GatsbyTypes.SiteTitleQuery>(graphql`
     query SiteTitle {
       site {
@@ -34,7 +38,7 @@ const Layout = (props: Props) => {
 
   return (
     <>
-      <Header title={data.site.siteMetadata.title} />
+      <Header title={data.site.siteMetadata.title} scrollTrigger={scrollTrigger}/>
       <div>
         <main>{children}</main>
       </div>

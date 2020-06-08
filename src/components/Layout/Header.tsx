@@ -10,6 +10,7 @@ import Logo from "components/Logo/Logo"
 const styles = (theme: Theme) => createStyles({
   root: {
     flexGrow: 1,
+    //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
     opacity: 1.0,
   },
   title: {
@@ -47,8 +48,18 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
-type Props = { title: string } & WithStyles<typeof styles>
+type ComponentProps = {
+  title: string,
+  scrollTrigger?: boolean
+}
 
+type Props = WithStyles<typeof styles> & ComponentProps
+
+/* Note, the header currently stays at the top of the page instead of the top of the screen
+* This can be changed by setting AppBar position="fixed".
+* Also, we can make the header respond to scrolling by utilizing the scrollTrigger prop 
+* as shown in the commented out opacity example
+*/
 function Header(props: Props) {
   const { classes, title } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
