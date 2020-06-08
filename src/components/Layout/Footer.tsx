@@ -37,7 +37,7 @@ function Footer(props: Props) {
         `
     )
 
-    if (site?.siteMetadata?.copyright) {
+    if (!site?.siteMetadata?.copyright) {
         console.log("Copyright not defined. Check gatsby-config")
     }
 

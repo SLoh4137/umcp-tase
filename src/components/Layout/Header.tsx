@@ -18,6 +18,7 @@ const styles = (theme: Theme) => createStyles({
     marginLeft: theme.spacing(2),
     display: 'inline',
     textTransform: "uppercase",
+    verticalAlign: "middle",
     // fontFamily: "Passion One, cursive",
     fontSize: "24px",
     [theme.breakpoints.down("sm")]: {
