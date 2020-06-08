@@ -10,16 +10,19 @@ collections:
   - name: events
     label: "Events"
     folder: "content/events"
-    create: true
-    slug: "{{slug}}"
+    create: true # whether or not new events can be added
+    slug: "{{slug}}" # unique URL for the created event
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Cover Image", name: "cover", widget: "image"}
       - {label: "Category", name: "category", widget: "hidden", default: "event"}
       - {label: "Tags", name: "tags", widget: "select", multiple: true,
-          options: ["cultural", "social"], # add more event tags here 
-          }
+
+        # ADD MORE EVENT TAGS HERE
+          options: ["cultural", "social", "gbm", "planning"], 
+        }
+
       - {label: "Facebook Event Page Link", name: "link", widget: "string", minimal: true}
       - {label: "Description", name: "body", widget: "markdown"}
   - name: bios

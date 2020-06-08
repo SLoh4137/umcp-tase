@@ -2,11 +2,13 @@
 # Table of Contents
 1. [Installation](#installation)
     1. [Gatsby](#gatsby)
+2. [Files to Change](#files-to-change)
 2. [Customizing Theme and Styling](#customizing-theme-and-styling)
 3. [Mailchimp Integration](#mailchimp-integration)
-4. [Adding New Events](#adding-new-events)
-5. [Editing Bios](#editing-bios)
-6. [Link Shortening](#link-shortening)
+4. [Netlify CMS](#netlify-cms)
+5. [Adding New Events](#adding-new-events)
+6. [Editing Bios](#editing-bios)
+7. [Link Shortening](#link-shortening)
 
 
 # Installation
@@ -27,6 +29,21 @@ Change in tsconfig.json
 
 [When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
 
+# Files to Change
+1. [`site-config.js`](site-config.js)
+    1. Contains config information about our site like site Title, description, URL, preferred date formats, links
+2. [`gatsby-config.js`](gatsby-config.js)
+    1. The main config file for Gatsby. This file takes some information from our `site-config.js` as well as the various plugins we've installed.
+    2. Add our Mailchimp endpoint here! See [Mailchimp Integration](#mailchimp-integration)
+    3. Note how we could completely replace our `site-config.js` file with this one. I just find it easier to have all of the config information in one easily findable location rather than split up in the `gatsby-config` file
+3. [`config.yml`](static/assets/config.yml)
+    1. The config file that determines how our Netlify CMS looks and what we can add
+    2. In particular, add any new tags you'd like to add to events. See [Netlify CMS](#netlify-cms)
+4. [`theme.js`](src/theme.js)
+    1. The theme used throughout our site. Add primary and secondary colors and any new fonts. Be sure to add fonts to the `gatsby-plugin-prefetch-google-fonts` too.
+5. Everything else is individual components on the site!
+
+
 # Customizing Theme and Styling
 This site uses [Material-UI](https://material-ui.com/) components for styling. The theme can be modified in [`theme.js`](/src/theme.js) to change the primary and secondary colors, the spacing used throughout the site, and typography. More info about customizing theme can be found on the [official Material-UI cutomization guide](https://material-ui.com/customization/theming/). The theme is provided to all the pages in [`gatsby-browser.js`](gatsby-browser.js) via ThemeProvider.
 
@@ -45,6 +62,12 @@ The styles object takes in the optional theme parameter to use information speci
 1. Add the Mailchimp endpoint to `gatsby-config.js` by following the instructions listed on [gatsby-plugin-mailchimp](https://www.gatsbyjs.org/packages/gatsby-plugin-mailchimp/) 
 2. Modify and stylize the [`Newsletter.tsx`](/src/components/Mailchimp/Newsletter.tsx) component to look how you want it to
 3. Use the [`Newsletter.tsx`](/src/components/Mailchimp/Newsletter.tsx) component where you want to display it
+
+
+# Netlify CMS
+Netlify CMS (content management system) is a way to easily add new events, bios, and whatever else we choose to add. The interface uses `config.yml` located at [`/static/admin/config.yml`](/static/admin/config.yml) which defines where data should be stored, what folders they should be put in, and what data can be added. The collections field allows us to specify the type of data we can add to the site.
+
+Our site has events and bios. When the user signs into the Netlify CMS admin panel (see [`below`](#adding-new-events)), they see the types of data they can add. This can include titles, images, tags, and markdown content. Then, Gatsby takes this information and displays it on our site.
 
 # Adding New Events
 Through Netlify CMS, we have a nice interface to add events. You can access it by following the url of the site `[url]/admin` Then, sign in with an account that has access to the repository. Once you're in, you should see ![Netlify CMS admin panel](/docs/netlify-cms-events.png)
