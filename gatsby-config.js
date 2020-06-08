@@ -91,6 +91,7 @@ module.exports = {
         ]
       }
     },
+    "gatsby-plugin-netlify",
     "gatsby-plugin-netlify-cms",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",

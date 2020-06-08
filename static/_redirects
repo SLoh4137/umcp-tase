@@ -1,0 +1,5 @@
+# Redirects from what the browser requests to what we serve
+# I added "/l/" in front of the link name to denote that it's an external link and not a page on our site
+# This may be a hassle to type out, but I believe it's a good separation of pages
+
+/l/fb           https://www.facebook.com/umcptasa/
