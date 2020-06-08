@@ -6,6 +6,7 @@
 3. [Mailchimp Integration](#mailchimp-integration)
 4. [Adding New Events](#adding-new-events)
 5. [Editing Bios](#editing-bios)
+6. [Link Shortening](#link-shortening)
 
 
 # Installation
@@ -69,4 +70,6 @@ We get all the bios using the [`useBios.tsx`](/src/hooks/useBios.tsx) hook. Like
 
 We can change how the bios look on the site by editing [`Bio.tsx`](/src/components/Bios/Bio.tsx). 
 
-
+# Link Shortening 
+With Netlify, we can make our own link shortening service! The magic all happens in our [`_redirects`](/static/_redirects) file. In that file, we can add a URL on our site, and redirect it to another URL! For example,
+`/l/fb      https://www.facebook.com/umcptasa/` redirects from `umcp-tase.netlify.app/l/fn` to the TASA Facebook page. I chose to add `/l/` in front to make it clear that the link is shortened and not a page on our site. This isn't necessary, but it helps separate out links and ensure we can add shortened URLs with the same name as a page on our site. 
