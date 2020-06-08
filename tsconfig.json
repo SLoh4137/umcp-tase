@@ -24,7 +24,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noUnusedLocals": false,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "preserveConstEnums": true,
         "noEmit": true,
         "skipLibCheck": true,

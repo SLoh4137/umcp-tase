@@ -1,8 +1,6 @@
 // This file is used to hold ambient type declarations, as well as type shims
 // for npm module without type declarations, and assets files.
 
-import { number } from "prop-types";
-
 // For example, to shim modules without declarations, use:
 declare module "gatsby-plugin-mailchimp"
 {
