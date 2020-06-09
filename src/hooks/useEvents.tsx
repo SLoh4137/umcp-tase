@@ -1,8 +1,27 @@
-import { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { mapImgToNode } from "utils/hookUtils"
 
-export default function useEvents(tags?: string[]) {
+// Type Definitions
 
+type EventNode = GatsbyTypes.EventsQuery["allMarkdownRemark"]["edges"][0]
+type EventHookOptions = Readonly<{
+  tags?: string[],
+  amount?: number,
+  filterFunction?: EventFilterFunction,
+}>;
+
+export type EventArrayType = ReturnType<typeof useEvents>;
+export type EventType = EventArrayType[0];
+export type ImageType = EventType["image"];
+export interface EventFilterFunction { (edge: EventNode): boolean };
+
+/**
+ * Returns the event and their associated images based on options provided to the hook
+ * 
+ * @param options Takes a tags array, amount to return, and a filter function. Filter must take an event node and return bool
+ */
+export default function useEvents(options: EventHookOptions) {
+  const {tags, amount, filterFunction} = options;
   // Because static queries can't have parameters, we have to query for everything
   const data = useStaticQuery<GatsbyTypes.EventsQuery>(graphql`
     query Events {
@@ -46,7 +65,6 @@ export default function useEvents(tags?: string[]) {
 
   let events = data.allMarkdownRemark.edges;
 
-
   if (tags && tags.length > 0) {
     const containsTag = (eventTag: GatsbyTypes.Maybe<string>) => {
       return eventTag ? tags?.includes(eventTag) : false;
@@ -59,37 +77,11 @@ export default function useEvents(tags?: string[]) {
       );
   }
 
-  // Can make this faster by using binary search
-  const findImage = (imgSrc: string) => {
-    return data.allFile.edges.find(file => file.node.relativePath == imgSrc)
+  if (filterFunction) {
+    events = events.filter(filterFunction);
   }
 
-  // This matches up each image with its proper event
-  // This is inefficient because it goes through every image to find the right one for this event
-  // A better search would use the fact that allFile returns sorted results and use binary search to find the matching image
-  // Note this is harder because absolutePath 
-  const eventsWithPhoto = events.map(eventNode => {
-    if (!eventNode.node.frontmatter?.imgsrc) {
-      throw new Error("Node does not have an image associated with it.");
-    }
+  const eventsWithPhoto = mapImgToNode<EventNode>(events, data.allFile.edges);
 
-    const image = findImage(eventNode.node.frontmatter?.imgsrc);
-    if (!image) {
-      throw new Error("Tried to find an associated image, but failed");
-    }
-
-    return {
-      node: eventNode.node,
-      image: image.node,
-    }
-
-  });
-
-  return eventsWithPhoto;
+  return amount && amount < eventsWithPhoto.length ? eventsWithPhoto.slice(0, amount) : eventsWithPhoto;
 }
-
-export type EventArrayType = ReturnType<typeof useEvents>;
-
-export type EventType = EventArrayType[0];
-
-export type ImageType = EventType["image"]

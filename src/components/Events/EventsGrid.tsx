@@ -24,12 +24,12 @@ type Props = WithStyles<typeof styles> & {
 
 function EventsGrid(props: Props) {
     const { classes, showDescription = true, tags } = props;
-    const eventsWithPhoto = useEvents(tags);
+    const eventsWithPhoto = useEvents({tags: tags});
 
     return (
         <Container className={classes.root} maxWidth="xl">
             <Grid container spacing={3} alignItems="stretch" alignContent="stretch" justify="center">
-                {eventsWithPhoto.map(event => 
+                {eventsWithPhoto.map((event, index) => 
                     <Grid item className={classes.item} xs={12} sm={4} lg={3} key={event.node.id}>
                         <EventPreview event={event} showDescription={showDescription} />
                     </Grid>
