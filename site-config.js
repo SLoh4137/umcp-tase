@@ -10,7 +10,7 @@ const config = {
     siteDescriptionLong: "University of Maryland, College Park Taiwanese American Student Association", // Website description used for RSS feeds/meta description tag.
     dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
     dateFormat: "MMM D, YYYY", // Date format for display.
-    copyright: `Copyright © ${(new Date).getFullYear()}. UMCP TASE`, // Copyright string for the footer of the website and RSS feed.
+    copyright: `Copyright © ${(new Date).getFullYear()} UMCP TASE`, // Copyright string for the footer of the website and RSS feed.
     facebookLink: "https://www.facebook.com/umcptasa/",
     instagramLink: "https://www.instagram.com/umcptasa/",
 };
