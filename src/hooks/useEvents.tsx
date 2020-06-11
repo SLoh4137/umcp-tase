@@ -5,7 +5,8 @@ import { mapImgToNode } from "utils/hookUtils"
 
 type EventEdge = GatsbyTypes.EventsQuery["allMarkdownRemark"]["edges"][0]
 type EventNode = EventEdge["node"]
-type EventHookOptions = Readonly<{
+
+export type EventHookOptions = Readonly<{
   tags?: string[],
   amount?: number,
   filterFunction?: EventFilterFunction,

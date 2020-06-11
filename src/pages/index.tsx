@@ -8,7 +8,7 @@ import { Container, Theme, createStyles, withStyles, WithStyles } from "@materia
 
 // Components
 import SEO from "components/seo"
-import EventsGrid from "components/Events/EventsGrid"
+import PastEventsGrid from "components/Events/PastEventsGrid"
 import Welcome from "components/General/Welcome"
 import Newsletter from "components/Mailchimp/Newsletter"
 
@@ -27,7 +27,7 @@ function IndexPage(props: Props) {
       <SEO title="Home" />
       <Container maxWidth="xl">
         <Welcome />
-        <EventsGrid showDescription={true} />
+        <PastEventsGrid showDescription={true} />
       </Container>
     </>
 
