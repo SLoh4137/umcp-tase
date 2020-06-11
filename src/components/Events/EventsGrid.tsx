@@ -29,7 +29,7 @@ function EventsGrid(props: Props) {
     return (
         <Container className={classes.root} maxWidth="xl">
             <Grid container spacing={3} alignItems="stretch" alignContent="stretch" justify="center">
-                {eventsWithPhoto.map((event, index) => 
+                {eventsWithPhoto.map((event) => 
                     <Grid item className={classes.item} xs={12} sm={4} lg={3} key={event.node.id}>
                         <EventPreview event={event} showDescription={showDescription} />
                     </Grid>

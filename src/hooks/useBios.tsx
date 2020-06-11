@@ -2,7 +2,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { mapImgToNode } from "utils/hookUtils"
 
 // Type Definitions
-type BioNode = GatsbyTypes.BioQuery["allMarkdownRemark"]["edges"][0]["node"]
+type BioEdge = GatsbyTypes.BioQuery["allMarkdownRemark"]["edges"][0]
+type BioNode = BioEdge["node"]
 
 export type BioArrayType = ReturnType<typeof useBios>;
 export type BioType = BioArrayType[0];

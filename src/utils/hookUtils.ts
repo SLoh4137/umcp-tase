@@ -33,14 +33,9 @@ export function mapImgToNode<T>(markdownRemarkEdges: Edges, allImagesArray: Imag
         }
 
         return {
-            image: image.node,
-            ...edge,
+            node: edge.node,
+            image: image.node,  
         }
-
-        // return {
-        //     node: edge.node,
-        //     image: image.node,
-        // }
     };
 
     // @ts-ignore Not sure why it's not properly recognizing markdownRemarkEdges as an array

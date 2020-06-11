@@ -3,7 +3,8 @@ import { mapImgToNode } from "utils/hookUtils"
 
 // Type Definitions
 
-type EventNode = GatsbyTypes.EventsQuery["allMarkdownRemark"]["edges"][0]
+type EventEdge = GatsbyTypes.EventsQuery["allMarkdownRemark"]["edges"][0]
+type EventNode = EventEdge["node"]
 type EventHookOptions = Readonly<{
   tags?: string[],
   amount?: number,
@@ -13,7 +14,7 @@ type EventHookOptions = Readonly<{
 export type EventArrayType = ReturnType<typeof useEvents>;
 export type EventType = EventArrayType[0];
 export type ImageType = EventType["image"];
-export interface EventFilterFunction { (edge: EventNode): boolean };
+export interface EventFilterFunction { (edge: EventEdge): boolean };
 
 /**
  * Returns the event and their associated images based on options provided to the hook
