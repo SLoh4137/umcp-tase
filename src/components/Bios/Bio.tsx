@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, CardContent, CardActions, Theme, createStyles, withStyles, WithStyles, CardActionArea } from "@material-ui/core"
 
-import Image from "components/General/Image"
+import Img from "gatsby-image"
 
 // Types
 import { BioType } from "hooks/useBios"
@@ -53,7 +53,7 @@ function Bio(props: Props) {
     return (
         <Card className={classes.root}>
             <div className={classes.content}>
-                <Image image={image} />
+                <Img fluid={image.childImageSharp?.fluid} />
                 <CardContent>
                     <h2 className={classes.title}>{name}</h2>
                     <h3 className={classes.position}>{position}</h3>
