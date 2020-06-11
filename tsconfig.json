@@ -1,20 +1,15 @@
 {
-    "include": [
-        "./src/**/*"
-    ],
+    "include": ["./src/**/*"],
     "compilerOptions": {
         "target": "esnext",
         "module": "commonjs",
-        "lib": [
-            "dom",
-            "es2017"
-        ],
+        "lib": ["dom", "es2017"],
         "baseUrl": "./",
         "paths": {
-            "components/*": [ "src/components/*" ],
-            "pages/*": [ "src/pages/*" ],
-            "hooks/*": [ "src/hooks/*" ],
-            "utils/*": [ "src/utils/*"]
+            "components/*": ["src/components/*"],
+            "pages/*": ["src/pages/*"],
+            "hooks/*": ["src/hooks/*"],
+            "utils/*": ["src/utils/*"]
         },
         "typeRoots": ["./node_modules/@types", "./src/declarations"],
         // "allowJs": true,
@@ -29,6 +24,6 @@
         "preserveConstEnums": true,
         "noEmit": true,
         "skipLibCheck": true,
-        "allowSyntheticDefaultImports": true, // So that we can just write 'import React from "react";' again 
+        "allowSyntheticDefaultImports": true // So that we can just write 'import React from "react";' again
     }
 }

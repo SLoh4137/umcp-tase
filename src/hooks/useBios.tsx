@@ -5,8 +5,8 @@ import { mapImgToNode } from "utils/hookUtils"
 type BioEdge = GatsbyTypes.BioQuery["allMarkdownRemark"]["edges"][0]
 type BioNode = BioEdge["node"]
 
-export type BioArrayType = ReturnType<typeof useBios>;
-export type BioType = BioArrayType[0];
+export type BioArrayType = ReturnType<typeof useBios>
+export type BioType = BioArrayType[0]
 export type BioImageType = BioType["image"]
 
 /**
@@ -16,41 +16,50 @@ export default function useBios() {
     // Because static queries can't have parameters, we have to query for everything
     const data = useStaticQuery<GatsbyTypes.BioQuery>(graphql`
         query Bio {
-            allMarkdownRemark(filter: {frontmatter: {category: {eq: "bio"}}}, sort: {fields: frontmatter___order, order: ASC}) {
-            edges {
-                node {
-                    id
-                    frontmatter {
-                        majors
-                        name
-                        position
-                        imgsrc
-                        category
-                        order
+            allMarkdownRemark(
+                filter: { frontmatter: { category: { eq: "bio" } } }
+                sort: { fields: frontmatter___order, order: ASC }
+            ) {
+                edges {
+                    node {
+                        id
+                        frontmatter {
+                            majors
+                            name
+                            position
+                            imgsrc
+                            category
+                            order
+                        }
+                        html
                     }
-                    html
                 }
             }
-            }
-            allFile(sort: {fields: relativePath, order: ASC}, filter: {absolutePath: {regex: "static/assets/"}}) {
-            edges {
-                node {
-                    id
-                    relativePath
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid
+            allFile(
+                sort: { fields: relativePath, order: ASC }
+                filter: { absolutePath: { regex: "static/assets/" } }
+            ) {
+                edges {
+                    node {
+                        id
+                        relativePath
+                        childImageSharp {
+                            fluid {
+                                ...GatsbyImageSharpFluid
+                            }
                         }
                     }
                 }
             }
-            }
-        }`
-    );
+        }
+    `)
 
     if (!data.allMarkdownRemark?.edges || !data.allFile?.edges) {
         throw new Error("Error in formation of Bio query")
     }
 
-    return mapImgToNode<BioNode>(data.allMarkdownRemark.edges, data.allFile.edges); 
+    return mapImgToNode<BioNode>(
+        data.allMarkdownRemark.edges,
+        data.allFile.edges
+    )
 }

@@ -6,8 +6,8 @@
 
 // You can delete this file if you're not using it
 const path = require(`path`)
-const moment = require("moment");
-const siteConfig = require("./site-config");
+const moment = require("moment")
+const siteConfig = require("./site-config")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // This method adds the field slug to every markdown node
@@ -25,66 +25,68 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-    const template = path.resolve(`./src/templates/EventPageTemplate.tsx`);
+    const template = path.resolve(`./src/templates/EventPageTemplate.tsx`)
     const result = await graphql(`
-    query {
-      allMarkdownRemark(filter: {frontmatter: {category: {eq: "event"}}}) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                imgsrc
-                date
-              }
+        query {
+            allMarkdownRemark(
+                filter: { frontmatter: { category: { eq: "event" } } }
+            ) {
+                edges {
+                    node {
+                        fields {
+                            slug
+                        }
+                        frontmatter {
+                            title
+                            imgsrc
+                            date
+                        }
+                    }
+                }
             }
-          }
-      }
-    } 
-    `);
+        }
+    `)
 
     if (result.errors) {
-        console.error(result.errors);
-        throw result.errors;
+        console.error(result.errors)
+        throw result.errors
     }
 
-    const postsEdges = result.data.allMarkdownRemark.edges;
+    const postsEdges = result.data.allMarkdownRemark.edges
 
     postsEdges.sort((postA, postB) => {
         const dateA = moment(
             postA.node.frontmatter.date,
             siteConfig.dateFromFormat
-        );
+        )
 
         const dateB = moment(
             postB.node.frontmatter.date,
             siteConfig.dateFromFormat
-        );
+        )
 
-        if (dateA.isBefore(dateB)) return 1;
-        if (dateB.isBefore(dateA)) return -1;
+        if (dateA.isBefore(dateB)) return 1
+        if (dateB.isBefore(dateA)) return -1
 
-        return 0;
-    });
+        return 0
+    })
 
     postsEdges.forEach((edge, index) => {
-        let nextTitle = "";
-        let nextSlug = "";
-        let prevTitle = "";
-        let prevSlug = "";
+        let nextTitle = ""
+        let nextSlug = ""
+        let prevTitle = ""
+        let prevSlug = ""
 
         if (index + 1 < postsEdges.length) {
-            const nextEdge = postsEdges[index + 1];
-            nextTitle = nextEdge.node.frontmatter.title;
-            nextSlug = nextEdge.node.fields.slug;
+            const nextEdge = postsEdges[index + 1]
+            nextTitle = nextEdge.node.frontmatter.title
+            nextSlug = nextEdge.node.fields.slug
         }
 
         if (index - 1 >= 0) {
-            const prevEdge = postsEdges[index - 1];
-            prevTitle = prevEdge.node.frontmatter.title;
-            prevSlug = prevEdge.node.fields.slug;
+            const prevEdge = postsEdges[index - 1]
+            prevTitle = prevEdge.node.frontmatter.title
+            prevSlug = prevEdge.node.fields.slug
         }
 
         createPage({

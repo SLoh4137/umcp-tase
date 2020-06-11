@@ -4,40 +4,68 @@
  */
 
 import React from "react"
-import { Container, Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
+import {
+    Container,
+    Theme,
+    createStyles,
+    withStyles,
+    WithStyles,
+} from "@material-ui/core"
 import { useSpring, animated } from "react-spring"
 
-const AnimFeTurbulence = animated('feTurbulence')
-const AnimFeDisplacementMap = animated('feDisplacementMap')
+const AnimFeTurbulence = animated("feTurbulence")
+const AnimFeDisplacementMap = animated("feDisplacementMap")
 
-const styles = (theme: Theme) => createStyles({
-    root: {
-        width: "100%",
-        margin: theme.spacing(1),
-    }
-});
+const styles = (theme: Theme) =>
+    createStyles({
+        root: {
+            width: "100%",
+            margin: theme.spacing(1),
+        },
+    })
 
 type Props = WithStyles<typeof styles>
 
 function Welcome(props: Props) {
-    const { classes } = props;
+    const { classes } = props
 
     // @ts-ignore: Not sure why these props aren't accepted from useSpring
     const { freq, scale, transform, opacity } = useSpring({
         reverse: false,
-        from: { scale: 10, opacity: 0, transform: 'scale(0.9)', freq: '0.0175, 0.0' },
-        to: { scale: 150, opacity: 1, transform: 'scale(1)', freq: '0.0, 0.0' },
-        config: { duration: 3000 }
+        from: {
+            scale: 10,
+            opacity: 0,
+            transform: "scale(0.9)",
+            freq: "0.0175, 0.0",
+        },
+        to: { scale: 150, opacity: 1, transform: "scale(1)", freq: "0.0, 0.0" },
+        config: { duration: 3000 },
     })
 
     return (
         <Container maxWidth="sm">
             <div className={classes.root}>
-                <animated.svg style={{ transform, opacity }} viewBox="0 0 1278 446">
+                <animated.svg
+                    style={{ transform, opacity }}
+                    viewBox="0 0 1278 446"
+                >
                     <defs>
                         <filter id="water">
-                            <AnimFeTurbulence type="fractalNoise" baseFrequency={freq} numOctaves={1} result="TURB" seed="8" />
-                            <AnimFeDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="TURB" result="DISP" scale={scale} />
+                            <AnimFeTurbulence
+                                type="fractalNoise"
+                                baseFrequency={freq}
+                                numOctaves={1}
+                                result="TURB"
+                                seed="8"
+                            />
+                            <AnimFeDisplacementMap
+                                xChannelSelector="R"
+                                yChannelSelector="G"
+                                in="SourceGraphic"
+                                in2="TURB"
+                                result="DISP"
+                                scale={scale}
+                            />
                         </filter>
                     </defs>
 
@@ -50,8 +78,7 @@ function Welcome(props: Props) {
                 </animated.svg>
             </div>
         </Container>
-
-    );
+    )
 }
 
 export default withStyles(styles)(Welcome)
