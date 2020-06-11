@@ -6,9 +6,11 @@
 2. [Customizing Theme and Styling](#customizing-theme-and-styling)
 3. [Mailchimp Integration](#mailchimp-integration)
 4. [Netlify CMS](#netlify-cms)
-5. [Adding New Events](#adding-new-events)
-6. [Editing Bios](#editing-bios)
-7. [Link Shortening](#link-shortening)
+5. [Adding New Pages](#adding-new-pages)
+6. [Adding New Events](#adding-new-events)
+7. [Editing Bios](#editing-bios)
+8. [Link Shortening](#link-shortening)
+9. [GraphQL Type Generation](#graphql-type-generation)
 
 
 # Installation
@@ -82,6 +84,11 @@ Netlify CMS (content management system) is a way to easily add new events, bios,
 
 Our site has events and bios. When the user signs into the Netlify CMS admin panel (see [`below`](#adding-new-events)), they see the types of data they can add. This can include titles, images, tags, and markdown content. Then, Gatsby takes this information and displays it on our site.
 
+# Adding New Pages
+To add new pages, just create a file in [`src/pages/`](src/pages/). Gatsby will turn that file into a page on the site with the same name. Layout and ThemeProvider are automatically added by [`gatsby-browser`](gatsby-browser.js). The Layout component wraps our page in a header and footer. You find the components used by the Layout in [`src/Layout`](src/Layout)
+
+Also, since that new component is a page component, it can take `PageProps` from Gatsby which includes location information. More information about pages and layouts can be found in the [Gatsby page documentation](https://www.gatsbyjs.org/docs/recipes/pages-layouts/).
+
 # Adding New Events
 Through Netlify CMS, we have a nice interface to add events. You can access it by following the url of the site `[url]/admin` Then, sign in with an account that has access to the repository. Once you're in, you should see ![Netlify CMS admin panel](/docs/netlify-cms-events.png)
 
@@ -110,6 +117,22 @@ We can change how the bios look on the site by editing [`Bio.tsx`](/src/componen
 With Netlify, we can make our own link shortening service! The magic all happens in our [`_redirects`](/static/_redirects) file. In that file, we can add a URL on our site, and redirect it to another URL! For example,
 `/l/fb      https://www.facebook.com/umcptasa/` redirects from `umcp-tase.netlify.app/l/fn` to the TASA Facebook page. I chose to add `/l/` in front to make it clear that the link is shortened and not a page on our site. This isn't necessary, but it helps separate out links and ensure we can add shortened URLs with the same name as a page on our site. 
 
+# GraphQL Type Generation
+Gatsby uses [GraphQL](https://www.gatsbyjs.org/docs/recipes/querying-data/) to query data. We use [gatsby-plugin-typegen](https://www.gatsbyjs.org/packages/gatsby-plugin-typegen/?=gatsby-plugin-ty) to automatically generate types from the queries we make. This plugin will automatically add types to any static queries we make. You can see an example of this in the [`Logo`]() component.
+```javascript
+const data = useStaticQuery<GatsbyTypes.LogoQuery>(graphql`
+    query Logo {
+        file(relativePath: {eq: "logo.png"}) {
+          childImageSharp {
+            fixed(width: 50, height: 50) {
+                ...GatsbyImageSharpFixed
+            }
+          }
+        }
+    }
+    `);
+```
+Note how the query itself is named on the second line, and how `GatsbyTypes.LogoQuery` is present as the type for `useStaticQuery`. All generated types get stored in [`src/__generated__/gatsby-types.ts`](src/__generated__/gatsby-types.ts)
 
 
 # Miscellaneous
