@@ -17,7 +17,22 @@ import Img from "gatsby-image"
 
 const styles = (theme: Theme) =>
     createStyles({
-        root: {},
+        image: {
+            padding: theme.spacing(1),
+        },
+        title: {
+            color: theme.palette.primary.main,
+        },
+        description: {
+            "& p": {
+                fontSize: "14px",
+                color: theme.palette.secondary.main,
+            },
+
+            "& a": {
+                color: theme.palette.secondary.dark,
+            },
+        },
     })
 
 // Note this has to be synchronized with gatsby-node in createPage
@@ -37,7 +52,7 @@ type Props = {
     WithStyles<typeof styles>
 
 function EventPageTemplate(props: Props) {
-    const { data, pageContext, location } = props
+    const { data, pageContext, location, classes } = props
 
     // pageContext dictates the relationship between this page and others
     // For example, a component could display the next event's title and a link to it with the given parameters
@@ -47,14 +62,21 @@ function EventPageTemplate(props: Props) {
     if (!data.markdownRemark?.frontmatter?.title)
         throw new Error("Title not provided")
     if (!data.file) throw new Error("Image doesn't exist")
-
-    const title = data.markdownRemark.frontmatter.title
+    if (!data.markdownRemark.html) throw new Error("No description")
 
     return (
         <Container maxWidth="lg">
-            <Img fluid={data.file.childImageSharp?.fluid} />
-            {/* Content for each page goes here */}
-            {title}
+            <Img
+                className={classes.image}
+                fluid={data.file.childImageSharp?.fluid}
+            />
+            <h1 className={classes.title}>{data.markdownRemark.frontmatter.title}</h1>
+            <div
+                className={classes.description}
+                dangerouslySetInnerHTML={{
+                    __html: data.markdownRemark.html,
+                }}
+            />
         </Container>
     )
 }
