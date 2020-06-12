@@ -27,7 +27,7 @@ export function mapImgToNode<T>(
 ): ReadonlyArray<NodeWithImage<T>> {
     // Can make this faster by using binary search
     const findImage = (imgSrc: string) =>
-        allImagesArray.find(file => file.node.relativePath == imgSrc)
+        allImagesArray.find((file) => file.node.relativePath == imgSrc)
 
     const mapEdge = (edge: Edges[0]) => {
         if (!edge.node.frontmatter?.imgsrc) {

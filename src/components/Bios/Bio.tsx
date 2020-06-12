@@ -60,7 +60,7 @@ function Bio(props: Props) {
                 </CardContent>
             </div>
             <CardActions className={classes.action}>
-                {majorArray.map(major => (
+                {majorArray.map((major) => (
                     <h5 className={classes.major}>{major}</h5>
                 ))}
             </CardActions>

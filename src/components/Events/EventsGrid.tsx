@@ -66,7 +66,7 @@ function EventsGrid(props: Props) {
                 alignContent="stretch"
                 justify="center"
             >
-                {eventsWithPhoto.map(event => (
+                {eventsWithPhoto.map((event) => (
                     <Grid
                         item
                         className={classes.item}

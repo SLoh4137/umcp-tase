@@ -35,7 +35,7 @@ function BoardPage(props: Props) {
                     alignContent="stretch"
                     justify="center"
                 >
-                    {data.map(bio => (
+                    {data.map((bio) => (
                         <Grid
                             item
                             className={classes.gridItem}

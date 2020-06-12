@@ -82,7 +82,7 @@ export default function useEvents(options: EventHookOptions) {
 
         // Tags were passed in, so filter based on them
         events = data.allMarkdownRemark.edges.filter(
-            eventNode =>
+            (eventNode) =>
                 eventNode.node.frontmatter?.tags &&
                 eventNode.node.frontmatter.tags.some(containsTag)
         )

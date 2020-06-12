@@ -45,7 +45,8 @@ type SubmitDataType = Record<string, string>
 const encode = (data: SubmitDataType) => {
     return Object.keys(data)
         .map(
-            key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+            (key) =>
+                encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
         )
         .join("&")
 }
@@ -91,7 +92,7 @@ function Form(props: Props) {
                     </h3>
                 )
             })
-            .catch(error => {
+            .catch((error) => {
                 setSubmitContent(
                     <h3 className={classes.failure}>
                         Failed to send message! {error}

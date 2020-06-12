@@ -16,7 +16,7 @@ function FutureEventsGrid(props: Props) {
     const { showDescription = true } = props
 
     const currentTime = moment()
-    const filterFunction: EventFilterFunction = edge => {
+    const filterFunction: EventFilterFunction = (edge) => {
         if (!edge.node.frontmatter?.date) return false
 
         const date = moment(edge.node.frontmatter.date) // Note may need to pass in date format for some browsers

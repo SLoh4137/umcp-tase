@@ -158,7 +158,7 @@ function EventPreview(props: Props) {
                         <div className={classes.tags}>
                             {/* {tags ? tags.map(tag => <TagLink tag={tag} key={tag} />) : <></>} */}
                             {tags ? (
-                                tags.map(tag => {
+                                tags.map((tag) => {
                                     tag
                                 })
                             ) : (
