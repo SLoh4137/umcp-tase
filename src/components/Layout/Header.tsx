@@ -73,7 +73,7 @@ type Props = WithStyles<typeof styles> & ComponentProps
  * as shown in the commented out opacity example
  */
 function Header(props: Props) {
-    const { classes, title } = props
+    const { classes, title, scrollTrigger = false } = props
     const [mobileOpen, setMobileOpen] = useState(false)
 
     const handleDrawerToggle = () => {
@@ -113,10 +113,9 @@ function Header(props: Props) {
                     <Logo />
                     <h2 className={classes.title}>{title}</h2>
                 </Link>
-                <div className={classes.grow} />{" "}
+                <div className={classes.grow} />
                 {/* This is here to make sure everything else is right-aligned*/}
                 <Hidden xsDown>
-                    {" "}
                     {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
                     {links}
                 </Hidden>

@@ -1,4 +1,5 @@
 # UMCP TASE
+This is a template for the backend portion of a student organization website. It utilzies Netlify CMS to simplfy adding new events and editing bios. Plus, it comes with helpful link shortening! I left the actual UI and design of the site pretty minimal so that you can edit it however you please!
 
 # Table of Contents
 
@@ -13,6 +14,7 @@
 8. [Editing Bios](#editing-bios)
 9. [Link Shortening](#link-shortening)
 10. [GraphQL Type Generation](#graphql-type-generation)
+11. [Miscellaneous](#miscellaneous)
 
 # Installation
 
@@ -162,3 +164,6 @@ https://www.typescriptlang.org/docs/handbook/module-resolution.html
 Change in tsconfig.json
 
 [When to use type vs interface for Typescript](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
+
+## Making the Header stay at the top of the screen
+That's pretty easy! Just set the position prop of the AppBar to "fixed" instead of "relative". If you want the header to respond to scroll actions (ex: changing from transparent to opaque), utilize the scrollTrigger boolean passed in from the Layout component. You can set different styles depending on whether or not scrollTrigger is true or false. Check out the commented code for an example.
