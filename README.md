@@ -1,5 +1,5 @@
 # UMCP TASE
-This is a template for the backend portion of a student organization website. It utilzies Netlify CMS to simplfy adding new events and editing bios. Plus, it comes with helpful link shortening! I left the actual UI and design of the site pretty minimal so that you can edit it however you please!
+This is a template for the backend portion of a student organization website. It utilizes Netlify CMS to simplfy adding new events and editing bios. Plus, it comes with helpful link shortening! I left the actual UI and design of the site pretty minimal so that you can edit it however you please!
 
 # Table of Contents
 
@@ -104,7 +104,7 @@ Also, since that new component is a page component, it can take `PageProps` from
 
 Through Netlify CMS, we have a nice interface to add events. You can access it by following the url of the site `[url]/admin` Then, sign in with an account that has access to the repository. Once you're in, you should see ![Netlify CMS admin panel](/docs/netlify-cms-events.png)
 
-You can click on an existing event to edit it or on "New Events" to create a new event. From there, you should see ![Netlify CMS add event](/docs/netlify-cms-events-edit.png). Once all the fields are filled out, hit publish and a markdown file and image file should be added to the GitHub repository! Then, Netlify will rebuild the site with the new content.
+You can click on an existing event to edit it or on "New Events" to create a new event. From there, you should see ![Netlify CMS add event](/docs/netlify-cms-events-edit.png) Once all the fields are filled out, hit publish and a markdown file and image file should be added to the GitHub repository! Then, Netlify will rebuild the site with the new content.
 
 ## How does it work?
 
@@ -114,7 +114,7 @@ The markdown file has a section called frontmatter and the actual body which sho
 
 For everywhere else, we have to use static queries which can't take parameters. We get the events through the hook [`useEvents.tsx`](/src/hooks/useEvents.tsx). More about hooks can be found [on the official React site](https://reactjs.org/docs/hooks-intro.html). The useEvents hook queries for all of the event markdown files and every image. Then, it filters based off any tags given and returns a combined node with the associated image.
 
-We can use the result from useEvents to display the data in various ways such as in a grid. If we wanted to get upcoming or previous events, we can add a filter to the useEvents hook which can do return us events that occur before or after a certain date.
+We can use the result from useEvents to display the data in various ways such as in a grid. If we wanted to get upcoming or previous events, we can add a filter to the useEvents hook which can return us events that occur before or after a certain date.
 
 The [`EventPreview.tsx`](/src/components/Events/EventPreview.tsx) component displays a card with information about the event. If you click on the card, it brings us to the dedicated page for that event.
 

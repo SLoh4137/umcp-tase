@@ -51,45 +51,43 @@ function Footer(props: Props) {
     }
 
     return (
-        <footer>
-            <AppBar
-                position="fixed"
-                color="transparent"
-                className={classes.root}
-                elevation={0}
-            >
-                <Toolbar>
-                    <div className={classes.grow} />
-                    {site?.siteMetadata?.facebook ? (
-                        <IconButton
-                            href={site.siteMetadata.facebook}
-                            color="primary"
-                        >
-                            <FacebookIcon />
-                        </IconButton>
-                    ) : (
-                        <></>
-                    )}
-                    {site?.siteMetadata?.instagram ? (
-                        <IconButton
-                            href={site.siteMetadata.instagram}
-                            color="primary"
-                        >
-                            <InstagramIcon />
-                        </IconButton>
-                    ) : (
-                        <></>
-                    )}
-                    {site?.siteMetadata?.copyright ? (
-                        <h4 className={classes.copyright}>
-                            {site.siteMetadata.copyright}
-                        </h4>
-                    ) : (
-                        <></>
-                    )}
-                </Toolbar>
-            </AppBar>
-        </footer>
+        <AppBar
+            position="relative"
+            color="transparent"
+            className={classes.root}
+            elevation={0}
+        >
+            <Toolbar>
+                <div className={classes.grow} />
+                {site?.siteMetadata?.facebook ? (
+                    <IconButton
+                        href={site.siteMetadata.facebook}
+                        color="primary"
+                    >
+                        <FacebookIcon />
+                    </IconButton>
+                ) : (
+                    <></>
+                )}
+                {site?.siteMetadata?.instagram ? (
+                    <IconButton
+                        href={site.siteMetadata.instagram}
+                        color="primary"
+                    >
+                        <InstagramIcon />
+                    </IconButton>
+                ) : (
+                    <></>
+                )}
+                {site?.siteMetadata?.copyright ? (
+                    <h4 className={classes.copyright}>
+                        {site.siteMetadata.copyright}
+                    </h4>
+                ) : (
+                    <></>
+                )}
+            </Toolbar>
+        </AppBar>
     )
 }
 
