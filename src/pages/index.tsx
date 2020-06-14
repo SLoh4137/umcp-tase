@@ -42,28 +42,28 @@ function IndexPage(props: Props) {
      * I didn't like how it created a separate scroll container which only happens because we have the
      * layout wrapping the entire page */
 
-    /* 
-  return (
-    <>
-      <SEO title="Home" />
-      <Parallax pages={2}>
+    // return (
+    //     <>
+    //         <SEO title="Home" />
+    //         <Parallax pages={2}>
+    //             <ParallaxLayer offset={0} speed={1}>
+    //                 <Container maxWidth="xl">
+    //                     <Welcome />
+    //                 </Container>
+    //             </ParallaxLayer>
 
-        <ParallaxLayer offset={0} speed={1}>
-          <Container maxWidth="xl">
-            <Welcome />
-          </Container>
-        </ParallaxLayer>
+    //             <ParallaxLayer
+    //                 offset={0.5}
+    //                 speed={1}
+    //                 className={classes.firstBackground}
+    //             />
 
-        <ParallaxLayer offset={0.5} speed={1} className={classes.firstBackground} />
-
-        <ParallaxLayer offset={0.5} speed={1}>
-          <EventsGrid showDescription={true} />
-        </ParallaxLayer>
-      </Parallax>
-    </>
-    
-  );
-  */
+    //             <ParallaxLayer offset={0.5} speed={1}>
+    //                 <PastEventsGrid showDescription={true} />
+    //             </ParallaxLayer>
+    //         </Parallax>
+    //     </>
+    // )
 }
 
 export default withStyles(styles)(IndexPage)

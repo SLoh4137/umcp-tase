@@ -107,7 +107,7 @@ function Header(props: Props) {
     )
 
     return (
-        <AppBar className={classes.root} position={"relative"} elevation={0}>
+        <AppBar className={classes.root} position={"fixed"} elevation={0}>
             <Toolbar>
                 <Link className={classes.link} to="/">
                     <Logo />

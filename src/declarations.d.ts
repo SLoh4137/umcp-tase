@@ -1,6 +1,9 @@
 // This file is used to hold ambient type declarations, as well as type shims
 // for npm module without type declarations, and assets files.
 
+import { Ref, PureComponent } from 'react'
+import { SpringConfig } from './renderprops-universal'
+
 // For example, to shim modules without declarations, use:
 declare module "gatsby-plugin-mailchimp" {
     export default function addToMailchimp(
