@@ -7,6 +7,7 @@
 const React = require("react")
 const Layout = require("./src/components/Layout/Layout").default
 const ThemeProvider = require("@material-ui/styles/ThemeProvider").default
+const CssBaseline = require("@material-ui/core/CssBaseline").default
 const theme = require("./src/theme").default
 
 exports.wrapPageElement = ({ element, props }) => {
@@ -16,7 +17,12 @@ exports.wrapPageElement = ({ element, props }) => {
 }
 
 exports.wrapRootElement = ({ element }) => {
-    return <ThemeProvider theme={theme}>{element}</ThemeProvider>
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {element}
+        </ThemeProvider>
+    )
 }
 
 // export const onClientEntry = () => {
