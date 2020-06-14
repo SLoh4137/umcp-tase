@@ -1,6 +1,25 @@
 // This file is used to hold ambient type declarations, as well as type shims
 // for npm module without type declarations, and assets files.
 
+// For the config file
+declare module "site-config" {
+    export const config: {
+        siteTitle: string
+        siteTitleShort: string
+        siteTitleAlt: string
+        siteLogo: string
+        siteUrl: string
+        pathPrefix: string
+        siteDescriptionShort: string
+        siteDescriptionLong: string
+        dateFromFormat: string
+        dateFormat: string
+        copyright: string
+        facebookLink: string
+        instagramLink: string
+    }
+}
+
 // For example, to shim modules without declarations, use:
 declare module "gatsby-plugin-mailchimp" {
     export default function addToMailchimp(

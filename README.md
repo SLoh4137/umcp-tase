@@ -38,7 +38,6 @@ You also can find the original [Gatsby's original README.md here](https://github
 2. [`gatsby-config.js`](gatsby-config.js)
     1. The main config file for Gatsby. This file takes some information from our `site-config.js` as well as the various plugins we've installed.
     2. Add our Mailchimp endpoint here! See [Mailchimp Integration](#mailchimp-integration)
-    3. Note how we could completely replace our `site-config.js` file with this one. I just find it easier to have all of the config information in one easily findable location rather than split up in the `gatsby-config` file
 3. [`config.yml`](static/assets/config.yml)
     1. The config file that determines how our Netlify CMS looks and what we can add
     2. In particular, add any new tags you'd like to add to events. See [Netlify CMS](#netlify-cms)
