@@ -42,7 +42,9 @@ const Layout = (props: Props) => {
                 title={data.site.siteMetadata.title}
                 scrollTrigger={scrollTrigger}
             />
-            {children}
+            <main>
+                {children}
+            </main>
             <Footer />
         </>
     )
