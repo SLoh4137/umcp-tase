@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
-import { config } from "site-config"
+import { config } from "root/site-config"
 
 const styles = (theme: Theme) =>
     createStyles({

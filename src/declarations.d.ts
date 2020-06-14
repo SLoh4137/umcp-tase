@@ -2,7 +2,7 @@
 // for npm module without type declarations, and assets files.
 
 // For the config file
-declare module "site-config" {
+declare module "root/site-config" {
     export const config: {
         siteTitle: string
         siteTitleShort: string
