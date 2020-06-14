@@ -1,5 +1,6 @@
 import React from "react"
-import { PageProps } from "gatsby"
+import { graphql, PageProps } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
 import {
     Container,
     Theme,
@@ -19,22 +20,37 @@ import Newsletter from "components/Mailchimp/Newsletter"
 
 const styles = (theme: Theme) =>
     createStyles({
-        firstBackground: {
-            backgroundColor: theme.palette.primary.main,
+        mainBackground: {
+            width: "100%",
+            position: "relative",
+            padding: theme.spacing(4),
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
         },
     })
 
-type Props = PageProps & WithStyles<typeof styles>
+type Props = PageProps &
+    WithStyles<typeof styles> & {
+        data: GatsbyTypes.HomePageQuery
+    }
 
 function IndexPage(props: Props) {
-    const { classes } = props
+    const { data, classes } = props
+    const { mainBackground, presidentBackground, newsletterBackground } = data
     return (
         <>
-            <SEO title="Home" />
-            <Container maxWidth="xl">
+            {/* <SEO title="Home" /> */}
+            <BackgroundImage
+                fluid={mainBackground?.childImageSharp?.fluid}
+                className={classes.mainBackground}
+            >
                 <Welcome />
+            </BackgroundImage>
+
+            {/* <Container maxWidth="xl">
                 <PastEventsGrid showDescription={true} />
-            </Container>
+            </Container> */}
         </>
     )
 
@@ -65,5 +81,31 @@ function IndexPage(props: Props) {
     //     </>
     // )
 }
+
+export const query = graphql`
+    query HomePage {
+        mainBackground: file(relativePath: { eq: "Taiwan.jpg" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        presidentBackground: file(relativePath: { eq: "bg10.jpg" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        newsletterBackground: file(relativePath: { eq: "Taiwan2.jpg" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+    }
+`
 
 export default withStyles(styles)(IndexPage)

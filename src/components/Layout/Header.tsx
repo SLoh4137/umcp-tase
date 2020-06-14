@@ -22,8 +22,8 @@ const styles = (theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
-            //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
-            opacity: 1.0,
+            opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
+            //opacity: 1.0,
         },
         title: {
             color: "#ffffff",
@@ -107,7 +107,7 @@ function Header(props: Props) {
     )
 
     return (
-        <AppBar className={classes.root} position={"relative"} elevation={0}>
+        <AppBar className={classes.root} position={"fixed"} elevation={0}>
             <Toolbar>
                 <Link className={classes.link} to="/">
                     <Logo />
