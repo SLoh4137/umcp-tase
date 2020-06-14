@@ -46,9 +46,13 @@ function Footer(props: Props) {
         `
     )
 
-    if (!site?.siteMetadata?.copyright) {
-        console.log("Copyright not defined. Check gatsby-config")
-    }
+    if (!site?.siteMetadata) throw new Error("Site metadata not defined")
+    
+    const { facebook, instagram, copyright} = site.siteMetadata;
+
+    if (!facebook) throw new Error("Facebook link not defined in site metadata. Check gatsby-config")
+    if (!instagram) throw new Error("Instagram link not defined in site metadata. Check gatsby-config")
+    if (!copyright) throw new Error("Copyright not defined in site metadata. Check gatsby-config")
 
     return (
         <AppBar
@@ -59,33 +63,18 @@ function Footer(props: Props) {
         >
             <Toolbar>
                 <div className={classes.grow} />
-                {site?.siteMetadata?.facebook ? (
-                    <IconButton
-                        href={site.siteMetadata.facebook}
-                        color="primary"
-                    >
-                        <FacebookIcon />
-                    </IconButton>
-                ) : (
-                    <></>
-                )}
-                {site?.siteMetadata?.instagram ? (
-                    <IconButton
-                        href={site.siteMetadata.instagram}
-                        color="primary"
-                    >
-                        <InstagramIcon />
-                    </IconButton>
-                ) : (
-                    <></>
-                )}
-                {site?.siteMetadata?.copyright ? (
-                    <h4 className={classes.copyright}>
-                        {site.siteMetadata.copyright}
-                    </h4>
-                ) : (
-                    <></>
-                )}
+
+                <IconButton href={facebook} color="primary">
+                    <FacebookIcon />
+                </IconButton>
+
+                <IconButton href={instagram} color="primary">
+                    <InstagramIcon />
+                </IconButton>
+
+                <h4 className={classes.copyright}>
+                    {copyright}
+                </h4>
             </Toolbar>
         </AppBar>
     )
