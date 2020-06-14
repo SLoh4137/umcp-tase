@@ -19,9 +19,9 @@ import Newsletter from "components/Mailchimp/Newsletter"
 
 const styles = (theme: Theme) =>
     createStyles({
-        firstBackground: {
-            backgroundColor: theme.palette.primary.main,
-        },
+        // firstBackground: {
+        //     backgroundColor: theme.palette.primary.main,
+        // },
     })
 
 type Props = PageProps & WithStyles<typeof styles>

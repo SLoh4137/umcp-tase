@@ -5,23 +5,20 @@
  */
 
 // You can delete this file if you're not using it
-import React from "react"
-import Layout from "./src/components/Layout/Layout"
-import ThemeProvider from "@material-ui/styles/ThemeProvider"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import theme from "./src/theme"
+// import React from "react"
+// import Layout from "./src/components/Layout/Layout"
+// import ProviderLayout from "./src/components/Layout/ProviderLayout"
 
-export const wrapPageElement = ({ element, props }) => {
-    // props provide same data to Layout as Page element will get
-    // including location, data, etc - you don't need to pass it
-    return <Layout {...props}>{element}</Layout>
-}
+// export const wrapPageElement = ({ element, props }) => {
+//     // props provide same data to Layout as Page element will get
+//     // including location, data, etc - you don't need to pass it
+//     return <Layout {...props}>{element}</Layout>
+// }
 
-export const wrapRootElement = ({ element }) => {
-    return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {element}
-        </ThemeProvider>
-    )
-}
+// export const wrapRootElement = ({ element }) => {
+//     return (
+//         <ProviderLayout>
+//             {element}
+//         </ProviderLayout>
+//     )
+// }

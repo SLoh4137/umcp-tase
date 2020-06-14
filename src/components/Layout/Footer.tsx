@@ -1,5 +1,7 @@
 import React from "react"
 import {
+    AppBar,
+    Grid,
     IconButton,
     withStyles,
     Toolbar,
@@ -14,9 +16,8 @@ import { config } from "root/site-config"
 const styles = (theme: Theme) =>
     createStyles({
         root: {
-            top: "auto",
-            bottom: 0,
             padding: theme.spacing(1),
+            paddingRight: theme.spacing(2),
         },
         grow: {
             flexGrow: 1,
@@ -32,20 +33,27 @@ type Props = WithStyles<typeof styles>
 function Footer(props: Props) {
     const { classes } = props
     return (
-        <Toolbar className={classes.root}>
-            <div className={classes.grow} />
+        <AppBar
+            position={"relative"}
+            color={"transparent"}
+            elevation={0}
+            className={classes.root}
+        >
+            <Toolbar>
+                <div className={classes.grow} />
 
-            <IconButton href={config.facebookLink} color="primary">
-                <FacebookIcon />
-            </IconButton>
+                <IconButton href={config.facebookLink} color="primary">
+                    <FacebookIcon />
+                </IconButton>
 
-            <IconButton href={config.instagramLink} color="primary">
-                <InstagramIcon />
-            </IconButton>
+                <IconButton href={config.instagramLink} color="primary">
+                    <InstagramIcon />
+                </IconButton>
 
-            <h4 className={classes.copyright}>{config.copyright}</h4>
-        </Toolbar>
+                <h4 className={classes.copyright}>{config.copyright}</h4>
+            </Toolbar>
+        </AppBar>
     )
 }
 
-export default withStyles(styles)(Footer)
+export default withStyles(styles, { name: "footer-test" })(Footer)

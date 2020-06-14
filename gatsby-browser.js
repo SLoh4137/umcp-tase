@@ -6,9 +6,7 @@
 
 import React from "react"
 import Layout from "./src/components/Layout/Layout"
-import ThemeProvider from "@material-ui/styles/ThemeProvider"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import theme from "./src/theme"
+import ProviderLayout from "./src/components/Layout/ProviderLayout"
 
 export const wrapPageElement = ({ element, props }) => {
     // props provide same data to Layout as Page element will get
@@ -18,10 +16,9 @@ export const wrapPageElement = ({ element, props }) => {
 
 export const wrapRootElement = ({ element }) => {
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
+        <ProviderLayout>
             {element}
-        </ThemeProvider>
+        </ProviderLayout>
     )
 }
 
