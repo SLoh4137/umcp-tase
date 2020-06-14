@@ -7,6 +7,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.20",
     "gatsby-alias-imports": "^1.0.4",
