@@ -1,6 +1,6 @@
 const path = require("path")
 const urljoin = require("url-join")
-const config = require("./site-config")
+const config = require("./site-config").config
 require("dotenv").config() // for later use with environment variables
 
 module.exports = {

@@ -1,3 +1,4 @@
+// Note that type is defined in src/declarations.d.ts
 const config = {
     siteTitle: "UMCP TASA", // Site title.
     siteTitleShort: "UMCP TASA", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
@@ -5,7 +6,6 @@ const config = {
     siteLogo: "src/images/logo.png", // Logo used for SEO and manifest.
     siteUrl: "https://umcptasa.netlify.com", // Domain of your website without pathPrefix.
     pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
-    fixedFooter: false, // Whether the footer component is fixed, i.e. always visible
     siteDescriptionShort:
         "University of Maryland, College Park Taiwanese American Student Association",
     siteDescriptionLong:
@@ -31,4 +31,4 @@ if (config.pathPrefix === "/") {
 if (config.siteUrl.substr(-1) === "/")
     config.siteUrl = config.siteUrl.slice(0, -1)
 
-module.exports = config
+module.exports = { config }

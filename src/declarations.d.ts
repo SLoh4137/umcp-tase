@@ -3,6 +3,24 @@
 
 import { Ref, PureComponent } from 'react'
 import { SpringConfig } from './renderprops-universal'
+// For the config file
+declare module "root/site-config" {
+    export const config: {
+        siteTitle: string
+        siteTitleShort: string
+        siteTitleAlt: string
+        siteLogo: string
+        siteUrl: string
+        pathPrefix: string
+        siteDescriptionShort: string
+        siteDescriptionLong: string
+        dateFromFormat: string
+        dateFormat: string
+        copyright: string
+        facebookLink: string
+        instagramLink: string
+    }
+}
 
 // For example, to shim modules without declarations, use:
 declare module "gatsby-plugin-mailchimp" {
