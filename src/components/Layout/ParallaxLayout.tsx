@@ -1,25 +1,25 @@
 /**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- * Used in gatsby-browser and gatsby-ssr as a wrapper around all pages
+ * Parallax Layout component
  */
 
 import React from "react"
 import { useStaticQuery, graphql, PageProps } from "gatsby"
 import useScrollTrigger from "@material-ui/core/useScrollTrigger"
 
+// https://www.react-spring.io/docs/props/parallax
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons"
+
 import Header from "./Header"
 import Footer from "./Footer"
 
 type Props = {
-    children: React.ReactNode,
+    children: React.ReactNode
+    pages: number
     background?: React.ReactNode
 } & PageProps
 
-const Layout = (props: Props) => {
-    const { children, background } = props
+const ParallaxLayout = (props: Props) => {
+    const { children, pages, background } = props
     const scrollTrigger = useScrollTrigger({
         threshold: 100, // 100 is the default
     })
@@ -38,18 +38,16 @@ const Layout = (props: Props) => {
     }
 
     return (
-        <>
+        <Parallax pages={pages}>
             <Header
                 title={data.site.siteMetadata.title}
                 scrollTrigger={scrollTrigger}
             />
             {background ? background : <></>}
-            <main>
-                {children}
-            </main>
+            {children}
             <Footer />
-        </>
+        </Parallax>
     )
 }
 
-export default Layout
+export default ParallaxLayout
