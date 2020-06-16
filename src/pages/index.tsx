@@ -48,6 +48,9 @@ function IndexPage(props: Props) {
             >
                 <Welcome />
             </BackgroundImage>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
         </>
     )
 
