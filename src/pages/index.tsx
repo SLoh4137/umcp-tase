@@ -13,7 +13,6 @@ import {
 // import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons"
 
 // Components
-import ParallaxLayout from "components/Layout/ParallaxLayout"
 import SEO from "components/seo"
 import PastEventsGrid from "components/Events/PastEventsGrid"
 import Welcome from "components/General/Welcome"
