@@ -1,7 +1,7 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import {
     AppBar,
-    Grid,
     IconButton,
     withStyles,
     Toolbar,
@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
-import { config } from "root/site-config"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -32,6 +31,37 @@ type Props = WithStyles<typeof styles>
 
 function Footer(props: Props) {
     const { classes } = props
+    const { site } = useStaticQuery<GatsbyTypes.FooterQuery>(
+        graphql`
+            query Footer {
+                site {
+                    siteMetadata {
+                        copyright
+                        facebook
+                        instagram
+                    }
+                }
+            }
+        `
+    )
+
+    if (!site?.siteMetadata) throw new Error("Site metadata not defined")
+
+    const { facebook, instagram, copyright } = site.siteMetadata
+
+    if (!facebook)
+        throw new Error(
+            "Facebook link not defined in site metadata. Check gatsby-config"
+        )
+    if (!instagram)
+        throw new Error(
+            "Instagram link not defined in site metadata. Check gatsby-config"
+        )
+    if (!copyright)
+        throw new Error(
+            "Copyright not defined in site metadata. Check gatsby-config"
+        )
+
     return (
         <AppBar
             position={"relative"}
@@ -42,15 +72,15 @@ function Footer(props: Props) {
             <Toolbar>
                 <div className={classes.grow} />
 
-                <IconButton href={config.facebookLink} color="primary">
+                <IconButton href={facebook} color="primary">
                     <FacebookIcon />
                 </IconButton>
 
-                <IconButton href={config.instagramLink} color="primary">
+                <IconButton href={instagram} color="primary">
                     <InstagramIcon />
                 </IconButton>
 
-                <h4 className={classes.copyright}>{config.copyright}</h4>
+                <h4 className={classes.copyright}>{copyright}</h4>
             </Toolbar>
         </AppBar>
     )

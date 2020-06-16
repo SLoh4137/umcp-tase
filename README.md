@@ -93,6 +93,8 @@ Netlify CMS (content management system) is a way to easily add new events, bios,
 
 Our site has events and bios. When the user signs into the Netlify CMS admin panel (see [`below`](#adding-new-events)), they see the types of data they can add. This can include titles, images, tags, and markdown content. Then, Gatsby takes this information and displays it on our site.
 
+Be sure to modify [`config.yml`](static/admin/config.yml) so that the repo on line 4 corresponds to your own repo! In addition, be sure to create an OAuth application by following the [official Netlify guide](https://docs.netlify.com/visitor-access/oauth-provider-tokens/#setup-and-settings) and add it to your Netlify site via the dashboard.
+
 # Adding New Pages
 
 To add new pages, just create a file in [`src/pages/`](src/pages/). Gatsby will turn that file into a page on the site with the same name. Layout and ThemeProvider are automatically added by [`gatsby-browser`](gatsby-browser.js). The Layout component wraps our page in a header and footer. You find the components used by the Layout in [`src/Layout`](src/Layout)
