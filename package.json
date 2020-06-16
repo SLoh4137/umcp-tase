@@ -1,9 +1,9 @@
 {
-  "name": "umcp-tase",
+  "name": "umcp-tasa",
   "private": true,
-  "description": "An example template for the UMCP TASA website",
+  "description": "The official website for UMCP TASA",
   "version": "0.1.0",
-  "author": "Stephan Loh <sloh4137@gmail.com>",
+  "author": "UMCP TASA <umcptasa@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",

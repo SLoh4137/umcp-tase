@@ -41,7 +41,7 @@ You also can find the original [Gatsby's original README.md here](https://github
 3. [`config.yml`](static/assets/config.yml)
     1. The config file that determines how our Netlify CMS looks and what we can add
     2. In particular, add any new tags you'd like to add to events. See [Netlify CMS](#netlify-cms)
-4. [`theme.js`](src/theme.js)
+4. [`theme.tsx`](src/theme.tsx)
     1. The theme used throughout our site. Add primary and secondary colors and any new fonts. Be sure to add fonts to the `gatsby-plugin-prefetch-google-fonts` too.
 5. [`Header.tsx`](src/components/Layout/Header.tsx)
     1. When you add pages, be sure to add the links to them here!
@@ -49,7 +49,7 @@ You also can find the original [Gatsby's original README.md here](https://github
 
 # Customizing Theme and Styling
 
-This site uses [Material-UI](https://material-ui.com/) components for styling. The theme can be modified in [`theme.js`](/src/theme.js) to change the primary and secondary colors, the spacing used throughout the site, and typography. More info about customizing theme can be found on the [official Material-UI cutomization guide](https://material-ui.com/customization/theming/). The theme is provided to all the pages in [`gatsby-browser.js`](gatsby-browser.js) via ThemeProvider.
+This site uses [Material-UI](https://material-ui.com/) components for styling. The theme can be modified in [`theme.tsx`](/src/theme.tsx) to change the primary and secondary colors, the spacing used throughout the site, and typography. More info about customizing theme can be found on the [official Material-UI cutomization guide](https://material-ui.com/customization/theming/). The theme is provided to all the pages in [`gatsby-browser.js`](gatsby-browser.js) via ThemeProvider.
 
 The Material-UI framework relies on the idea of [css-in-js](https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/). In particular, we use Material-UI's [withStyles](https://material-ui.com/styles/basics/) method of adding styles.
 
@@ -92,6 +92,8 @@ const theme = createMuiTheme({
 Netlify CMS (content management system) is a way to easily add new events, bios, and whatever else we choose to add. The interface uses `config.yml` located at [`/static/admin/config.yml`](/static/admin/config.yml) which defines where data should be stored, what folders they should be put in, and what data can be added. The collections field allows us to specify the type of data we can add to the site.
 
 Our site has events and bios. When the user signs into the Netlify CMS admin panel (see [`below`](#adding-new-events)), they see the types of data they can add. This can include titles, images, tags, and markdown content. Then, Gatsby takes this information and displays it on our site.
+
+Be sure to modify [`config.yml`](static/admin/config.yml) so that the repo on line 4 corresponds to your own repo! In addition, be sure to create an OAuth application by following the [official Netlify guide](https://docs.netlify.com/visitor-access/oauth-provider-tokens/#setup-and-settings) and add it to your Netlify site via the dashboard.
 
 # Adding New Pages
 
