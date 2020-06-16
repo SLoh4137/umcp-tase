@@ -11,6 +11,7 @@ import {
     withStyles,
     WithStyles,
     createStyles,
+    useScrollTrigger,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 
@@ -22,8 +23,8 @@ const styles = (theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
-            opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
-            //opacity: 1.0,
+            //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
+            opacity: 1.0,
         },
         title: {
             color: "#ffffff",
@@ -73,8 +74,10 @@ type Props = WithStyles<typeof styles> & ComponentProps
  * as shown in the commented out opacity example
  */
 function Header(props: Props) {
-    const { classes, title, scrollTrigger = false } = props
+    const { classes, title } = props
     const [mobileOpen, setMobileOpen] = useState(false)
+    const scrollTrigger = useScrollTrigger({threshold: 100});
+
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)

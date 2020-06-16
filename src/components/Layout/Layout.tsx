@@ -15,11 +15,10 @@ import Footer from "./Footer"
 
 type Props = {
     children: React.ReactNode,
-    background?: React.ReactNode
-} & PageProps
+}
 
 const Layout = (props: Props) => {
-    const { children, background } = props
+    const { children } = props
     const scrollTrigger = useScrollTrigger({
         threshold: 100, // 100 is the default
     })
@@ -43,11 +42,10 @@ const Layout = (props: Props) => {
                 title={data.site.siteMetadata.title}
                 scrollTrigger={scrollTrigger}
             />
-            {background ? background : <></>}
             <main>
                 {children}
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

@@ -13,10 +13,12 @@ import {
 // import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons"
 
 // Components
+import ParallaxLayout from "components/Layout/ParallaxLayout"
 import SEO from "components/seo"
 import PastEventsGrid from "components/Events/PastEventsGrid"
 import Welcome from "components/General/Welcome"
 import Newsletter from "components/Mailchimp/Newsletter"
+import { Parallax } from "react-spring/renderprops-addons"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -24,7 +26,6 @@ const styles = (theme: Theme) =>
             width: "100%",
             position: "relative",
             padding: theme.spacing(4),
-            backgroundAttachment: "fixed",
             backgroundPosition: "center center",
             backgroundSize: "cover",
         },
@@ -40,17 +41,14 @@ function IndexPage(props: Props) {
     const { mainBackground, presidentBackground, newsletterBackground } = data
     return (
         <>
-            {/* <SEO title="Home" /> */}
+
+            <SEO title="Home" />
             <BackgroundImage
                 fluid={mainBackground?.childImageSharp?.fluid}
                 className={classes.mainBackground}
             >
                 <Welcome />
             </BackgroundImage>
-
-            {/* <Container maxWidth="xl">
-                <PastEventsGrid showDescription={true} />
-            </Container> */}
         </>
     )
 
