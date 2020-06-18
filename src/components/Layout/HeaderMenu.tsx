@@ -9,6 +9,7 @@ import {
     createStyles,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
+import clsx from 'clsx'
 
 import HeaderLinks from "./HeaderLinks"
 
@@ -17,23 +18,32 @@ const styles = (theme: Theme) =>
         menuButton: {
             marginRight: theme.spacing(2),
         },
+        white: {
+            color: "white",
+        },
         drawer: {
             width: "40%",
         },
     })
 
-type Props = WithStyles<typeof styles>
+type Props = WithStyles<typeof styles> & {
+    scrollTrigger?: boolean,
+}
 
 /**
  * You can add additional links here. Icons and the such also go here
  * @param props
  */
 function HeaderMenu(props: Props) {
-    const { classes } = props
+    const { classes, scrollTrigger = true } = props
     const [mobileOpen, setMobileOpen] = useState(false)
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)
     }
+    const menuClassName = clsx({
+        [classes.menuButton]: true,
+        [classes.white]: !scrollTrigger,
+    })
 
     return (
         <>
@@ -41,7 +51,7 @@ function HeaderMenu(props: Props) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                className={classes.menuButton}
+                className={menuClassName}
             >
                 <MenuIcon />
             </IconButton>

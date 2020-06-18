@@ -19,11 +19,6 @@ import HeaderMenu from "./HeaderMenu"
 // Some example styles for the header
 const styles = (theme: Theme) =>
     createStyles({
-        root: {
-            flexGrow: 1,
-            //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
-            opacity: 1.0,
-        },
         link: {
             margin: theme.spacing(1),
             textDecoration: "none",
@@ -63,7 +58,7 @@ function Header(props: Props) {
     const { classes, title } = props
 
     return (
-        <AppBar className={classes.root} position={"fixed"} elevation={0}>
+        <AppBar className={classes.grow} position={"fixed"} elevation={0}>
             <Toolbar>
                 <Link className={classes.link} to="/">
                     <Logo />

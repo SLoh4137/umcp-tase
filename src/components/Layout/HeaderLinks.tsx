@@ -32,8 +32,8 @@ type Props = WithStyles<typeof styles> & {
  * @param props 
  */
 function HeaderLinks(props: Props) {
-    const { classes, scrollTrigger } = props
-    const buttonClassname = scrollTrigger != undefined && !scrollTrigger ? classes.whiteButton : classes.button
+    const { classes, scrollTrigger = true } = props
+    const buttonClassname = scrollTrigger ? classes.button : classes.whiteButton
     return (
         <>
             <Link className={classes.link} to="/">

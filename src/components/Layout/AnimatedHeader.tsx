@@ -21,9 +21,6 @@ import HeaderMenu from "./HeaderMenu"
 // Some example styles for the header
 const styles = (theme: Theme) =>
     createStyles({
-        root: {
-            flexGrow: 1,
-        },
         link: {
             margin: theme.spacing(1),
             textDecoration: "none",
@@ -59,10 +56,10 @@ function Header(props: Props) {
     })
 
     return (
-        <AnimatedAppBar className={classes.root} position={"fixed"} elevation={scrollTrigger ? 10 : 0} style={animatedStyles}>
+        <AnimatedAppBar className={classes.grow} position={"fixed"} elevation={scrollTrigger ? 10 : 0} style={animatedStyles}>
             <Toolbar>
                 <Link className={classes.link} to="/">
-                    <Logo />
+                    <Logo white={!scrollTrigger}/>
                 </Link>
                 <div className={classes.grow} />
                 {/* This is here to make sure everything else is right-aligned*/}
@@ -71,7 +68,7 @@ function Header(props: Props) {
                     <HeaderLinks scrollTrigger={scrollTrigger} />
                 </Hidden>
                 <Hidden smUp>
-                    <HeaderMenu />
+                    <HeaderMenu scrollTrigger={scrollTrigger} />
                 </Hidden>
             </Toolbar>
         </AnimatedAppBar>
