@@ -23,26 +23,11 @@ const styles = (theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
-            //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
-            //opacity: 1.0,
         },
         link: {
             margin: theme.spacing(1),
             textDecoration: "none",
             display: "inline-block",
-        },
-        title: {
-            color: "#ffffff",
-            margin: theme.spacing(1),
-            marginLeft: theme.spacing(2),
-            display: "inline",
-            textTransform: "uppercase",
-            verticalAlign: "middle",
-            // fontFamily: "Passion One, cursive",
-            fontSize: "24px",
-            [theme.breakpoints.down("sm")]: {
-                fontSize: "18px",
-            },
         },
         grow: {
             flexGrow: 1,
@@ -78,13 +63,12 @@ function Header(props: Props) {
             <Toolbar>
                 <Link className={classes.link} to="/">
                     <Logo />
-                    <h2 className={classes.title}>{title}</h2>
                 </Link>
                 <div className={classes.grow} />
                 {/* This is here to make sure everything else is right-aligned*/}
                 <Hidden xsDown>
                     {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
-                    <HeaderLinks />
+                    <HeaderLinks scrollTrigger={scrollTrigger} />
                 </Hidden>
                 <Hidden smUp>
                     <HeaderMenu />
