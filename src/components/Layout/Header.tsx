@@ -17,6 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 
 // Page Components
 import Logo from "components/Logo/Logo"
+import HeaderLinks from "./HeaderLinks"
 
 // Some example styles for the header
 const styles = (theme: Theme) =>
@@ -25,6 +26,11 @@ const styles = (theme: Theme) =>
             flexGrow: 1,
             //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
             opacity: 1.0,
+        },
+        link: {
+            margin: theme.spacing(1),
+            textDecoration: "none",
+            display: "inline-block",
         },
         title: {
             color: "#ffffff",
@@ -41,14 +47,6 @@ const styles = (theme: Theme) =>
         },
         grow: {
             flexGrow: 1,
-        },
-        link: {
-            margin: theme.spacing(1),
-            textDecoration: "none",
-            display: "inline-block",
-        },
-        button: {
-            color: theme.palette.primary.dark,
         },
         menuButton: {
             marginRight: theme.spacing(2),
@@ -83,32 +81,6 @@ function Header(props: Props) {
         setMobileOpen(!mobileOpen)
     }
 
-    // You can add additional links here. Icons and the such also go here
-    const links = (
-        <>
-            <Link className={classes.link} to="/">
-                <Button className={classes.button}>
-                    <b>Home</b>
-                </Button>
-            </Link>
-            <Link className={classes.link} to="/about">
-                <Button className={classes.button}>
-                    <b>About</b>
-                </Button>
-            </Link>
-            <Link className={classes.link} to="/board">
-                <Button className={classes.button}>
-                    <b>Board</b>
-                </Button>
-            </Link>
-            <Link className={classes.link} to="/contact-us">
-                <Button className={classes.button}>
-                    <b>Contact Us</b>
-                </Button>
-            </Link>
-        </>
-    )
-
     return (
         <AppBar className={classes.root} position={"fixed"} elevation={0}>
             <Toolbar>
@@ -120,7 +92,7 @@ function Header(props: Props) {
                 {/* This is here to make sure everything else is right-aligned*/}
                 <Hidden xsDown>
                     {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
-                    {links}
+                    <HeaderLinks />
                 </Hidden>
                 <IconButton
                     aria-label="open drawer"
@@ -144,7 +116,7 @@ function Header(props: Props) {
                             keepMounted: true, // Better open performance on mobile.
                         }}
                     >
-                        {links}
+                        <HeaderLinks />
                     </Drawer>
                 </Hidden>
             </Toolbar>
