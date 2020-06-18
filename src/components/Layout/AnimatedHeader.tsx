@@ -1,8 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import { animated, useSpring } from "react-spring";
+import { animated, useSpring } from "react-spring"
 import {
     AppBar,
+    Container,
+    Grid,
     Hidden,
     Theme,
     Toolbar,
@@ -16,7 +18,6 @@ import {
 import Logo from "components/Logo/Logo"
 import HeaderLinks from "./HeaderLinks"
 import HeaderMenu from "./HeaderMenu"
-
 
 // Some example styles for the header
 const styles = (theme: Theme) =>
@@ -47,29 +48,41 @@ const AnimatedAppBar = animated(AppBar)
  */
 function Header(props: Props) {
     const { classes, title } = props
-    const scrollTrigger = useScrollTrigger({threshold: 100});
+    const scrollTrigger = useScrollTrigger({ threshold: 100 })
     const animatedStyles = useSpring({
         background: scrollTrigger ? "#ffffffff" : "#ffffff00",
         from: {
             background: "#ffffffff",
-        }
+        },
     })
 
     return (
-        <AnimatedAppBar className={classes.grow} position={"fixed"} elevation={scrollTrigger ? 10 : 0} style={animatedStyles}>
+        <AnimatedAppBar
+            className={classes.grow}
+            position={"fixed"}
+            elevation={scrollTrigger ? 10 : 0}
+            style={animatedStyles}
+        >
             <Toolbar>
-                <Link className={classes.link} to="/">
-                    <Logo white={!scrollTrigger}/>
-                </Link>
-                <div className={classes.grow} />
-                {/* This is here to make sure everything else is right-aligned*/}
-                <Hidden xsDown>
-                    {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
-                    <HeaderLinks scrollTrigger={scrollTrigger} />
-                </Hidden>
-                <Hidden smUp>
-                    <HeaderMenu scrollTrigger={scrollTrigger} />
-                </Hidden>
+                <Container>
+                    <Grid container alignItems="center" justify="space-between">
+                        <Grid item>
+                            <Link className={classes.link} to="/">
+                                <Logo white={!scrollTrigger} />
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Hidden xsDown>
+                                {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
+                                <HeaderLinks scrollTrigger={scrollTrigger} />
+                            </Hidden>
+                            <Hidden smUp>
+                                <HeaderMenu scrollTrigger={scrollTrigger} />
+                            </Hidden>
+                        </Grid>
+                    </Grid>
+                    {/* This is here to make sure everything else is right-aligned*/}
+                </Container>
             </Toolbar>
         </AnimatedAppBar>
     )

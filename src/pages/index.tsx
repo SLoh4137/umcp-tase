@@ -51,6 +51,24 @@ function IndexPage(props: Props) {
             <Container maxWidth={"xl"}>
                 <PastEventsGrid />
             </Container>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
+            <Container maxWidth={"xl"}>
+                <PastEventsGrid />
+            </Container>
         </>
     )
 
