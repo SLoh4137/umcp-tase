@@ -2,10 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import {
     AppBar,
-    Button,
-    Drawer,
     Hidden,
-    IconButton,
     Theme,
     Toolbar,
     withStyles,
@@ -13,11 +10,11 @@ import {
     createStyles,
     useScrollTrigger,
 } from "@material-ui/core"
-import MenuIcon from "@material-ui/icons/Menu"
 
 // Page Components
 import Logo from "components/Logo/Logo"
 import HeaderLinks from "./HeaderLinks"
+import HeaderMenu from "./HeaderMenu"
 
 // Some example styles for the header
 const styles = (theme: Theme) =>
@@ -48,15 +45,6 @@ const styles = (theme: Theme) =>
         grow: {
             flexGrow: 1,
         },
-        menuButton: {
-            marginRight: theme.spacing(2),
-            [theme.breakpoints.up("sm")]: {
-                display: "none",
-            },
-        },
-        drawer: {
-            width: "40%",
-        },
     })
 
 type ComponentProps = {
@@ -73,13 +61,7 @@ type Props = WithStyles<typeof styles> & ComponentProps
  */
 function Header(props: Props) {
     const { classes, title } = props
-    const [mobileOpen, setMobileOpen] = useState(false)
     const scrollTrigger = useScrollTrigger({threshold: 100});
-
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen)
-    }
 
     return (
         <AppBar className={classes.root} position={"fixed"} elevation={0}>
@@ -94,30 +76,8 @@ function Header(props: Props) {
                     {/* Hidden is a component that lets us hide or show things depending on the size of the screen*/}
                     <HeaderLinks />
                 </Hidden>
-                <IconButton
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    className={classes.menuButton}
-                >
-                    <MenuIcon />
-                </IconButton>
                 <Hidden smUp>
-                    {/* A drawer is the side-bar that opens. Here, it opens from the right */}
-                    <Drawer
-                        variant="temporary"
-                        classes={{
-                            paper: classes.drawer,
-                        }}
-                        anchor="right"
-                        open={mobileOpen}
-                        onClose={handleDrawerToggle}
-                        ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
-                        }}
-                    >
-                        <HeaderLinks />
-                    </Drawer>
+                    <HeaderMenu />
                 </Hidden>
             </Toolbar>
         </AppBar>
