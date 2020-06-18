@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
+import { animated, useSpring } from "react-spring";
 import {
     AppBar,
     Hidden,
@@ -16,13 +17,14 @@ import Logo from "components/Logo/Logo"
 import HeaderLinks from "./HeaderLinks"
 import HeaderMenu from "./HeaderMenu"
 
+
 // Some example styles for the header
 const styles = (theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
             //opacity: (props: ComponentProps) => props.scrollTrigger ? 1.0 : 0.5,
-            opacity: 1.0,
+            //opacity: 1.0,
         },
         link: {
             margin: theme.spacing(1),
@@ -54,6 +56,8 @@ type ComponentProps = {
 
 type Props = WithStyles<typeof styles> & ComponentProps
 
+const AnimatedAppBar = animated(AppBar)
+
 /* Note, the header currently stays at the top of the page instead of the top of the screen
  * This can be changed by setting AppBar position="fixed".
  * Also, we can make the header respond to scrolling by utilizing the scrollTrigger prop
@@ -61,9 +65,16 @@ type Props = WithStyles<typeof styles> & ComponentProps
  */
 function Header(props: Props) {
     const { classes, title } = props
+    const scrollTrigger = useScrollTrigger({threshold: 100});
+    const animatedStyles = useSpring({
+        background: scrollTrigger ? "#ffffffff" : "#ffffff00",
+        from: {
+            background: "#ffffffff",
+        }
+    })
 
     return (
-        <AppBar className={classes.root} position={"fixed"} elevation={0}>
+        <AnimatedAppBar className={classes.root} position={"fixed"} elevation={scrollTrigger ? 10 : 0} style={animatedStyles}>
             <Toolbar>
                 <Link className={classes.link} to="/">
                     <Logo />
@@ -79,7 +90,7 @@ function Header(props: Props) {
                     <HeaderMenu />
                 </Hidden>
             </Toolbar>
-        </AppBar>
+        </AnimatedAppBar>
     )
 }
 

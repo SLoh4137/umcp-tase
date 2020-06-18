@@ -10,6 +10,7 @@ import React from "react"
 import { useStaticQuery, graphql, PageProps } from "gatsby"
 
 import Header from "./Header"
+import AnimatedHeader from "./AnimatedHeader"
 import Footer from "./Footer"
 
 type Props = {
@@ -34,7 +35,7 @@ const Layout = (props: Props) => {
 
     return (
         <>
-            <Header
+            <AnimatedHeader
                 title={data.site.siteMetadata.title}
             />
             <main>
