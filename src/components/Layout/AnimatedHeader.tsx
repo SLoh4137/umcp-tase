@@ -48,7 +48,10 @@ const AnimatedAppBar = animated(AppBar)
  */
 function Header(props: Props) {
     const { classes, title } = props
-    const scrollTrigger = useScrollTrigger({ threshold: 100 })
+    const scrollTrigger = useScrollTrigger({
+        disableHysteresis: true,
+        threshold: 100,      
+    })
     const animatedStyles = useSpring({
         background: scrollTrigger ? "#ffffffff" : "#ffffff00",
         from: {
