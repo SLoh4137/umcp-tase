@@ -16,7 +16,7 @@ import {
 import SEO from "components/seo"
 import PastEventsGrid from "components/Events/PastEventsGrid"
 import Welcome from "components/General/Welcome"
-import PageContentWrapper from "components/Layout/PageContentWrapper"
+import PageContent from "components/Layout/PageContent"
 import ParallaxBackground from "components/General/ParallaxBackground"
 import Newsletter from "components/Mailchimp/Newsletter"
 import { Parallax } from "react-spring/renderprops-addons"
@@ -49,7 +49,7 @@ function IndexPage(props: Props) {
                 <Welcome />
             </ParallaxBackground>
             
-            <PageContentWrapper>
+            <PageContent>
                 <Container maxWidth={"xl"}>
                     <PastEventsGrid />
                 </Container>
@@ -71,7 +71,7 @@ function IndexPage(props: Props) {
                 <Container maxWidth={"xl"}>
                     <PastEventsGrid />
                 </Container>
-            </PageContentWrapper>
+            </PageContent>
         </>
     )
 
