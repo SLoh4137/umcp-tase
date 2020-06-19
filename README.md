@@ -168,3 +168,6 @@ Change in tsconfig.json
 
 ## Making the Header stay at the top of the screen
 That's pretty easy! Just set the position prop of the AppBar to "fixed" instead of "relative". If you want the header to respond to scroll actions (ex: changing from transparent to opaque), utilize the scrollTrigger boolean passed in from the Layout component. You can set different styles depending on whether or not scrollTrigger is true or false. Check out the commented code for an example.
+
+## Material Kit React
+This interface is based off of https://github.com/creativetimofficial/material-kit-react 
