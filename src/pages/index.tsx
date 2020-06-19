@@ -16,6 +16,8 @@ import {
 import SEO from "components/seo"
 import PastEventsGrid from "components/Events/PastEventsGrid"
 import Welcome from "components/General/Welcome"
+import PageContentWrapper from "components/Layout/PageContentWrapper"
+import ParallaxBackground from "components/General/ParallaxBackground"
 import Newsletter from "components/Mailchimp/Newsletter"
 import { Parallax } from "react-spring/renderprops-addons"
 
@@ -38,37 +40,38 @@ type Props = PageProps &
 function IndexPage(props: Props) {
     const { data, classes } = props
     const { mainBackground, presidentBackground, newsletterBackground } = data
+    if (!mainBackground?.childImageSharp?.fluid)
+        throw new Error("Main background not valid.")
     return (
         <>
-
             <SEO title="Home" />
-            <BackgroundImage
-                fluid={mainBackground?.childImageSharp?.fluid}
-                className={classes.mainBackground}
-            >
+            <ParallaxBackground fluid={mainBackground.childImageSharp.fluid}>
                 <Welcome />
-            </BackgroundImage>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
-            <Container maxWidth={"xl"}>
-                <PastEventsGrid />
-            </Container>
+            </ParallaxBackground>
+            
+            <PageContentWrapper>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+            </PageContentWrapper>
         </>
     )
 
