@@ -1,13 +1,14 @@
 /**
- * Inspired by 
+ * Inspired by
  * https://github.com/creativetimofficial/material-kit-react/blob/master/src/components/Parallax/Parallax.js
  */
 
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { FluidObject } from "gatsby-image"
-import { animated, useSpring } from "react-spring"
 import { Theme, withStyles, WithStyles, createStyles } from "@material-ui/core"
 import BackgroundImage from "gatsby-background-image"
+
+import useParallax from "hooks/useParallax"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -23,7 +24,7 @@ const styles = (theme: Theme) =>
             border: "0",
             display: "flex",
             alignItems: "center",
-            background: "rgba(0, 0, 0, 0.5)"
+            background: "rgba(0, 0, 0, 0.5)",
         },
     })
 
@@ -34,8 +35,13 @@ type Props = WithStyles<typeof styles> & {
 
 function ParallaxBackground(props: Props) {
     const { classes, fluid, children } = props
+    const { transform } = useParallax()
     return (
-        <BackgroundImage className={classes.root} fluid={fluid}>
+        <BackgroundImage
+            className={classes.root}
+            fluid={fluid}
+            style={{ transform: transform }}
+        >
             {children}
         </BackgroundImage>
     )
