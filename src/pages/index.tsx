@@ -109,6 +109,7 @@ export const query = graphql`
             childImageSharp {
                 fluid(quality: 100) {
                     ...GatsbyImageSharpFluid
+                    ...GatsbyImageSharpFluidLimitPresentationSize
                 }
             }
         }
