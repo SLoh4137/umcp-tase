@@ -1,6 +1,5 @@
 import React from "react"
 import {
-    Container,
     Theme,
     withStyles,
     WithStyles,
@@ -30,9 +29,9 @@ type Props = WithStyles<typeof styles> & {
 function PageContent(props: Props) {
     const { classes, children } = props
     return (
-        <Container className={clsx(classes.main, classes.mainRaised)} maxWidth={"xl"}>
-           {children}
-        </Container>
+        <div className={clsx(classes.main, classes.mainRaised)}>
+            {children}
+        </div>
     )
 }
 
