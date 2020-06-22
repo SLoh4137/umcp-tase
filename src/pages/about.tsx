@@ -11,14 +11,16 @@ const styles = (theme: Theme) =>
 
 type Props = WithStyles<typeof styles> & PageProps
 
-const AboutPage = () => (
-    <>
-        <SEO title="About Us" />
-        <h1>About Us Goes Here</h1>
-        {/*
-         * Add content for the about us page here
-         */}
-    </>
-)
+function AboutPage(props: Props) {
+    return (
+        <>
+            <SEO title="About Us" />
+            <h1>About Us Goes Here</h1>
+            {/*
+             * Add content for the about us page here
+             */}
+        </>
+    )
+}
 
 export default withStyles(styles)(AboutPage)

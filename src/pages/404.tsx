@@ -12,7 +12,7 @@ const styles = (theme: Theme) =>
 
 type Props = PageProps & WithStyles<typeof styles>
 
-function ContactUsPage(__: Props) {
+function NotFoundPage(__: Props) {
     return (
         <>
             <SEO title="404 Not found" />
@@ -22,4 +22,4 @@ function ContactUsPage(__: Props) {
     )
 }
 
-export default withStyles(styles)(ContactUsPage)
+export default withStyles(styles)(NotFoundPage)
