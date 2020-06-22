@@ -36,15 +36,16 @@ type Props = PageProps &
 function IndexPage(props: Props) {
     const { data, classes } = props
     const { mainBackground, presidentBackground, newsletterBackground } = data
-    if (!mainBackground?.childImageSharp?.fluid)
-        throw new Error("Main background not valid.")
+    
+    if (!mainBackground) throw new Error("Main background does not exist.")
+
     return (
         <>
             <SEO title="Home" />
-            <ParallaxBackground fluid={mainBackground.childImageSharp.fluid}>
+            <ParallaxBackground image={mainBackground}>
                 <Welcome />
             </ParallaxBackground>
-            
+
             <PageContent>
                 <Container maxWidth={"xl"}>
                     <PastEventsGrid />

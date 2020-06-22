@@ -44,17 +44,17 @@ const styles = (theme: Theme) =>
     })
 
 type Props = WithStyles<typeof styles> & {
-    fluid: FluidObject
+    image: GatsbyTypes.BackgroundImageFragment,
     children: React.ReactNode
 }
 
 function ParallaxBackground(props: Props) {
-    const { classes, fluid, children } = props
+    const { classes, image, children } = props
     const { transform } = useParallax()
     return (
         <BackgroundImage
             className={classes.root}
-            fluid={fluid}
+            fluid={image.childImageSharp?.fluid}
             style={{ transform: transform }}
         >
             <div className={classes.filter} />
