@@ -13,8 +13,8 @@ import useParallax from "hooks/useParallax"
 const styles = (theme: Theme) =>
     createStyles({
         root: {
-            height: "90vh",
-            maxHeight: "1000px",
+            height: "80vh",
+            //maxHeight: "1000px",
             overflow: "hidden",
             position: "relative",
             backgroundPosition: "center center",
@@ -40,10 +40,16 @@ const styles = (theme: Theme) =>
                 content: "''",
             },
         },
+        raised: {
+            zIndex: 1,
+            width: "100%",
+            height: "100%",
+            margin: "auto",
+        },
     })
 
 type Props = WithStyles<typeof styles> & {
-    image: GatsbyTypes.BackgroundImageFragment,
+    image: GatsbyTypes.BackgroundImageFragment
     children: React.ReactNode
 }
 
@@ -57,7 +63,7 @@ function ParallaxBackground(props: Props) {
             style={{ transform: transform }}
         >
             <div className={classes.filter} />
-            {children}
+            <div className={classes.raised}>{children}</div>
         </BackgroundImage>
     )
 }
@@ -67,7 +73,7 @@ export default withStyles(styles)(ParallaxBackground)
 export const imageQueryFragment = graphql`
     fragment BackgroundImage on File {
         childImageSharp {
-            fluid(quality: 100) {
+            fluid(quality: 100, pngQuality: 100, maxHeight: 1000) {
                 ...GatsbyImageSharpFluid
                 ...GatsbyImageSharpFluidLimitPresentationSize
             }

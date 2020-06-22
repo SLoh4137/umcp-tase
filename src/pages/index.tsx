@@ -17,16 +17,7 @@ import PageContent from "components/Layout/PageContent"
 import ParallaxBackground from "components/General/ParallaxBackground"
 // import Newsletter from "components/Mailchimp/Newsletter"
 
-const styles = (theme: Theme) =>
-    createStyles({
-        mainBackground: {
-            width: "100%",
-            position: "relative",
-            padding: theme.spacing(4),
-            backgroundPosition: "center center",
-            backgroundSize: "cover",
-        },
-    })
+const styles = (theme: Theme) => createStyles({})
 
 type Props = PageProps &
     WithStyles<typeof styles> & {
@@ -36,7 +27,7 @@ type Props = PageProps &
 function IndexPage(props: Props) {
     const { data, classes } = props
     const { mainBackground, presidentBackground, newsletterBackground } = data
-    
+
     if (!mainBackground) throw new Error("Main background does not exist.")
 
     return (

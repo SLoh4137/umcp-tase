@@ -1,26 +1,60 @@
 import React from "react"
-import { Link, PageProps } from "gatsby"
-import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
+import { PageProps, graphql } from "gatsby"
+import {
+    Container,
+    Theme,
+    createStyles,
+    withStyles,
+    WithStyles,
+} from "@material-ui/core"
 
 import SEO from "components/seo"
+import PageContent from "components/Layout/PageContent"
+import ParallaxBackground from "components/General/ParallaxBackground"
 
 const styles = (theme: Theme) =>
     createStyles({
-        // Add styles here
+        title: {
+            color: "#ffffff",
+            fontSize: "64px",
+            textAlign: "center",
+            marginTop: "auto",
+            marginBotom: "auto",
+        },
     })
 
-type Props = WithStyles<typeof styles> & PageProps
+type Props = WithStyles<typeof styles> &
+    PageProps & {
+        data: GatsbyTypes.AboutPageQuery
+    }
 
 function AboutPage(props: Props) {
+    const { data, classes } = props
+    const { aboutBackground } = data
+
+    if (!aboutBackground) throw new Error("About background does not exist.")
     return (
         <>
             <SEO title="About Us" />
-            <h1>About Us Goes Here</h1>
-            {/*
-             * Add content for the about us page here
-             */}
+            <ParallaxBackground image={aboutBackground}>
+                <h1 className={classes.title}>About Us</h1>
+            </ParallaxBackground>
+            <PageContent>
+                <h1>About Us Goes Here</h1>
+                {/*
+                 * Add content for the about us page here
+                 */}
+            </PageContent>
         </>
     )
 }
+
+export const query = graphql`
+    query AboutPage {
+        aboutBackground: file(relativePath: { eq: "tasa2019.jpg" }) {
+            ...BackgroundImage
+        }
+    }
+`
 
 export default withStyles(styles)(AboutPage)
