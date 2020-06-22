@@ -3102,15 +3102,20 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
+type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
+      GatsbyImageSharpFluidFragment
+      & GatsbyImageSharpFluidLimitPresentationSizeFragment
+    )> }> };
+
 type DateFormatQueryVariables = {};
 
 
 type DateFormatQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'dateFormat'>> }> };
 
-type SiteTitleQueryVariables = {};
+type SEOQueryVariables = {};
 
 
-type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
 
 type BioQueryVariables = {};
 
@@ -3123,11 +3128,6 @@ type BioQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ 
         & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }
       ) }> } };
 
-type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
-      GatsbyImageSharpFluidFragment
-      & GatsbyImageSharpFluidLimitPresentationSizeFragment
-    )> }> };
-
 type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
@@ -3136,6 +3136,11 @@ type AboutPageQueryVariables = {};
 
 
 type AboutPageQuery = { readonly aboutBackground: Maybe<BackgroundImageFragment> };
+
+type BoardPageQueryVariables = {};
+
+
+type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
 
 type HomePageQueryVariables = {};
 
@@ -3199,10 +3204,20 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
+type LogoQueryVariables = {};
+
+
+type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
+
 type FooterQueryVariables = {};
 
 
 type FooterQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'copyright' | 'facebook' | 'instagram'>> }> };
+
+type SiteTitleQueryVariables = {};
+
+
+type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 type EventsQueryVariables = {};
 
@@ -3215,19 +3230,14 @@ type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray
         & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }
       ) }> } };
 
-type SEOQueryVariables = {};
-
-
-type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
-
-type LogoQueryVariables = {};
-
-
-type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
-
 type PagesQueryQueryVariables = {};
 
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
+type ContactUsPageQueryVariables = {};
+
+
+type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment> };
 
 }
