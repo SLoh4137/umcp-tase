@@ -171,3 +171,33 @@ That's pretty easy! Just set the position prop of the AppBar to "fixed" instead 
 
 ## Material Kit React
 This interface is based off of https://github.com/creativetimofficial/material-kit-react 
+
+## GraphQL Fragments
+In order to re-use the same query for all our background iamges, we create a fragment in [`ParallaxBackground.tsx`](src/components/General/ParallaxBackground.tsx) that can be used in all those queries.
+```javascript
+export const imageQueryFragment = graphql`
+    fragment BackgroundImage on File {
+        childImageSharp {
+            fluid(quality: 100) {
+                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluidLimitPresentationSize
+            }
+        }
+    }
+`
+```
+As described in the [Gatsby docs on fragments](https://www.gatsbyjs.org/docs/using-graphql-fragments/), the `ParallaxBackground` component won't actually use this query for data. But since Gatsby preprocesses all graphql queries, it'll generate this fragment that we can then use in other queries. The fragment name is `BackgroundImage` and it can be used in queries under the type `File`. For example, in [`index.tsx`](src/pages/index.tsx) we use the fragment by writing
+```javascript
+export const query = graphql`
+    query HomePage {
+        mainBackground: file(relativePath: { eq: "Taiwan.jpg" }) {
+            ...BackgroundImage
+        }
+        presidentBackground: file(relativePath: { eq: "bg10.jpg" }) {
+            ...BackgroundImage
+        }
+        newsletterBackground: file(relativePath: { eq: "Taiwan2.jpg" }) {
+            ...BackgroundImage
+        }
+    
+```

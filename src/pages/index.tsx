@@ -75,26 +75,13 @@ function IndexPage(props: Props) {
 export const query = graphql`
     query HomePage {
         mainBackground: file(relativePath: { eq: "Taiwan.jpg" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid
-                    ...GatsbyImageSharpFluidLimitPresentationSize
-                }
-            }
+            ...BackgroundImage
         }
         presidentBackground: file(relativePath: { eq: "bg10.jpg" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid
-                }
-            }
+            ...BackgroundImage
         }
         newsletterBackground: file(relativePath: { eq: "Taiwan2.jpg" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid
-                }
-            }
+            ...BackgroundImage
         }
     }
 `

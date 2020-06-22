@@ -4,6 +4,7 @@
  */
 
 import React from "react"
+import { graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import { Theme, withStyles, WithStyles, createStyles } from "@material-ui/core"
 import BackgroundImage from "gatsby-background-image"
@@ -27,19 +28,19 @@ const styles = (theme: Theme) =>
         },
         filter: {
             "&:before": {
-              background: "rgba(0, 0, 0, 0.5)"
+                background: "rgba(0, 0, 0, 0.5)",
             },
             "&:after,&:before": {
-              position: "absolute",
-              zIndex: 0,
-              width: "100%",
-              height: "100%",
-              display: "block",
-              left: "0",
-              top: "0",
-              content: "''"
-            }
-          },
+                position: "absolute",
+                zIndex: 0,
+                width: "100%",
+                height: "100%",
+                display: "block",
+                left: "0",
+                top: "0",
+                content: "''",
+            },
+        },
     })
 
 type Props = WithStyles<typeof styles> & {
@@ -56,10 +57,21 @@ function ParallaxBackground(props: Props) {
             fluid={fluid}
             style={{ transform: transform }}
         >
-            <div className={classes.filter}/>
+            <div className={classes.filter} />
             {children}
         </BackgroundImage>
     )
 }
 
 export default withStyles(styles)(ParallaxBackground)
+
+export const imageQueryFragment = graphql`
+    fragment BackgroundImage on File {
+        childImageSharp {
+            fluid(quality: 100) {
+                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluidLimitPresentationSize
+            }
+        }
+    }
+`
