@@ -6,6 +6,7 @@ import {
     createStyles,
     withStyles,
     WithStyles,
+    Typography,
 } from "@material-ui/core"
 
 import SEO from "components/seo"
@@ -39,6 +40,7 @@ function AboutPage(props: Props) {
             </ParallaxBackground>
             <PageContent>
                 <Container>
+                    <Typography variant="h1" color="textSecondary">About Us Goes Here</Typography>
                     <h1>About Us Goes Here</h1>
                     <h1>About Us Goes Here</h1>
                     <h1>About Us Goes Here</h1>
