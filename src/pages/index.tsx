@@ -33,7 +33,7 @@ function IndexPage(props: Props) {
     return (
         <>
             <SEO title="Home" />
-            <ParallaxBackground image={mainBackground}>
+            <ParallaxBackground image={mainBackground} imageHeight="100vh">
                 <Welcome />
             </ParallaxBackground>
 

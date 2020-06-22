@@ -5,15 +5,25 @@
 
 import React from "react"
 import { graphql } from "gatsby"
-import { Theme, withStyles, WithStyles, createStyles } from "@material-ui/core"
+import {
+    Grid,
+    Theme,
+    withStyles,
+    WithStyles,
+    createStyles,
+} from "@material-ui/core"
 import BackgroundImage from "gatsby-background-image"
 
 import useParallax from "hooks/useParallax"
 
+type StyleProps = {
+    imageHeight?: string,
+}
+
 const styles = (theme: Theme) =>
     createStyles({
         root: {
-            height: "80vh",
+            height: (props: StyleProps) => props.imageHeight ? props.imageHeight : "80vh",
             //maxHeight: "1000px",
             overflow: "hidden",
             position: "relative",
@@ -45,10 +55,11 @@ const styles = (theme: Theme) =>
             width: "100%",
             height: "100%",
             margin: "auto",
+            textAlign: "center",
         },
     })
 
-type Props = WithStyles<typeof styles> & {
+type Props = WithStyles<typeof styles> & StyleProps & {
     image: GatsbyTypes.BackgroundImageFragment
     children: React.ReactNode
 }
@@ -61,9 +72,17 @@ function ParallaxBackground(props: Props) {
             className={classes.root}
             fluid={image.childImageSharp?.fluid}
             style={{ transform: transform }}
+            loading="eager"
         >
             <div className={classes.filter} />
-            <div className={classes.raised}>{children}</div>
+            <Grid
+                className={classes.raised}
+                container
+                alignItems="center"
+                justify="center"
+            >
+                <Grid item xs={12}>{children}</Grid>
+            </Grid>
         </BackgroundImage>
     )
 }

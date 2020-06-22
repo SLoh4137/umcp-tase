@@ -18,8 +18,6 @@ const styles = (theme: Theme) =>
             color: "#ffffff",
             fontSize: "64px",
             textAlign: "center",
-            marginTop: "auto",
-            marginBotom: "auto",
         },
     })
 
@@ -36,11 +34,22 @@ function AboutPage(props: Props) {
     return (
         <>
             <SEO title="About Us" />
-            <ParallaxBackground image={aboutBackground}>
+            <ParallaxBackground image={aboutBackground} imageHeight={"65vh"}>
                 <h1 className={classes.title}>About Us</h1>
             </ParallaxBackground>
             <PageContent>
-                <h1>About Us Goes Here</h1>
+                <Container>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                    <h1>About Us Goes Here</h1>
+                </Container>
+
                 {/*
                  * Add content for the about us page here
                  */}
