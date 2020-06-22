@@ -5,7 +5,6 @@
 
 import React from "react"
 import { graphql } from "gatsby"
-import { FluidObject } from "gatsby-image"
 import { Theme, withStyles, WithStyles, createStyles } from "@material-ui/core"
 import BackgroundImage from "gatsby-background-image"
 

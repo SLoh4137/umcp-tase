@@ -199,5 +199,5 @@ export const query = graphql`
         newsletterBackground: file(relativePath: { eq: "Taiwan2.jpg" }) {
             ...BackgroundImage
         }
-    
+`
 ```
