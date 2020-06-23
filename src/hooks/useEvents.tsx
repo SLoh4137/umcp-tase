@@ -60,7 +60,7 @@ export default function useEvents(options: EventHookOptions) {
                         relativePath
                         childImageSharp {
                             fluid {
-                                ...GatsbyImageSharpFluid
+                                ...GatsbyImageSharpFluid_withWebp
                             }
                         }
                     }

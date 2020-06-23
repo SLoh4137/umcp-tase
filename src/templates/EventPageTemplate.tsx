@@ -96,7 +96,7 @@ export const query = graphql`
         file(relativePath: { eq: $imgsrc }) {
             childImageSharp {
                 fluid {
-                    ...GatsbyImageSharpFluid
+                    ...GatsbyImageSharpFluid_withWebp
                 }
             }
         }

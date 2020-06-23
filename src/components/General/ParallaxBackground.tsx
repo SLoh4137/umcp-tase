@@ -93,7 +93,7 @@ export const imageQueryFragment = graphql`
     fragment BackgroundImage on File {
         childImageSharp {
             fluid(quality: 100, pngQuality: 100, maxHeight: 1000) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp
                 ...GatsbyImageSharpFluidLimitPresentationSize
             }
         }

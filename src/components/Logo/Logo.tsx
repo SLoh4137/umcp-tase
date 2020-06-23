@@ -31,14 +31,14 @@ function Logo(props: Props) {
             black: file(relativePath: { eq: "logo.png" }) {
                 childImageSharp {
                     fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_withWebp
                     }
                 }
             }
             white: file(relativePath: { eq: "logo_white.png" }) {
                 childImageSharp {
                     fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_withWebp
                     }
                 }
             }
