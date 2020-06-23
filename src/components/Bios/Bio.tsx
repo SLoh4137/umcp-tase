@@ -13,6 +13,7 @@ import {
 
 // Components
 import Text from "components/Typography/Text"
+import MarkdownContent from "components/General/MarkdownContent"
 
 // Types
 import { BioType } from "hooks/useBios"
@@ -39,17 +40,6 @@ function Bio(props: Props) {
     if (!node.frontmatter)
         throw new Error("Frontmatter does not exist for node")
 
-    let description = node.html ? (
-        <Text
-            className={classes.description}
-            dangerouslySetInnerHTML={{ __html: node.html }}
-        />
-    ) : (
-        <Text variant="h4" className={classes.description}>
-            No description provided
-        </Text>
-    )
-
     const { name, position, majors } = node.frontmatter
     const majorArray = majors ? majors.split(",") : []
 
@@ -60,7 +50,7 @@ function Bio(props: Props) {
                 <CardContent>
                     <Text variant="h5" color="textSecondary" className={classes.title}>{name}</Text>
                     <Text variant="subtitle1" className={classes.position}>{position}</Text>
-                    {description}
+                    <MarkdownContent content={node.html} />
                 </CardContent>
             </div>
             <CardActions className={classes.action}>

@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import clsx from "clsx"
 import moment from "moment"
+import Img from "gatsby-image"
 import {
     Button,
     Card,
@@ -15,9 +15,12 @@ import {
     WithStyles,
 } from "@material-ui/core"
 
-import { EventType } from "hooks/useEvents"
-import Img from "gatsby-image"
+// Components
 import Text from "components/Typography/Text"
+import MarkdownContent from "components/General/MarkdownContent"
+
+// Types
+import { EventType } from "hooks/useEvents"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -44,31 +47,17 @@ const styles = (theme: Theme) =>
             color: "#ffffff",
         },
         title: {
-            // color: theme.palette.primary.main,
             marginTop: 0,
             marginBottom: 0,
             padding: 0,
         },
         date: {
-            // color: theme.palette.secondary.main,
             margin: 0,
             marginTop: theme.spacing(1),
-            // [theme.breakpoints.only("sm")]: {
-            //     fontSize: "12px",
-            // },
         },
         description: {
             height: "65px",
             overflow: "hidden",
-
-            "& p": {
-                // fontSize: "14px",
-                color: theme.palette.text.primary,
-            },
-
-            "& a": {
-                color: theme.palette.secondary.dark,
-            },
         },
         action: {
             //display: "flex",
@@ -111,10 +100,6 @@ function EventPreview(props: Props) {
         throw new Error("Frontmatter does not exist")
     }
 
-    if (!event.node.html) {
-        throw new Error("No description given for event")
-    }
-
     if (!event.node.fields?.slug) {
         throw new Error("Slug not valid")
     }
@@ -146,11 +131,9 @@ function EventPreview(props: Props) {
                                 )}
                             </Text>
                             {showDescription ? (
-                                <Text
-                                    className={classes.description}
-                                    dangerouslySetInnerHTML={{
-                                        __html: event.node.html,
-                                    }}
+                                <MarkdownContent
+                                    // className={classes.description}
+                                    content={event.node.html}
                                 />
                             ) : (
                                 <></>
