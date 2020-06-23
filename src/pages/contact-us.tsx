@@ -27,7 +27,7 @@ function ContactUsPage(props: Props) {
         <>
             <SEO title="Contact Us" />
             <ParallaxBackground image={contactBackground}>
-                <Text variant="h1" color="white" align="center">
+                <Text variant="h3" color="white" align="center">
                     Contact Us
                 </Text>
             </ParallaxBackground>
