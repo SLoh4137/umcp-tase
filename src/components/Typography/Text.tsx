@@ -12,7 +12,7 @@ import clsx from "clsx"
 
 const styles = (theme: Theme) => createStyles({
     white: {
-        color: theme.palette.neutral.light,
+        color: "#ffffff",
     },
     success: {
         color: theme.palette.success.main,
