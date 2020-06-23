@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import clsx from "clsx"
 import {
     Button,
     Card,
@@ -8,6 +9,7 @@ import {
     CardContent,
     Grid,
     Theme,
+    Typography,
     createStyles,
     withStyles,
     WithStyles,
@@ -43,29 +45,26 @@ const styles = (theme: Theme) =>
             color: "#ffffff",
         },
         title: {
-            color: theme.palette.primary.main,
+            // color: theme.palette.primary.main,
             marginTop: 0,
             marginBottom: 0,
             padding: 0,
-            [theme.breakpoints.only("sm")]: {
-                fontSize: "14px",
-            },
         },
         date: {
-            color: theme.palette.secondary.main,
+            // color: theme.palette.secondary.main,
             margin: 0,
             marginTop: theme.spacing(1),
-            [theme.breakpoints.only("sm")]: {
-                fontSize: "12px",
-            },
+            // [theme.breakpoints.only("sm")]: {
+            //     fontSize: "12px",
+            // },
         },
         description: {
             height: "65px",
             overflow: "hidden",
 
             "& p": {
-                fontSize: "14px",
-                color: theme.palette.secondary.main,
+                // fontSize: "14px",
+                color: theme.palette.text.primary,
             },
 
             "& a": {
@@ -131,15 +130,28 @@ function EventPreview(props: Props) {
                     <CardActionArea>
                         <Img fluid={event.image.childImageSharp?.fluid} />
                         <CardContent className={classes.header}>
-                            <h2 className={classes.title}>{title}</h2>
-                            <h4 className={classes.date}>
+                            <Typography
+                                variant="h4"
+                                className={classes.title}
+                                color="textSecondary"
+                            >
+                                {title}
+                            </Typography>
+                            <Typography
+                                variant="subtitle1"
+                                className={classes.date}
+                                color="textPrimary"
+                            >
                                 {moment(date).format(
                                     data.site?.siteMetadata?.dateFormat
                                 )}
-                            </h4>
+                            </Typography>
                             {showDescription ? (
                                 <div
-                                    className={classes.description}
+                                    className={clsx(
+                                        classes.description,
+                                        "MuiTypography-body1"
+                                    )}
                                     dangerouslySetInnerHTML={{
                                         __html: event.node.html,
                                     }}
@@ -159,7 +171,9 @@ function EventPreview(props: Props) {
                             {/* {tags ? tags.map(tag => <TagLink tag={tag} key={tag} />) : <></>} */}
                             {tags ? (
                                 tags.map((tag) => {
-                                    tag
+                                    ;<Typography variant="caption">
+                                        {tag}
+                                    </Typography>
                                 })
                             ) : (
                                 <></>
