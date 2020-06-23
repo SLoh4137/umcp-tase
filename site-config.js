@@ -4,7 +4,7 @@ const config = {
     siteTitleShort: "UMCP TASA", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
     siteTitleAlt: "UMCP Taiwanese American Student Association", // Alternative site title for SEO.
     siteLogo: "src/images/logo.png", // Logo used for SEO and manifest.
-    siteUrl: "https://umcptasa.netlify.com", // Domain of your website without pathPrefix.
+    siteUrl: "https://umcptasa.com", // Domain of your website without pathPrefix.
     pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
     siteDescriptionShort:
         "University of Maryland, College Park Taiwanese American Student Association",
