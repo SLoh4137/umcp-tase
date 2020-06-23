@@ -5,6 +5,7 @@ import {
     Hidden,
     Theme,
     Toolbar,
+    Typography,
     withStyles,
     WithStyles,
     createStyles,
@@ -23,19 +24,12 @@ const styles = (theme: Theme) =>
             textDecoration: "none",
             display: "inline-block",
         },
-        title: {
-            color: "#ffffff",
-            margin: theme.spacing(1),
-            marginLeft: theme.spacing(2),
-            display: "inline",
-            textTransform: "uppercase",
-            verticalAlign: "middle",
-            // fontFamily: "Passion One, cursive",
-            fontSize: "24px",
-            [theme.breakpoints.down("sm")]: {
-                fontSize: "18px",
-            },
-        },
+        // title: {
+        //     margin: theme.spacing(1),
+        //     marginLeft: theme.spacing(2),
+        //     textTransform: "uppercase",
+        //     verticalAlign: "middle",
+        // },
         grow: {
             flexGrow: 1,
         },
@@ -61,7 +55,7 @@ function Header(props: Props) {
             <Toolbar>
                 <Link className={classes.link} to="/">
                     <Logo />
-                    <h2 className={classes.title}>{title}</h2>
+                    {/* <Typography variant="h5" className={classes.title}>{title}</Typography> */}
                 </Link>
                 <div className={classes.grow} />
                 {/* This is here to make sure everything else is right-aligned*/}

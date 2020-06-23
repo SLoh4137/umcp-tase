@@ -14,9 +14,10 @@ const theme = createMuiTheme({
             main: "#999",
             dark: "#555", 
         },
-        neutral: { // Custom color defined in declarations.d.ts but not currently used
-            main: "#999",
+        neutral: { // Custom color defined in declarations.d.ts
+            main: "#ffffff",
             dark: "#555",
+            light: "#ffffff",
         },
         text: {
             primary: "#999",

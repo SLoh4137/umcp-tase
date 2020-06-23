@@ -16,10 +16,10 @@ const styles = (theme: Theme) =>
             display: "inline-block",
         },
         button: {
-            color: theme.palette.primary.dark,
+            color: theme.palette.text.secondary,
         },
         whiteButton: {
-            color: "white",
+            color: theme.palette.neutral.light,
         },
     })
 

@@ -16,9 +16,7 @@ import ParallaxBackground from "components/General/ParallaxBackground"
 const styles = (theme: Theme) =>
     createStyles({
         title: {
-            color: "#ffffff",
-            fontSize: "64px",
-            textAlign: "center",
+            color: theme.palette.neutral.light,
         },
     })
 
@@ -36,11 +34,19 @@ function AboutPage(props: Props) {
         <>
             <SEO title="About Us" />
             <ParallaxBackground image={aboutBackground} imageHeight={"65vh"}>
-                <h1 className={classes.title}>About Us</h1>
+                <Typography
+                    variant="h3"
+                    className={classes.title}
+                    align="center"
+                >
+                    About Us
+                </Typography>
             </ParallaxBackground>
             <PageContent>
                 <Container>
-                    <Typography variant="h1" color="textSecondary">About Us Goes Here</Typography>
+                    <Typography variant="h1" color="textSecondary">
+                        About Us Goes Here
+                    </Typography>
                     <h1>About Us Goes Here</h1>
                     <h1>About Us Goes Here</h1>
                     <h1>About Us Goes Here</h1>

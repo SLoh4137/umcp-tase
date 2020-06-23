@@ -4,6 +4,7 @@ import {
     CircularProgress,
     Theme,
     TextField,
+    Typography,
     createStyles,
     withStyles,
     WithStyles,
@@ -24,12 +25,10 @@ const styles = (theme: Theme) =>
             color: "#fff",
         },
         success: {
-            color: theme.palette.primary.dark,
-            textAlign: "center",
+            color: theme.palette.success.main,
         },
         failure: {
-            color: "#f44336",
-            textAlign: "center",
+            color: theme.palette.error.main,
         },
     })
 
@@ -87,16 +86,24 @@ function Form(props: Props) {
         })
             .then(() => {
                 setSubmitContent(
-                    <h3 className={classes.success}>
+                    <Typography
+                        variant="h4"
+                        align="center"
+                        className={classes.success}
+                    >
                         Success! Thank you for your message!
-                    </h3>
+                    </Typography>
                 )
             })
             .catch((error) => {
                 setSubmitContent(
-                    <h3 className={classes.failure}>
+                    <Typography
+                        variant="h4"
+                        className={classes.failure}
+                        align="center"
+                    >
                         Failed to send message! {error}
-                    </h3>
+                    </Typography>
                 )
             })
 
