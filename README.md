@@ -7,6 +7,7 @@ This is a template for the backend portion of a student organization website. It
     1. [Gatsby](#gatsby)
 2. [Files to Change](#files-to-change)
 3. [Customizing Theme and Styling](#customizing-theme-and-styling)
+    1. [Text](#text)
 4. [Mailchimp Integration](#mailchimp-integration)
 5. [Netlify CMS](#netlify-cms)
 6. [Adding New Pages](#adding-new-pages)
@@ -80,6 +81,11 @@ const theme = createMuiTheme({
     },
 })
 ```
+
+## Text
+In order to add a white color option, I created a [`Text.tsx`](src/components/Typography/Text.tsx) component that wraps the [`Typography`](https://material-ui.com/api/typography/) component from Material-UI. Also, since it has a shorter name, it's more likely to fit on one line.
+
+We use Typography so that we can get the benefits of responsive text sizing and unified styling. As noted above, we can customize how all heading elemnts look, and we have to use Typography components to benefit from that styling. 
 
 # Mailchimp Integration
 
