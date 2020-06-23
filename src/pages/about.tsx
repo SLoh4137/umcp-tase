@@ -6,19 +6,14 @@ import {
     createStyles,
     withStyles,
     WithStyles,
-    Typography,
 } from "@material-ui/core"
 
 import SEO from "components/seo"
 import PageContent from "components/Layout/PageContent"
 import ParallaxBackground from "components/General/ParallaxBackground"
+import Text from "components/Typography/Text"
 
-const styles = (theme: Theme) =>
-    createStyles({
-        title: {
-            color: theme.palette.neutral.light,
-        },
-    })
+const styles = (theme: Theme) => createStyles({})
 
 type Props = WithStyles<typeof styles> &
     PageProps & {
@@ -34,19 +29,15 @@ function AboutPage(props: Props) {
         <>
             <SEO title="About Us" />
             <ParallaxBackground image={aboutBackground} imageHeight={"65vh"}>
-                <Typography
-                    variant="h3"
-                    className={classes.title}
-                    align="center"
-                >
+                <Text variant="h3" color="white" align="center">
                     About Us
-                </Typography>
+                </Text>
             </ParallaxBackground>
             <PageContent>
                 <Container>
-                    <Typography variant="h1" color="textSecondary">
+                    <Text variant="h1" color="textSecondary">
                         About Us Goes Here
-                    </Typography>
+                    </Text>
                     <h1>About Us Goes Here</h1>
                     <h1>About Us Goes Here</h1>
                     <h1>About Us Goes Here</h1>

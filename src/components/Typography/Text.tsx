@@ -5,7 +5,6 @@ import {
     createStyles,
     withStyles,
     WithStyles,
-    withTheme,
 } from "@material-ui/core"
 import { TypographyProps } from "@material-ui/core/Typography/Typography"
 

@@ -7,17 +7,9 @@ import SEO from "components/seo"
 import ContactUsForm from "components/ContactUs/Form"
 import PageContent from "components/Layout/PageContent"
 import ParallaxBackground from "components/General/ParallaxBackground"
+import Text from "components/Typography/Text"
 
-const styles = (theme: Theme) =>
-    createStyles({
-        title: {
-            color: "#ffffff",
-            fontSize: "64px",
-            textAlign: "center",
-            marginTop: "auto",
-            marginBotom: "auto",
-        },
-    })
+const styles = (theme: Theme) => createStyles({})
 
 type Props = PageProps &
     WithStyles<typeof styles> & {
@@ -35,7 +27,9 @@ function ContactUsPage(props: Props) {
         <>
             <SEO title="Contact Us" />
             <ParallaxBackground image={contactBackground}>
-                <h1 className={classes.title}>Contact Us</h1>
+                <Text variant="h1" color="white" align="center">
+                    Contact Us
+                </Text>
             </ParallaxBackground>
             <PageContent>
                 <ContactUsForm />

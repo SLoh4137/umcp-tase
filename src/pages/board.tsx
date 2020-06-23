@@ -14,18 +14,12 @@ import useBios from "hooks/useBios"
 import Bio from "components/Bios/Bio"
 import PageContent from "components/Layout/PageContent"
 import ParallaxBackground from "components/General/ParallaxBackground"
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
         grid: {},
         gridItem: {},
-        title: {
-            color: "#ffffff",
-            fontSize: "64px",
-            textAlign: "center",
-            marginTop: "auto",
-            marginBotom: "auto",
-        },
     })
 
 type Props = WithStyles<typeof styles> &
@@ -43,7 +37,9 @@ function BoardPage(props: Props) {
         <>
             <SEO title="Board" />
             <ParallaxBackground image={boardBackground}>
-                <h1 className={classes.title}>Meet the Board</h1>
+                <Text variant="h1" color="white" align="center">
+                    Meet the Board
+                </Text>
             </ParallaxBackground>
             <PageContent>
                 <Container maxWidth="xl">
