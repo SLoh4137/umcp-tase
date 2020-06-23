@@ -1,4 +1,5 @@
 import React from "react"
+import Img from "gatsby-image"
 import {
     Card,
     CardContent,
@@ -10,7 +11,8 @@ import {
     CardActionArea,
 } from "@material-ui/core"
 
-import Img from "gatsby-image"
+// Components
+import Text from "components/Typography/Text"
 
 // Types
 import { BioType } from "hooks/useBios"
@@ -38,12 +40,14 @@ function Bio(props: Props) {
         throw new Error("Frontmatter does not exist for node")
 
     let description = node.html ? (
-        <div
+        <Text
             className={classes.description}
             dangerouslySetInnerHTML={{ __html: node.html }}
         />
     ) : (
-        <h4 className={classes.description}>No description provided</h4>
+        <Text variant="h4" className={classes.description}>
+            No description provided
+        </Text>
     )
 
     const { name, position, majors } = node.frontmatter
@@ -54,14 +58,14 @@ function Bio(props: Props) {
             <div className={classes.content}>
                 <Img fluid={image.childImageSharp?.fluid} />
                 <CardContent>
-                    <h2 className={classes.title}>{name}</h2>
-                    <h3 className={classes.position}>{position}</h3>
+                    <Text variant="h5" color="textSecondary" className={classes.title}>{name}</Text>
+                    <Text variant="subtitle1" className={classes.position}>{position}</Text>
                     {description}
                 </CardContent>
             </div>
             <CardActions className={classes.action}>
                 {majorArray.map((major) => (
-                    <h5 className={classes.major}>{major}</h5>
+                    <Text variant="caption" className={classes.major}>{major}</Text>
                 ))}
             </CardActions>
         </Card>

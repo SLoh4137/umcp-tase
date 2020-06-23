@@ -35,7 +35,7 @@ function Text(props: Props) {
     })
 
     // @ts-ignore The case of invalid color names is handled but not recognized by Typescript
-    return <Typography className={textClassName} color={textClassName === "" ? "initial" : color} {...rest}/>
+    return <Typography className={textClassName} color={textClassName === "" ? color : "initial"} {...rest}/>
 }
 
 export default withStyles(styles)(Text)

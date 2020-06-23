@@ -146,11 +146,8 @@ function EventPreview(props: Props) {
                                 )}
                             </Text>
                             {showDescription ? (
-                                <div
-                                    className={clsx(
-                                        classes.description,
-                                        "MuiTypography-body1"
-                                    )}
+                                <Text
+                                    className={classes.description}
                                     dangerouslySetInnerHTML={{
                                         __html: event.node.html,
                                     }}
