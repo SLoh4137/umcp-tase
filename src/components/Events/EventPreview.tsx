@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import clsx from "clsx"
+import moment from "moment"
 import {
     Button,
     Card,
@@ -9,7 +10,6 @@ import {
     CardContent,
     Grid,
     Theme,
-    Typography,
     createStyles,
     withStyles,
     WithStyles,
@@ -17,8 +17,7 @@ import {
 
 import { EventType } from "hooks/useEvents"
 import Img from "gatsby-image"
-
-import moment from "moment"
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -130,14 +129,14 @@ function EventPreview(props: Props) {
                     <CardActionArea>
                         <Img fluid={event.image.childImageSharp?.fluid} />
                         <CardContent className={classes.header}>
-                            <Typography
+                            <Text
                                 variant="h4"
                                 className={classes.title}
                                 color="textSecondary"
                             >
                                 {title}
-                            </Typography>
-                            <Typography
+                            </Text>
+                            <Text
                                 variant="subtitle1"
                                 className={classes.date}
                                 color="textPrimary"
@@ -145,7 +144,7 @@ function EventPreview(props: Props) {
                                 {moment(date).format(
                                     data.site?.siteMetadata?.dateFormat
                                 )}
-                            </Typography>
+                            </Text>
                             {showDescription ? (
                                 <div
                                     className={clsx(
@@ -171,9 +170,7 @@ function EventPreview(props: Props) {
                             {/* {tags ? tags.map(tag => <TagLink tag={tag} key={tag} />) : <></>} */}
                             {tags ? (
                                 tags.map((tag) => {
-                                    ;<Typography variant="caption">
-                                        {tag}
-                                    </Typography>
+                                    ;<Text variant="caption">{tag}</Text>
                                 })
                             ) : (
                                 <></>

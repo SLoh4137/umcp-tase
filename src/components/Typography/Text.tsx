@@ -13,11 +13,14 @@ import clsx from "clsx"
 const styles = (theme: Theme) => createStyles({
     white: {
         color: theme.palette.neutral.light,
+    },
+    success: {
+        color: theme.palette.success.main,
     }
 })
 
 type Props = WithStyles<typeof styles> & Omit<TypographyProps, "color"> & {
-    color?: TypographyProps["color"] | "white",
+    color?: TypographyProps["color"] | "white" | "success",
 }
 
 /**
@@ -28,9 +31,11 @@ function Text(props: Props) {
     const { classes, color = "initial", ...rest } = props
     const textClassName = clsx({
         [classes.white]: color === "white",
+        [classes.success]: color === "success",
     })
 
-    return <Typography className={textClassName} color={color === "white" ? "initial" : color} {...rest}/>
+    // @ts-ignore The case of invalid color names is handled but not recognized by Typescript
+    return <Typography className={textClassName} color={textClassName === "" ? "initial" : color} {...rest}/>
 }
 
 export default withStyles(styles)(Text)

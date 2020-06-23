@@ -4,12 +4,13 @@ import {
     CircularProgress,
     Theme,
     TextField,
-    Typography,
     createStyles,
     withStyles,
     WithStyles,
 } from "@material-ui/core"
+
 // Components
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -23,12 +24,6 @@ const styles = (theme: Theme) =>
         backdrop: {
             zIndex: theme.zIndex.drawer + 1,
             color: "#fff",
-        },
-        success: {
-            color: theme.palette.success.main,
-        },
-        failure: {
-            color: theme.palette.error.main,
         },
     })
 
@@ -86,24 +81,16 @@ function Form(props: Props) {
         })
             .then(() => {
                 setSubmitContent(
-                    <Typography
-                        variant="h4"
-                        align="center"
-                        className={classes.success}
-                    >
+                    <Text variant="h4" align="center" color="success">
                         Success! Thank you for your message!
-                    </Typography>
+                    </Text>
                 )
             })
             .catch((error) => {
                 setSubmitContent(
-                    <Typography
-                        variant="h4"
-                        className={classes.failure}
-                        align="center"
-                    >
+                    <Text variant="h4" color="error" align="center">
                         Failed to send message! {error}
-                    </Typography>
+                    </Text>
                 )
             })
 
