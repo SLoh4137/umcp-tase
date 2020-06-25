@@ -18,9 +18,11 @@ import {
 // Components
 import Text from "components/Typography/Text"
 import MarkdownContent from "components/General/MarkdownContent"
+import ClientOnly from "components/General/ClientOnly"
 
 // Types
 import { EventType } from "hooks/useEvents"
+
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -130,14 +132,16 @@ function EventPreview(props: Props) {
                                     data.site?.siteMetadata?.dateFormat
                                 )}
                             </Text>
-                            {showDescription ? (
-                                <MarkdownContent
-                                    // className={classes.description}
-                                    content={event.node.html}
-                                />
-                            ) : (
-                                <></>
-                            )}
+                            <ClientOnly>
+                                {showDescription ? (
+                                    <MarkdownContent
+                                        // className={classes.description}
+                                        content={event.node.html}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </ClientOnly>
                         </CardContent>
                     </CardActionArea>
                 </Link>

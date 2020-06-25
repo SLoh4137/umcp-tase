@@ -9,10 +9,7 @@ import {
 } from "@material-ui/core"
 
 // Hooks
-import useEvents, {
-    EventFilterFunction,
-    EventHookOptions,
-} from "hooks/useEvents"
+import useEvents, { EventHookOptions } from "hooks/useEvents"
 
 // Components
 import EventPreview from "./EventPreview"

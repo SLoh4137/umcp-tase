@@ -207,3 +207,12 @@ export const query = graphql`
         }
 `
 ```
+
+## React Rehydration
+If styles look like they work on first load but don't on subsequent loads or vice versa, the problem is likely with server side rendering. In order to serve faster pages, Gatsby first pre-compiles during build the DOM from our React code on build. Gatsby uses the functions wrapRootElement and wrapPageElement in [`gatsby-ssr.js`](gatsby-ssr.js) during this time, which is why those two functions have to be the same as the ones in [`gatsby-browser.js`](gatsby-browser.js) which is the file that determines what the site uses on the client side. 
+
+Because React uses rehydration instead of re-rendering to reconcile the differences between server and client side rendering, things can start to get wonky. Rehydration relies on the assumption that the DOM stays the same which sometimes isn't the case if we have dynamic content. So if styles look wonky between first load, which is what the server provides to the user, and the second load, where the client usually kicks in to render the page, it's likely that some element isn't in the right place in the DOM. To be honest, I'm not sure if this is exactly why things don't look right, but it seems to be the best explanation I've found.
+
+That's where the [`ClientOnly`](src/components/General/ClientOnly.tsx) component comes in! It utilizes useEffect to only mount the component when the page is loaded. Since this only happens for the client, then the DOM stays the same between when the page is compiled during server-side rendering and when the client gets the page. Rehydration works, and then, the client can add the content that's missing after rehydration occurs. This is called two-pass rendering! 
+
+The code for the component as well as a better explanation about this issue can be found on Josh W Comeau's blog post [The Perils of Rehydration](https://joshwcomeau.com/react/the-perils-of-rehydration/)

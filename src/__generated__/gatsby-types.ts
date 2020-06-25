@@ -3086,46 +3086,20 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
-      GatsbyImageSharpFluid_withWebpFragment
-      & GatsbyImageSharpFluidLimitPresentationSizeFragment
-    )> }> };
-
-type BioQueryVariables = {};
+type FooterQueryVariables = {};
 
 
-type BioQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<MarkdownRemark, 'id' | 'html'>
-        & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'majors' | 'name' | 'position' | 'imgsrc' | 'category' | 'order'>> }
-      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<File, 'id' | 'relativePath'>
-        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
-      ) }> } };
+type FooterQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'copyright' | 'facebook' | 'instagram'>> }> };
+
+type LogoQueryVariables = {};
+
+
+type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
 
 type SiteTitleQueryVariables = {};
 
 
 type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
-type ContactUsPageQueryVariables = {};
-
-
-type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment> };
-
-type HomePageQueryVariables = {};
-
-
-type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
-
-type BoardPageQueryVariables = {};
-
-
-type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
-
-type SEOQueryVariables = {};
-
-
-type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
 
 type EventsQueryVariables = {};
 
@@ -3138,16 +3112,31 @@ type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray
         & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
       ) }> } };
 
-type EventPageQueryVariables = {
-  slug: Maybe<Scalars['String']>;
-  imgsrc: Maybe<Scalars['String']>;
-};
+type ContactUsPageQueryVariables = {};
 
 
-type EventPageQuery = { readonly markdownRemark: Maybe<(
-    Pick<MarkdownRemark, 'html' | 'id'>
-    & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'link'>> }
-  )>, readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }> };
+type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment> };
+
+type BioQueryVariables = {};
+
+
+type BioQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<MarkdownRemark, 'id' | 'html'>
+        & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'majors' | 'name' | 'position' | 'imgsrc' | 'category' | 'order'>> }
+      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<File, 'id' | 'relativePath'>
+        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
+      ) }> } };
+
+type HomePageQueryVariables = {};
+
+
+type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
+
+type AboutPageQueryVariables = {};
+
+
+type AboutPageQuery = { readonly aboutBackground: Maybe<BackgroundImageFragment> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3199,19 +3188,35 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type LogoQueryVariables = {};
+type BoardPageQueryVariables = {};
 
 
-type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
 
-type AboutPageQueryVariables = {};
-
-
-type AboutPageQuery = { readonly aboutBackground: Maybe<BackgroundImageFragment> };
-
-type FooterQueryVariables = {};
+type SEOQueryVariables = {};
 
 
-type FooterQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'copyright' | 'facebook' | 'instagram'>> }> };
+type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
+
+type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
+      GatsbyImageSharpFluid_withWebpFragment
+      & GatsbyImageSharpFluidLimitPresentationSizeFragment
+    )> }> };
+
+type EventPageQueryVariables = {
+  slug: Maybe<Scalars['String']>;
+  imgsrc: Maybe<Scalars['String']>;
+};
+
+
+type EventPageQuery = { readonly markdownRemark: Maybe<(
+    Pick<MarkdownRemark, 'html' | 'id'>
+    & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'link'>> }
+  )>, readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }> };
+
+type DateFormatQueryVariables = {};
+
+
+type DateFormatQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'dateFormat'>> }> };
 
 }
