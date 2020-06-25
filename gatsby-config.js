@@ -67,6 +67,10 @@ module.exports = {
                         family: `Passion One`,
                         variants: [`400`],
                     },
+                    {
+                        family: `Roboto Slab`,
+                        variants: [`400`, `700`]
+                    }
                 ],
             },
         },
