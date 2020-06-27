@@ -20,7 +20,6 @@ import Text from "components/Typography/Text"
 
 import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
-import WelcomeSection from "./content/HomePage/WelcomeSection"
 
 const styles = (theme: Theme) => createStyles({})
 
@@ -43,45 +42,54 @@ function IndexPage(props: Props) {
             </ParallaxBackground>
 
             <PageContent>
-                <WelcomeSection />
-
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Section>
-                    <Grid
-                        container
-                        justify="center"
-                        alignItems="center"
-                        direction="column"
+                <Section title="Welcome to TASA @ UMCP">
+                    <Text
+                        variant="body1"
+                        color="textPrimary"
+                        align="center"
+                        paragraph
                     >
-                        <Text variant="h3" color="textSecondary" align="center">
-                            Want to contact us?
-                        </Text>
+                        <b>Taiwanese American Student Association (TASA)</b> is
+                        a social and cultural student organization that aims to
+                        celebrate Taiwanese culture. We welcome people from any
+                        cultural background as long as you are curious or
+                        passionate about Taiwanese culture. We have weekly GBMS
+                        on <b>Mondays 7pm - 9pm</b> in Stamp Student Union and
+                        host multiple events each semester. Want to learn more?
+                        Check out what we're about.
+                    </Text>
 
-                        <ButtonLink
-                            to="contact-us"
-                            color="primary"
-                            variant="contained"
-                        >
-                            Click Here!
-                        </ButtonLink>
-                    </Grid>
+                    <ButtonLink to="about" variant="contained" color="primary">
+                        About TASA
+                    </ButtonLink>
+                </Section>
+
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Container maxWidth={"xl"}>
+                    <PastEventsGrid />
+                </Container>
+                <Section title="Want to contact us?">
+                    <ButtonLink
+                        to="contact-us"
+                        color="primary"
+                        variant="contained"
+                    >
+                        Click Here!
+                    </ButtonLink>
                 </Section>
             </PageContent>
         </>
