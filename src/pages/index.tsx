@@ -20,6 +20,8 @@ import Text from "components/Typography/Text"
 
 import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
+import BackgroundImage from "gatsby-background-image"
+import ImageSection from "components/PageLayout/ImageSection"
 
 const styles = (theme: Theme) => createStyles({})
 
@@ -33,6 +35,10 @@ function IndexPage(props: Props) {
     const { mainBackground, presidentBackground, newsletterBackground } = data
 
     if (!mainBackground) throw new Error("Main background does not exist.")
+    if (!presidentBackground)
+        throw new Error("President background does not exist.")
+    if (!newsletterBackground)
+        throw new Error("Newsletter background does not exist.")
 
     return (
         <>
@@ -74,7 +80,16 @@ function IndexPage(props: Props) {
                     </ButtonLink>
                 </Section>
 
-                
+                {/* <ImageSection image={presidentBackground}>
+                    <Section>
+                        <Text variant="h4" color="white">
+                            Want to see who makes it all happen?
+                        </Text>
+                        <Text variant="subtitle1" color="white">
+                            Check out our co-presidents!
+                        </Text>
+                    </Section>
+                </ImageSection> */}
 
                 <Section title="Want to contact us?">
                     <ButtonLink
