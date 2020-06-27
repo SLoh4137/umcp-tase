@@ -23,7 +23,6 @@ const styles = (theme: Theme) =>
 type Props = WithStyles<typeof styles> &
     Omit<TypographyProps, "color"> & {
         color?: TypographyProps["color"] | "white" | "success"
-        type?: "title" | "description"
     }
 
 /**
@@ -31,11 +30,10 @@ type Props = WithStyles<typeof styles> &
  * @param props
  */
 function Text(props: Props) {
-    const { classes, color = "initial", type, ...rest } = props
+    const { classes, color = "initial", ...rest } = props
     const textClassName = clsx({
         [classes.white]: color === "white",
         [classes.success]: color === "success",
-        [classes.title]: type === "title",
     })
 
     return (

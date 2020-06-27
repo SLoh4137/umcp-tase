@@ -43,12 +43,7 @@ function IndexPage(props: Props) {
 
             <PageContent>
                 <Section title="Welcome to TASA @ UMCP">
-                    <Text
-                        variant="body1"
-                        color="textPrimary"
-                        align="center"
-                        paragraph
-                    >
+                    <Text color="textPrimary" align="center" paragraph>
                         <b>Taiwanese American Student Association (TASA)</b> is
                         a social and cultural student organization that aims to
                         celebrate Taiwanese culture. We welcome people from any
@@ -82,6 +77,7 @@ function IndexPage(props: Props) {
                 <Container maxWidth={"xl"}>
                     <PastEventsGrid />
                 </Container>
+
                 <Section title="Want to contact us?">
                     <ButtonLink
                         to="contact-us"
