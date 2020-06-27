@@ -20,10 +20,13 @@ const styles = (theme: Theme) =>
         },
     })
 
+export interface TextColorOptions {
+    color?: TypographyProps["color"] | "white" | "success"
+}
+
 type Props = WithStyles<typeof styles> &
-    Omit<TypographyProps, "color"> & {
-        color?: TypographyProps["color"] | "white" | "success"
-    }
+    Omit<TypographyProps, "color"> &
+    TextColorOptions
 
 /**
  * Custom text component that wraps Material-UI typography

@@ -59,24 +59,22 @@ function IndexPage(props: Props) {
                     </ButtonLink>
                 </Section>
 
-                <Container maxWidth={"xl"}>
+                <Section title="Events" maxWidth="xl">
+                    <Text color="textPrimary" align="center" paragraph>
+                        TASA organizes many fun events throughout the year! Be
+                        sure to follow us on{" "}
+                        <a href="https://www.facebook.com/umcptasa/">
+                            Facebook
+                        </a>{" "}
+                        for all the latest announcements!
+                    </Text>
                     <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
-                <Container maxWidth={"xl"}>
-                    <PastEventsGrid />
-                </Container>
+                    <ButtonLink to="about" variant="contained" color="primary">
+                        Upcoming and Past Events
+                    </ButtonLink>
+                </Section>
+
+                
 
                 <Section title="Want to contact us?">
                     <ButtonLink

@@ -9,15 +9,16 @@ import {
 } from "@material-ui/core"
 import { ContainerProps } from "@material-ui/core/Container"
 
-import Text from "components/Typography/Text"
+import Text, { TextColorOptions } from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
         root: {
-            padding: theme.spacing(8),
+            paddingTop: theme.spacing(8),
+            paddingBottom: theme.spacing(2),
         },
         title: {
-            color: "#3C4858",
+            //color: "#3C4858",
             margin: "1.75rem 0 0.875rem",
             textDecoration: "none",
             fontWeight: 700,
@@ -25,14 +26,21 @@ const styles = (theme: Theme) =>
         },
     })
 
-type Props = WithStyles<typeof styles> & {
-    maxWidth?: ContainerProps["maxWidth"]
-    title?: string
-    children: React.ReactNode
-}
+type Props = WithStyles<typeof styles> &
+    TextColorOptions & {
+        maxWidth?: ContainerProps["maxWidth"]
+        title?: string
+        children: React.ReactNode
+    }
 
 function Section(props: Props) {
-    const { classes, maxWidth = "md", title, children } = props
+    const {
+        classes,
+        maxWidth = "md",
+        title,
+        color = "textSecondary",
+        children,
+    } = props
 
     return (
         <Container maxWidth={maxWidth} className={classes.root}>
@@ -46,7 +54,7 @@ function Section(props: Props) {
                 {title ? (
                     <Text
                         variant="h3"
-                        color="textSecondary"
+                        color={color}
                         align="center"
                         className={classes.title}
                     >
