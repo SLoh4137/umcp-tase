@@ -9,7 +9,7 @@ import {
 
 // Components
 import Text from "components/Typography/Text"
-import Section from "components/Layout/Section"
+import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
 
 const styles = (theme: Theme) => createStyles({})

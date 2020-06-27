@@ -13,23 +13,16 @@ import {
 import SEO from "components/seo"
 import PastEventsGrid from "components/Events/PastEventsGrid"
 import Welcome from "components/General/Welcome"
-import PageContent from "components/Layout/PageContent"
-import ParallaxBackground from "components/General/ParallaxBackground"
+import PageContent from "components/PageLayout/PageContent"
+import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
 // import Newsletter from "components/Mailchimp/Newsletter"
 
-import Section from "components/Layout/Section"
+import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
 import WelcomeSection from "./content/HomePage/WelcomeSection"
 
-const styles = (theme: Theme) =>
-    createStyles({
-        center: {
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",
-        },
-    })
+const styles = (theme: Theme) => createStyles({})
 
 type Props = PageProps &
     WithStyles<typeof styles> & {

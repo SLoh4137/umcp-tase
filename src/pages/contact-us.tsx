@@ -5,8 +5,8 @@ import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
 // Components
 import SEO from "components/seo"
 import ContactUsForm from "components/ContactUs/Form"
-import PageContent from "components/Layout/PageContent"
-import ParallaxBackground from "components/General/ParallaxBackground"
+import PageContent from "components/PageLayout/PageContent"
+import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) => createStyles({})
