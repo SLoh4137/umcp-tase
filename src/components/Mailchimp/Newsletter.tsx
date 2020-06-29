@@ -10,19 +10,39 @@ import {
     withStyles,
     TextField,
 } from "@material-ui/core"
+import EmailIcon from "@material-ui/icons/Email"
+import { ContainerProps } from "@material-ui/core/Container"
 
 const styles = (theme: Theme) =>
     createStyles({
-        root: {},
-        title: {
-            color: theme.palette.primary.main,
+        root: {
+            marginTop: theme.spacing(2),
+            backgroundColor: "white",
+            padding: theme.spacing(2),
+            paddingLeft: theme.spacing(3),
+            width: "100%",
+            borderRadius: theme.shape.borderRadius,
+        },
+        textField: {
+            marginBottom: theme.spacing(1),
+            [theme.breakpoints.down("xs")]: {
+                marginLeft: theme.spacing(2),
+            },
+        },
+        icon: {
+            marginTop: theme.spacing(1),
+        },
+        button: {
+            height: "100%",
         },
     })
 
-type Props = {} & WithStyles<typeof styles>
+type Props = WithStyles<typeof styles> & {
+    maxWidth?: ContainerProps["maxWidth"]
+}
 
 function Newsletter(props: Props) {
-    const { classes } = props
+    const { classes, maxWidth = "lg" } = props
     const [email, setEmail] = useState<string>("")
     const [msg, setMsg] = useState<string>()
     const [disabled, setDisabled] = useState<boolean>(false)
@@ -51,25 +71,32 @@ function Newsletter(props: Props) {
     }
 
     return (
-        <Container maxWidth="lg" className={classes.root}>
-            <h1 className={classes.title}>Sign up for our newsletter!</h1>
-
+        <Container maxWidth={maxWidth} className={classes.root}>
             <form onSubmit={handleSubmit}>
-                <Grid container spacing={1} alignItems="center">
-                    <Grid item xs={12} sm={3}>
+                <Grid container spacing={2} alignItems="center">
+                    <Grid item xs={1}>
+                        <EmailIcon className={classes.icon} />
+                    </Grid>
+                    <Grid item xs={10} sm={8}>
                         <TextField
                             required
+                            className={classes.textField}
                             label="Email"
                             name="email"
-                            variant="outlined"
                             fullWidth
                             value={email}
                             onChange={handleChange}
                         />
                     </Grid>
-                    <Grid item xs={12} sm={1}>
-                        <Button disabled={disabled} fullWidth>
-                            Sign up
+                    <Grid item xs={12} sm={3}>
+                        <Button
+                            disabled={disabled}
+                            className={classes.button}
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Subscribe
                         </Button>
                     </Grid>
                 </Grid>

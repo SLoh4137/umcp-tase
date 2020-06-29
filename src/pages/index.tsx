@@ -16,7 +16,7 @@ import Welcome from "components/General/Welcome"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
-// import Newsletter from "components/Mailchimp/Newsletter"
+import Newsletter from "components/Mailchimp/Newsletter"
 
 import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
@@ -82,20 +82,34 @@ function IndexPage(props: Props) {
 
                 <ImageSection image={presidentBackground}>
                     <Section>
-                        <Text variant="h4" color="white">
+                        <Text variant="h4" color="white" align="center">
                             Want to see who makes it all happen?
                         </Text>
-                        <Text variant="subtitle1" color="white">
+                        <Text variant="subtitle1" color="white" align="center">
                             Check out our co-presidents!
                         </Text>
                     </Section>
                     <Section>
-                        <Text variant="h5" color="white">
+                        <Text variant="h5" color="white" align="center">
                             Check out the others
                         </Text>
-                        <ButtonLink to="board" variant="contained" color="primary">
+                        <ButtonLink
+                            to="board"
+                            variant="contained"
+                            color="primary"
+                        >
                             Board
                         </ButtonLink>
+                    </Section>
+                </ImageSection>
+
+                <ImageSection image={newsletterBackground}>
+                    <Section>
+                        <Text variant="h4" color="white" align="center">
+                            Subscribe to our Newsletter
+                        </Text>
+
+                        <Newsletter maxWidth="sm"/>
                     </Section>
                 </ImageSection>
 
