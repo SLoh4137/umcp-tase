@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
     createStyles({
         root: {
             paddingTop: theme.spacing(8),
-            paddingBottom: theme.spacing(2),
+            paddingBottom: theme.spacing(4),
         },
         title: {
             //color: "#3C4858",

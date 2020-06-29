@@ -80,7 +80,7 @@ function IndexPage(props: Props) {
                     </ButtonLink>
                 </Section>
 
-                {/* <ImageSection image={presidentBackground}>
+                <ImageSection image={presidentBackground}>
                     <Section>
                         <Text variant="h4" color="white">
                             Want to see who makes it all happen?
@@ -89,7 +89,15 @@ function IndexPage(props: Props) {
                             Check out our co-presidents!
                         </Text>
                     </Section>
-                </ImageSection> */}
+                    <Section>
+                        <Text variant="h5" color="white">
+                            Check out the others
+                        </Text>
+                        <ButtonLink to="board" variant="contained" color="primary">
+                            Board
+                        </ButtonLink>
+                    </Section>
+                </ImageSection>
 
                 <Section title="Want to contact us?">
                     <ButtonLink

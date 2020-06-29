@@ -36,19 +36,11 @@ const styles = (theme: Theme) =>
             alignItems: "center",
         },
         filter: {
-            "&:before": {
-                background: "rgba(0, 0, 0, 0.5)",
-            },
-            "&:after,&:before": {
-                position: "absolute",
-                zIndex: 0,
-                width: "100%",
-                height: "100%",
-                display: "block",
-                left: "0",
-                top: "0",
-                content: "''",
-            },
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            background: "rgba(0, 0, 0, 0.5)",
+            zIndex: -1,
         },
         raised: {
             zIndex: 1,

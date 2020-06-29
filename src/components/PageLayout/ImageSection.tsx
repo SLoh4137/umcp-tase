@@ -11,23 +11,17 @@ const styles = (theme: Theme) =>
             backgroundSize: "cover",
         },
         filter: {
-            "&:before": {
-                background: "rgba(0, 0, 0, 0.5)",
-                zIndex: 0,
-            },
-            "&:after,&:before": {
-                position: "absolute",
-                zIndex: 0,
-                width: "100%",
-                height: "100%",
-                display: "block",
-                left: "0",
-                top: "0",
-                content: "''",
-            },
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            background: "rgba(0, 0, 0, 0.6)",
+            zIndex: -1,
         },
         content: {
             zIndex: 1,
+            width: "100%",
+            height: "100%",
+            padding: theme.spacing(10),
         },
     })
 
