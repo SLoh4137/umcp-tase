@@ -19,7 +19,6 @@ const styles = (theme: Theme) =>
         },
         title: {
             //color: "#3C4858",
-            marginTop: theme.spacing(1),
             marginBottom: theme.spacing(2),
             //margin: "1.75rem 0 0.875rem",
             //textDecoration: "none",

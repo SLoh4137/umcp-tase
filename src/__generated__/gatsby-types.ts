@@ -3161,7 +3161,7 @@ type NotFoundPageQuery = { readonly pageBackground: Maybe<BackgroundImageFragmen
 type AboutPageQueryVariables = {};
 
 
-type AboutPageQuery = { readonly aboutBackground: Maybe<BackgroundImageFragment> };
+type AboutPageQuery = { readonly background: Maybe<BackgroundImageFragment> };
 
 type LogoQueryVariables = {};
 
