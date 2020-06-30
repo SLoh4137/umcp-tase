@@ -56,6 +56,11 @@ function HeaderLinks(props: Props) {
                     <b>Board</b>
                 </Button>
             </Link>
+            <Link className={classes.link} to="/archive">
+                <Button className={buttonClassname}>
+                    <b>Archive</b>
+                </Button>
+            </Link>
             <Link className={classes.link} to="/contact-us">
                 <Button className={buttonClassname}>
                     <b>Contact Us</b>

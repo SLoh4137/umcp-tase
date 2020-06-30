@@ -3250,4 +3250,9 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
+type ArchivePageQueryVariables = {};
+
+
+type ArchivePageQuery = { readonly background: Maybe<BackgroundImageFragment> };
+
 }
