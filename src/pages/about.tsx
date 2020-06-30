@@ -24,6 +24,7 @@ import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Section from "components/PageLayout/Section"
 import Text from "components/Typography/Text"
 import MissionStatementGoal from "components/About/MissionStatementGoal"
+import RaisedImage from "components/General/RaisedImage"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -45,7 +46,7 @@ type Props = WithStyles<typeof styles> &
 
 function AboutPage(props: Props) {
     const { data, classes } = props
-    const { background } = data
+    const { background, pic1, pic2, pic3, pic4, pic5 } = data
     if (!background) throw new Error("About background does not exist.")
 
     const goals: Goal[] = [
@@ -117,7 +118,7 @@ function AboutPage(props: Props) {
                         className={classes.missionStatement}
                     >
                         {goals.map((goal, index) => (
-                            <Grid item xs={12} md={4}>
+                            <Grid item xs={12} md={4} key={goal.title}>
                                 <MissionStatementGoal
                                     icon={goal.icon}
                                     title={`${index + 1}. ${goal.title}`}
@@ -128,12 +129,13 @@ function AboutPage(props: Props) {
                     </Grid>
                 </Section>
 
-                <Section title="Big/Little System">
+                <Section title="Big/Little System" maxWidth="lg">
+                    <Container maxWidth="md">
                     <Text align="center" paragraph>
                         We are an organization committed to making everyone feel
                         welcome so we have very our own big/little system. Every
                         new member of TASA will recieve a veteran TASA member as
-                        a big who will serve as a mentor throughout his or her
+                        a big who will serve as a mentor throughout their
                         college career and help them become acquainted with
                         TASA. The big/little system is an integral part of TASA
                         that helps us form the TASA family that we pride
@@ -141,6 +143,26 @@ function AboutPage(props: Props) {
                         host a few big/little GBMs so that new members can meet
                         current members and choose their big.
                     </Text>
+                    </Container>
+                    
+
+                    <Grid container spacing={5}>
+                        <Grid item xs={12} sm={4}>
+                            <RaisedImage image={pic1} name="Angela big little"/>
+                        </Grid>
+                        <Grid item xs={false} sm={4}>
+                            <RaisedImage image={pic2} name="Nathan big little"/>
+                        </Grid>
+                        <Grid item xs={false} sm={4}>
+                            <RaisedImage image={pic3} name="Rebecca big little"/>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <RaisedImage image={pic4} name="Stephan big little"/>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <RaisedImage image={pic5} name="Justin family tree"/>
+                        </Grid>
+                    </Grid>
                 </Section>
 
                 <Section title="Junior Officer System">
@@ -170,6 +192,21 @@ export const query = graphql`
     query AboutPage {
         background: file(relativePath: { eq: "tasa2019.jpg" }) {
             ...BackgroundImage
+        }
+        pic1: file(relativePath: { eq: "angela_biglittle.jpg"}) {
+            ...RaisedImage
+        }
+        pic2: file(relativePath: { eq: "nathan_biglittle.jpg"}) {
+            ...RaisedImage
+        }
+        pic3: file(relativePath: { eq: "rebecca_biglittle.jpg"}) {
+            ...RaisedImage
+        }
+        pic4: file(relativePath: { eq: "stephan_biglittle.jpg"}) {
+            ...RaisedImage
+        }
+        pic5: file(relativePath: { eq: "justin_familytree.jpg"}) {
+            ...RaisedImage
         }
     }
 `
