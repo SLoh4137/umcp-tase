@@ -61,6 +61,7 @@ function Form(props: Props) {
             className={classes.submit}
             type="submit"
             color="primary"
+            variant="contained"
             fullWidth
         >
             <b>Submit</b>
@@ -112,7 +113,7 @@ function Form(props: Props) {
                     label="Name"
                     name="name"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="dense"
                     fullWidth
                     value={state.name}
@@ -124,7 +125,7 @@ function Form(props: Props) {
                     label="Email"
                     name="email"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="dense"
                     fullWidth
                     value={state.email}
@@ -136,7 +137,7 @@ function Form(props: Props) {
                     label="Subject"
                     name="subject"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="normal"
                     fullWidth
                     value={state.subject}
@@ -148,7 +149,7 @@ function Form(props: Props) {
                     label="Body"
                     name="body"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="normal"
                     fullWidth
                     multiline

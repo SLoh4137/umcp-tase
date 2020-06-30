@@ -23,7 +23,7 @@ import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Section from "components/PageLayout/Section"
 import Text from "components/Typography/Text"
-import MissionStatementGoal from "components/About/MissionStatementGoal"
+import ContentWithIcon from "components/General/ContentWithIcon"
 import RaisedImage from "components/General/RaisedImage"
 
 const styles = (theme: Theme) =>
@@ -119,7 +119,7 @@ function AboutPage(props: Props) {
                     >
                         {goals.map((goal, index) => (
                             <Grid item xs={12} md={4} key={goal.title}>
-                                <MissionStatementGoal
+                                <ContentWithIcon
                                     icon={goal.icon}
                                     title={`${index + 1}. ${goal.title}`}
                                     description={goal.description}

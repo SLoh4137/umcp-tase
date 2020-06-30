@@ -3160,7 +3160,7 @@ type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment>
 type ContactUsPageQueryVariables = {};
 
 
-type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment> };
+type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'facebook' | 'instagram'>> }> };
 
 type HomePageQueryVariables = {};
 
