@@ -37,6 +37,7 @@ function ImageSection(props: Props) {
         <BackgroundImage
             className={classes.root}
             fluid={image.childImageSharp?.fluid}
+            loading="eager"
         >
             <div className={classes.filter} />
             <div className={classes.content}>{children}</div>
