@@ -13,6 +13,7 @@ import useEvents, { EventHookOptions } from "hooks/useEvents"
 
 // Components
 import EventPreview from "./EventPreview"
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -54,8 +55,11 @@ function EventsGrid(props: Props) {
         amount: amount,
     })
 
+    const noEventsText = eventsWithPhoto.length <= 0 ? <Text variant="h5" align="center">No events to show</Text> : <></>
+
     return (
         <Container className={classes.root} maxWidth="xl">
+            {noEventsText}
             <Grid
                 container
                 spacing={3}
@@ -69,7 +73,6 @@ function EventsGrid(props: Props) {
                         className={classes.item}
                         xs={12}
                         sm={4}
-                        lg={3}
                         key={event.node.id}
                     >
                         <EventPreview

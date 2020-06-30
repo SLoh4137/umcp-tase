@@ -8,8 +8,15 @@ import Section from "components/PageLayout/Section"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
+import ButtonLink from "components/Button/ButtonLink"
 
-const styles = (theme: Theme) => createStyles({})
+import FutureEventsGrid from "components/Events/FutureEventsGrid"
+import PastEventsGrid from "components/Events/PastEventsGrid"
+
+const styles = (theme: Theme) =>
+    createStyles({
+        margin: { margin: theme.spacing(2) },
+    })
 
 type Props = PageProps &
     WithStyles<typeof styles> & {
@@ -31,8 +38,32 @@ function EventPage(props: Props) {
                 </Text>
             </ParallaxBackground>
             <PageContent>
-                <Section title="Upcoming Events">
-                    <Text variant="h3">Some text</Text>
+                <Section title="Upcoming Events" maxWidth="lg">
+                    <FutureEventsGrid />
+                </Section>
+
+                <Section title="Past Events" maxWidth="lg">
+                    <PastEventsGrid />
+                </Section>
+
+                <Section>
+                    <Text
+                        variant="h5"
+                        color="textSecondary"
+                        align="center"
+                        paragraph
+                    >
+                        Want to check out events further back? Check out our
+                        archives!
+                    </Text>
+                    <ButtonLink
+                        to="archive"
+                        className={classes.margin}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Archives
+                    </ButtonLink>
                 </Section>
             </PageContent>
         </>

@@ -86,7 +86,7 @@ function IndexPage(props: Props) {
                     </ButtonLink>
                 </Section>
 
-                <Section title="Events" maxWidth="xl">
+                <Section title="Events" maxWidth="lg">
                     <Text color="textPrimary" align="center" paragraph>
                         TASA organizes many fun events throughout the year! Be
                         sure to follow us on{" "}
