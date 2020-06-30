@@ -7,7 +7,7 @@ const styles = (theme: Theme) =>
     createStyles({
         root: {
             borderRadius: theme.shape.borderRadius,
-            boxShadow: theme.shadows[1],
+            boxShadow: theme.shadows[3],
         },
     })
 

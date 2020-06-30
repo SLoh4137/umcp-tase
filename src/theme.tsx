@@ -24,6 +24,9 @@ const theme = createMuiTheme({
             secondary: "#555",
         }
     },
+    shape: {
+        borderRadius: 8,
+    },
     typography: {
         fontFamily: ["Poppins", "sans-serif"].join(","),
     },
