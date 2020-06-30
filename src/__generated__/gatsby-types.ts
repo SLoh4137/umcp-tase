@@ -3107,56 +3107,15 @@ type DateFormatQueryVariables = {};
 
 type DateFormatQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'dateFormat'>> }> };
 
+type SiteTitleQueryVariables = {};
+
+
+type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
 type FooterQueryVariables = {};
 
 
 type FooterQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'copyright' | 'facebook' | 'instagram'>> }> };
-
-type EventsQueryVariables = {};
-
-
-type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<MarkdownRemark, 'html' | 'id'>
-        & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'category' | 'imgsrc'>> }
-      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<File, 'id' | 'relativePath'>
-        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
-      ) }> } };
-
-type SEOQueryVariables = {};
-
-
-type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
-
-type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
-      GatsbyImageSharpFluid_withWebpFragment
-      & GatsbyImageSharpFluidLimitPresentationSizeFragment
-    )> }> };
-
-type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
-
-type AboutPageQueryVariables = {};
-
-
-type AboutPageQuery = { readonly aboutBackground: Maybe<BackgroundImageFragment> };
-
-type HomePageQueryVariables = {};
-
-
-type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
-
-type EventPageQueryVariables = {
-  slug: Maybe<Scalars['String']>;
-  imgsrc: Maybe<Scalars['String']>;
-};
-
-
-type EventPageQuery = { readonly markdownRemark: Maybe<(
-    Pick<MarkdownRemark, 'html' | 'id'>
-    & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'link'>> }
-  )>, readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }> };
 
 type BioQueryVariables = {};
 
@@ -3169,10 +3128,25 @@ type BioQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ 
         & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
       ) }> } };
 
-type SiteTitleQueryVariables = {};
+type EventsQueryVariables = {};
 
 
-type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<MarkdownRemark, 'html' | 'id'>
+        & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'category' | 'imgsrc'>> }
+      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<File, 'id' | 'relativePath'>
+        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
+      ) }> } };
+
+type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
+      GatsbyImageSharpFluid_withWebpFragment
+      & GatsbyImageSharpFluidLimitPresentationSizeFragment
+    )> }> };
+
+type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
 
 type ContactUsPageQueryVariables = {};
 
@@ -3184,15 +3158,51 @@ type NotFoundPageQueryVariables = {};
 
 type NotFoundPageQuery = { readonly pageBackground: Maybe<BackgroundImageFragment> };
 
-type BoardPageQueryVariables = {};
+type AboutPageQueryVariables = {};
 
 
-type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
+type AboutPageQuery = { readonly aboutBackground: Maybe<BackgroundImageFragment> };
 
 type LogoQueryVariables = {};
 
 
 type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+
+type SEOQueryVariables = {};
+
+
+type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
+
+type BoardPageQueryVariables = {};
+
+
+type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
+
+type EventPageQueryVariables = {};
+
+
+type EventPageQuery = { readonly background: Maybe<BackgroundImageFragment> };
+
+type HomePageQueryVariables = {};
+
+
+type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
+
+type IndividualEventPageQueryVariables = {
+  slug: Maybe<Scalars['String']>;
+  imgsrc: Maybe<Scalars['String']>;
+};
+
+
+type IndividualEventPageQuery = { readonly markdownRemark: Maybe<(
+    Pick<MarkdownRemark, 'html' | 'id'>
+    & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'link'>> }
+  )>, readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }> };
+
+type PagesQueryQueryVariables = {};
+
+
+type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3239,10 +3249,5 @@ type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 't
 type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type PagesQueryQueryVariables = {};
-
-
-type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 }

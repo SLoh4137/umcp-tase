@@ -46,7 +46,7 @@ type PageContext = {
 }
 
 type Props = {
-    data: GatsbyTypes.EventPageQuery
+    data: GatsbyTypes.IndividualEventPageQuery
     pageContext: PageContext
 } & PageProps &
     WithStyles<typeof styles>
@@ -82,7 +82,7 @@ function EventPageTemplate(props: Props) {
 }
 
 export const query = graphql`
-    query EventPage($slug: String, $imgsrc: String) {
+    query IndividualEventPage($slug: String, $imgsrc: String) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
             html
             id

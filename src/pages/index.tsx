@@ -62,7 +62,7 @@ function IndexPage(props: Props) {
                         Dedicated to promoting Taiwan's rich culture and
                         heritage
                     </Text>
-                    <ButtonLink to="about" variant="contained" color="primary">
+                    <ButtonLink to="events" variant="contained" color="primary">
                         Upcoming Events
                     </ButtonLink>
                 </Container>
@@ -96,7 +96,7 @@ function IndexPage(props: Props) {
                         for all the latest announcements!
                     </Text>
                     <PastEventsGrid />
-                    <ButtonLink to="about" variant="contained" color="primary">
+                    <ButtonLink to="events" variant="contained" color="primary">
                         Upcoming and Past Events
                     </ButtonLink>
                 </Section>
