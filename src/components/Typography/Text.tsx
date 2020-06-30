@@ -21,8 +21,8 @@ const styles = (theme: Theme) =>
     })
 
 export interface TextColorOptions {
-    color?: TypographyProps["color"] | "white" | "success",
-    className?: string,
+    color?: TypographyProps["color"] | "white" | "success"
+    className?: string
 }
 
 type Props = WithStyles<typeof styles> &
@@ -36,6 +36,7 @@ type Props = WithStyles<typeof styles> &
 function Text(props: Props) {
     const { classes, className = "", color = "initial", ...rest } = props
     const textClassName = clsx({
+        [className]: true,
         [classes.white]: color === "white",
         [classes.success]: color === "success",
     })
@@ -44,7 +45,7 @@ function Text(props: Props) {
         <Typography
             className={textClassName}
             // @ts-ignore The case of invalid color names is handled but not recognized by Typescript
-            color={textClassName === "" ? color : "initial"}
+            color={textClassName === className ? color : "initial"}
             {...rest}
         />
     )

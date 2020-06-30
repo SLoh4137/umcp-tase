@@ -11,6 +11,7 @@ import {
 import SEO from "components/seo"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
+import Section from "components/PageLayout/Section"
 import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) => createStyles({})
@@ -34,24 +35,21 @@ function AboutPage(props: Props) {
                 </Text>
             </ParallaxBackground>
             <PageContent>
-                <Container>
-                    <Text variant="h1" color="textSecondary">
-                        About Us Goes Here
+                <Section>
+                    <Text align="center">
+                        TASA at UMCP is dedicated to develop and maintain
+                        Taiwanese/Taiwanese American student life and
+                        organizational relations at the University of Maryland -
+                        College Park, as well as developing relations with
+                        Taiwanese/Taiwanese American communities nationwide.
                     </Text>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                    <h1>About Us Goes Here</h1>
-                </Container>
-
-                {/*
-                 * Add content for the about us page here
-                 */}
+                </Section>
+                <Section title="Mission Statement">
+                    <Text align="center">
+                        At TASA, we aim to provide these functions:
+                    </Text>
+                </Section>
+                
             </PageContent>
         </>
     )
