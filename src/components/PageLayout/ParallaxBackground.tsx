@@ -12,18 +12,20 @@ import {
     WithStyles,
     createStyles,
 } from "@material-ui/core"
+import { GridProps } from "@material-ui/core/Grid"
 import BackgroundImage from "gatsby-background-image"
 
 import useParallax from "hooks/useParallax"
 
 type StyleProps = {
-    imageHeight?: string,
+    imageHeight?: string
 }
 
 const styles = (theme: Theme) =>
     createStyles({
         root: {
-            height: (props: StyleProps) => props.imageHeight ? props.imageHeight : "80vh",
+            height: (props: StyleProps) =>
+                props.imageHeight ? props.imageHeight : "80vh",
             //maxHeight: "1000px",
             overflow: "hidden",
             position: "relative",
@@ -32,8 +34,6 @@ const styles = (theme: Theme) =>
             margin: "0",
             padding: "0",
             border: "0",
-            display: "flex",
-            alignItems: "center",
         },
         filter: {
             width: "100%",
@@ -51,13 +51,15 @@ const styles = (theme: Theme) =>
         },
     })
 
-type Props = WithStyles<typeof styles> & StyleProps & {
-    image: GatsbyTypes.BackgroundImageFragment
-    children: React.ReactNode
-}
+type Props = WithStyles<typeof styles> &
+    StyleProps & {
+        image: GatsbyTypes.BackgroundImageFragment
+        children: React.ReactNode
+        justify?: GridProps["justify"]
+    }
 
 function ParallaxBackground(props: Props) {
-    const { classes, image, children } = props
+    const { classes, image, justify = "center", children } = props
     const { transform } = useParallax()
     return (
         <BackgroundImage
@@ -71,9 +73,11 @@ function ParallaxBackground(props: Props) {
                 className={classes.raised}
                 container
                 alignItems="center"
-                justify="center"
+                justify={justify}
             >
-                <Grid item xs={12}>{children}</Grid>
+                <Grid item xs={12}>
+                    {children}
+                </Grid>
             </Grid>
         </BackgroundImage>
     )

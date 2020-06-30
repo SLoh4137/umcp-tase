@@ -21,7 +21,8 @@ const styles = (theme: Theme) =>
     })
 
 export interface TextColorOptions {
-    color?: TypographyProps["color"] | "white" | "success"
+    color?: TypographyProps["color"] | "white" | "success",
+    className?: string,
 }
 
 type Props = WithStyles<typeof styles> &
@@ -33,7 +34,7 @@ type Props = WithStyles<typeof styles> &
  * @param props
  */
 function Text(props: Props) {
-    const { classes, color = "initial", ...rest } = props
+    const { classes, className = "", color = "initial", ...rest } = props
     const textClassName = clsx({
         [classes.white]: color === "white",
         [classes.success]: color === "success",

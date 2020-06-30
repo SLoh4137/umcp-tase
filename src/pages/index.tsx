@@ -1,12 +1,11 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 import {
-    Container,
-    Grid,
     Theme,
     createStyles,
     withStyles,
     WithStyles,
+    Container,
 } from "@material-ui/core"
 
 // Components
@@ -20,10 +19,17 @@ import Newsletter from "components/Mailchimp/Newsletter"
 
 import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
-import BackgroundImage from "gatsby-background-image"
 import ImageSection from "components/PageLayout/ImageSection"
 
-const styles = (theme: Theme) => createStyles({})
+const styles = (theme: Theme) =>
+    createStyles({
+        titleRoot: {
+            textAlign: "left",
+            "& > *": {
+                margin: theme.spacing(2),
+            },
+        },
+    })
 
 type Props = PageProps &
     WithStyles<typeof styles> & {
@@ -44,7 +50,22 @@ function IndexPage(props: Props) {
         <>
             <SEO title="Home" />
             <ParallaxBackground image={mainBackground} imageHeight="100vh">
-                <Welcome />
+                {/* <Welcome /> */}
+                <Container maxWidth="lg" className={classes.titleRoot}>
+                    <Text variant="h3" color="white">
+                        University of Maryland College Park
+                    </Text>
+                    <Text variant="h3" color="white">
+                        Taiwanese American Student Association
+                    </Text>
+                    <Text variant="subtitle1" color="white">
+                        Dedicated to promoting Taiwan's rich culture and
+                        heritage
+                    </Text>
+                    <ButtonLink to="about" variant="contained" color="primary">
+                        Upcoming Events
+                    </ButtonLink>
+                </Container>
             </ParallaxBackground>
 
             <PageContent>
@@ -109,7 +130,7 @@ function IndexPage(props: Props) {
                             Subscribe to our Newsletter
                         </Text>
 
-                        <Newsletter maxWidth="sm"/>
+                        <Newsletter maxWidth="sm" />
                     </Section>
                 </ImageSection>
 
