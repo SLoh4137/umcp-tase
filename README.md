@@ -127,7 +127,27 @@ The [`EventPreview.tsx`](/src/components/Events/EventPreview.tsx) component disp
 
 # Editing Bios
 
-Similar to adding events, go to the Netlify CMS admin panel. Click on the bios section on the side, and you should be able to add new bios and edit existing ones.
+Similar to adding events, go to the Netlify CMS admin panel. Click on the bios section on the side, and you should be able to add new bios and edit existing ones. Each bio has a section for site display order which determines what order the bios are shown on the bios page. It's a bit of a hacky way to do it right now since adding a position would require going through every bio and pushing up the positions after it up by one. An alternative is defining our own order in an array somewhere then sorting after we pull the data down from graphql. But then you can't change the order through Netlify CMS.
+
+|Position|Index|
+|:---:|:---:|
+|Co-President| 1 |
+|Secretary| 2 |
+|Internal VP| 3 | 
+|External VP| 4 |
+|Treasurer| 5 |
+|Public Relations| 6 |
+|AASU Rep | 7 |
+|Historian | 8 |
+|Webmaster | 9 |
+|Co-Fundraising Chair| 10 |
+|Sports Chair| 11 |
+|Culture Chair| 12 |
+|Videographer| 13 |
+|ITASA Rep| 14 |
+|Senior Advisor| 15 |
+|Alumni Advisor| 16 |
+
 
 ## How does it work?
 
