@@ -2,7 +2,7 @@ import React from "react"
 
 import EventsGrid from "./EventsGrid"
 import useEvents from "hooks/useEvents"
-import { pastEvents } from "utils/eventUtils"
+import { getPastEventsFunc } from "utils/eventUtils"
 
 type Props = {
     showDescription?: boolean
@@ -17,15 +17,10 @@ function PastEventsGrid(props: Props) {
     const { showDescription = true, includePinned = false } = props
     const events = useEvents({
         tags: [],
-        filterFunction: pastEvents(),
+        filterFunctions: [getPastEventsFunc(includePinned)],
     })
 
-    return (
-        <EventsGrid
-            showDescription={showDescription}
-            events={events}
-        />
-    )
+    return <EventsGrid showDescription={showDescription} events={events} />
 }
 
 export default PastEventsGrid

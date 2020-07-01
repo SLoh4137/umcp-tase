@@ -9,7 +9,7 @@ type EventNode = EventEdge["node"]
 export type EventHookOptions = Readonly<{
     tags?: string[]
     amount?: number
-    filterFunction?: EventFilterFunction
+    filterFunctions?: EventFilterFunction[]
 }>
 
 export type EventArrayType = ReturnType<typeof useEvents>
@@ -25,7 +25,7 @@ export interface EventFilterFunction {
  * @param options Takes a tags array, amount to return, and a filter function. Filter must take an event node and return bool
  */
 export default function useEvents(options: EventHookOptions) {
-    const { tags, amount, filterFunction } = options
+    const { tags, amount, filterFunctions } = options
     // Because static queries can't have parameters, we have to query for everything
     const data = useStaticQuery<GatsbyTypes.EventsQuery>(graphql`
         query Events {
@@ -88,9 +88,10 @@ export default function useEvents(options: EventHookOptions) {
                 eventNode.node.frontmatter.tags.some(containsTag)
         )
     }
+    
 
-    if (filterFunction) {
-        events = events.filter(filterFunction)
+    if (filterFunctions) {
+        filterFunctions.forEach((filterFunction) => events = events.filter(filterFunction))
     }
 
     const eventsWithPhoto = mapImgToNode<EventNode>(events, data.allFile.edges)
