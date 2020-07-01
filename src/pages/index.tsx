@@ -21,6 +21,9 @@ import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
 import ImageSection from "components/PageLayout/ImageSection"
 
+// Hooks
+import useEvents from "hooks/useEvents"
+
 const styles = (theme: Theme) =>
     createStyles({
         titleRoot: {
@@ -39,6 +42,7 @@ type Props = PageProps &
 function IndexPage(props: Props) {
     const { data, classes } = props
     const { mainBackground, presidentBackground, newsletterBackground } = data
+    const events = useEvents({})
 
     if (!mainBackground) throw new Error("Main background does not exist.")
     if (!presidentBackground)
@@ -95,7 +99,7 @@ function IndexPage(props: Props) {
                         </a>{" "}
                         for all the latest announcements!
                     </Text>
-                    <EventsGrid />
+                    <EventsGrid events={events}/>
                     <ButtonLink to="events" variant="contained" color="primary">
                         Upcoming and Past Events
                     </ButtonLink>

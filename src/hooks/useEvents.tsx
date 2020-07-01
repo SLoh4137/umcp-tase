@@ -44,6 +44,7 @@ export default function useEvents(options: EventHookOptions) {
                             date
                             category
                             imgsrc
+                            pinned
                         }
                         html
                         id

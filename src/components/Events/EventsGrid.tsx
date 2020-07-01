@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core"
 
 // Hooks
-import useEvents, { EventHookOptions } from "hooks/useEvents"
+import useEvents, { EventHookOptions, EventArrayType, } from "hooks/useEvents"
 
 // Components
 import EventPreview from "./EventPreview"
@@ -30,8 +30,8 @@ const styles = (theme: Theme) =>
 //  tags?: string[],
 //  filterFunction?: EventFilterFunction,
 //  amount: number,
-type Props = WithStyles<typeof styles> &
-    EventHookOptions & {
+type Props = WithStyles<typeof styles> & {
+        events: EventArrayType
         showDescription?: boolean
         showFullDescription?: boolean
     }
@@ -47,17 +47,10 @@ function EventsGrid(props: Props) {
         classes,
         showDescription = true,
         showFullDescription = false,
-        tags,
-        filterFunction,
-        amount,
+        events,
     } = props
-    const eventsWithPhoto = useEvents({
-        tags: tags,
-        filterFunction: filterFunction,
-        amount: amount,
-    })
 
-    const noEventsText = eventsWithPhoto.length <= 0 ? <Text variant="h5" align="center">No events to show</Text> : <></>
+    const noEventsText = events.length <= 0 ? <Text variant="h5" align="center">No events to show</Text> : <></>
 
     return (
         <Container className={classes.root} maxWidth="xl">
@@ -69,7 +62,7 @@ function EventsGrid(props: Props) {
                 alignContent="stretch"
                 justify="center"
             >
-                {eventsWithPhoto.map((event) => (
+                {events.map((event) => (
                     <Grid
                         item
                         className={classes.item}

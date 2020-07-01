@@ -1,11 +1,12 @@
 import React from "react"
-import { EventFilterFunction } from "hooks/useEvents"
-import moment from "moment"
 
 import EventsGrid from "./EventsGrid"
+import useEvents from "hooks/useEvents"
+import { futureEvents } from "utils/eventUtils"
 
 type Props = {
     showDescription?: boolean
+    includePinned?: boolean
 }
 
 /**
@@ -13,20 +14,16 @@ type Props = {
  * @param props
  */
 function FutureEventsGrid(props: Props) {
-    const { showDescription = true } = props
-
-    const currentTime = moment()
-    const filterFunction: EventFilterFunction = (edge) => {
-        if (!edge.node.frontmatter?.date) return false
-
-        const date = moment(edge.node.frontmatter.date) // Note may need to pass in date format for some browsers
-        return date.isAfter(currentTime) // returns true if the date is after the current time, so in the future
-    }
+    const { showDescription = true, includePinned = false } = props
+    const events = useEvents({
+        tags: [],
+        filterFunction: futureEvents(),
+    })
 
     return (
         <EventsGrid
             showDescription={showDescription}
-            filterFunction={filterFunction}
+            events={events}
         />
     )
 }
