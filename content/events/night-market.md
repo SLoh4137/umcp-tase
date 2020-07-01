@@ -2,7 +2,6 @@
 title: Night Market
 date: 2020-04-10T22:00:26.622Z
 imgsrc: assets/night-market-2020-banner-1-.png
-cover: assets/night-market-2020-banner-1-.png
 category: event
 pinned: false
 tags:
