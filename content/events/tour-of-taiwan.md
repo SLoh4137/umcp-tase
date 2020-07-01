@@ -1,6 +1,7 @@
 ---
 title: Tour of Taiwan
 date: 2019-11-15T23:00:59.853Z
+imgsrc: assets/tour-of-taiwan-banner.jpg
 cover: assets/tour-of-taiwan-banner.jpg
 category: event
 pinned: true
