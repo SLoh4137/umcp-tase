@@ -33,6 +33,7 @@ const styles = (theme: Theme) =>
 type Props = WithStyles<typeof styles> &
     EventHookOptions & {
         showDescription?: boolean
+        showFullDescription?: boolean
     }
 
 /**
@@ -45,6 +46,7 @@ function EventsGrid(props: Props) {
     const {
         classes,
         showDescription = true,
+        showFullDescription = false,
         tags,
         filterFunction,
         amount,
@@ -78,6 +80,7 @@ function EventsGrid(props: Props) {
                         <EventPreview
                             event={event}
                             showDescription={showDescription}
+                            showFullDescription={showFullDescription}
                         />
                     </Grid>
                 ))}

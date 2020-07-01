@@ -26,6 +26,7 @@ function PastEventsGrid(props: Props) {
     return (
         <EventsGrid
             showDescription={showDescription}
+            showFullDescription={true}
             filterFunction={filterFunction}
         />
     )

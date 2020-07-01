@@ -10,7 +10,7 @@ import {
 
 // Components
 import SEO from "components/seo"
-import PastEventsGrid from "components/Events/PastEventsGrid"
+import EventsGrid from "components/Events/EventsGrid"
 import Welcome from "components/General/Welcome"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
@@ -95,7 +95,7 @@ function IndexPage(props: Props) {
                         </a>{" "}
                         for all the latest announcements!
                     </Text>
-                    <PastEventsGrid />
+                    <EventsGrid />
                     <ButtonLink to="events" variant="contained" color="primary">
                         Upcoming and Past Events
                     </ButtonLink>

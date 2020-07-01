@@ -8,6 +8,7 @@ import {
     CardActionArea,
     CardActions,
     CardContent,
+    Collapse,
     Grid,
     Theme,
     createStyles,
@@ -22,7 +23,6 @@ import ClientOnly from "components/General/ClientOnly"
 
 // Types
 import { EventType } from "hooks/useEvents"
-
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -57,10 +57,6 @@ const styles = (theme: Theme) =>
             margin: 0,
             marginTop: theme.spacing(1),
         },
-        description: {
-            height: "65px",
-            overflow: "hidden",
-        },
         action: {
             //display: "flex",
             flexGrow: 1,
@@ -84,10 +80,16 @@ const styles = (theme: Theme) =>
 type Props = WithStyles<typeof styles> & {
     event: EventType
     showDescription?: boolean
+    showFullDescription?: boolean
 }
 
 function EventPreview(props: Props) {
-    const { classes, event, showDescription = true } = props
+    const {
+        classes,
+        event,
+        showDescription = true,
+        showFullDescription = false,
+    } = props
     const data = useStaticQuery<GatsbyTypes.DateFormatQuery>(graphql`
         query DateFormat {
             site {
@@ -133,14 +135,15 @@ function EventPreview(props: Props) {
                                 )}
                             </Text>
                             <ClientOnly>
-                                {showDescription ? (
-                                    <MarkdownContent
-                                        // className={classes.description}
-                                        content={event.node.html}
-                                    />
-                                ) : (
-                                    <></>
-                                )}
+                                <Collapse collapsedHeight={110} in={showFullDescription}>
+                                    {showDescription ? (
+                                        <MarkdownContent
+                                            content={event.node.html}
+                                        />
+                                    ) : (
+                                        <></>
+                                    )}
+                                </Collapse>
                             </ClientOnly>
                         </CardContent>
                     </CardActionArea>
