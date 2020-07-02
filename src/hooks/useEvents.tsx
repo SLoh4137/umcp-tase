@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-import { mapImgToNode } from "utils/hookUtils"
+import { mapImgToNode, NodeWithImage } from "utils/hookUtils"
 
 // Type Definitions
 

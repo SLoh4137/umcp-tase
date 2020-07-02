@@ -39,11 +39,11 @@ function EventPage(props: Props) {
             </ParallaxBackground>
             <PageContent>
                 <Section title="Upcoming Events" maxWidth="lg">
-                    <FutureEventsGrid includePinned={true}/>
+                    <FutureEventsGrid />
                 </Section>
 
                 <Section title="Past Events" maxWidth="lg">
-                    <PastEventsGrid includePinned={false}/>
+                    <PastEventsGrid />
                 </Section>
 
                 <Section>
