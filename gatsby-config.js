@@ -109,11 +109,11 @@ module.exports = {
             options: {
                 name: config.siteTitle,
                 short_name: config.siteTitleShort,
-                start_url: config.siteUrl,
+                start_url: config.pathPrefix,
                 background_color: "#663399",
                 theme_color: "#663399",
                 display: "minimal-ui",
-                icon: config.siteLogo, // This path is relative to the root of the site.
+                icon: "static/logo/logo.png", // This path is relative to the root of the site.
             },
         },
 
