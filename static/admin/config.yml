@@ -50,3 +50,12 @@ collections:
       # That means someone who wants to change the display order would have to change it in code though and not via Netlify CMS
       - {label: "Site Display Order", name: "order", widget: "number", default: 100, valueType: "int", min: 1}
       - {label: "Description", name: "body", widget: "markdown"}
+  - name: order
+    label: "Bio Order"
+    create: false
+    folder: "content/order"
+    fields: 
+      - {label: "Category", name: "category", widget: "hidden", default: "bio-order"}
+      - {label: "Positions", name: "order", allow_add: true, widget: "list", collapsed: false, hint: "Positions can be dragged to be re-ordered", 
+          field: {label: "Position", name: "position", widget: "string"}
+        }
