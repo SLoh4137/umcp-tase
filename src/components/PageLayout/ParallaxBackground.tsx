@@ -7,12 +7,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import {
     Grid,
+    GridProps,
     Theme,
     withStyles,
     WithStyles,
     createStyles,
 } from "@material-ui/core"
-import { GridProps } from "@material-ui/core/Grid"
 import BackgroundImage from "gatsby-background-image"
 
 import useParallax from "hooks/useParallax"

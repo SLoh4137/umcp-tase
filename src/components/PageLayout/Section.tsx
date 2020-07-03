@@ -1,13 +1,13 @@
 import React from "react"
 import {
     Container,
+    ContainerProps,
     Grid,
     Theme,
     createStyles,
     withStyles,
     WithStyles,
 } from "@material-ui/core"
-import { ContainerProps } from "@material-ui/core/Container"
 
 import Text, { TextColorOptions } from "components/Typography/Text"
 

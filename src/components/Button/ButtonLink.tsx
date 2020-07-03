@@ -2,12 +2,12 @@ import React from "react"
 import { Link } from "gatsby"
 import {
     Button,
+    ButtonProps,
     Theme,
     createStyles,
     withStyles,
     WithStyles,
 } from "@material-ui/core"
-import { ButtonProps } from "@material-ui/core/Button"
 
 const styles = (theme: Theme) =>
     createStyles({

@@ -7,9 +7,8 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql, PageProps } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./Header/Header"
 import AnimatedHeader from "./Header/AnimatedHeader"
 import Footer from "./Footer"
 

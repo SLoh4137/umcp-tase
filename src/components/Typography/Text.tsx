@@ -1,12 +1,12 @@
 import React from "react"
 import {
     Typography,
+    TypographyProps,
     Theme,
     createStyles,
     withStyles,
     WithStyles,
 } from "@material-ui/core"
-import { TypographyProps } from "@material-ui/core/Typography/Typography"
 
 import clsx from "clsx"
 
