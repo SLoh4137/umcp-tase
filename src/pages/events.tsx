@@ -1,6 +1,7 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
+import moment from "moment"
 
 // Components
 import SEO from "components/seo"
@@ -9,14 +10,16 @@ import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
 import ButtonLink from "components/Button/ButtonLink"
-
 import EventsGrid from "components/Events/EventsGrid"
-import FutureEventsGrid from "components/Events/FutureEventsGrid"
-import PastEventsGrid from "components/Events/PastEventsGrid"
 
 // Hooks
 import useEvents from "hooks/useEvents"
-import { onlyPinnedEvents } from "utils/eventUtils"
+import {
+    getFutureEventsFunc,
+    getPastEventsFunc,
+    onlyPinnedEvents,
+    removePinnedEvents,
+} from "utils/eventUtils"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -30,10 +33,17 @@ type Props = PageProps &
 
 function EventPage(props: Props) {
     const { data, classes } = props
-    const events = useEvents({filterFunctions: [onlyPinnedEvents]})
     const { background } = data
 
     if (!background) throw new Error("Events background does not exist.")
+
+    const currentTime = moment()
+    const events = useEvents({})
+    const importantEvents = events.filter(onlyPinnedEvents)
+    const futureEvents = events.filter(getFutureEventsFunc(currentTime))
+    const pastEvents = events
+        .filter(getPastEventsFunc(currentTime))
+        .filter(removePinnedEvents)
 
     return (
         <>
@@ -45,15 +55,15 @@ function EventPage(props: Props) {
             </ParallaxBackground>
             <PageContent>
                 <Section title="Important Events" maxWidth="lg">
-                    <EventsGrid events={events} />
+                    <EventsGrid events={importantEvents} />
                 </Section>
 
                 <Section title="Upcoming Events" maxWidth="lg">
-                    <FutureEventsGrid />
+                    <EventsGrid events={futureEvents} />
                 </Section>
 
                 <Section title="Past Events" maxWidth="lg">
-                    <PastEventsGrid />
+                    <EventsGrid events={pastEvents} />
                 </Section>
 
                 <Section>
