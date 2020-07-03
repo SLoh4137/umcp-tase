@@ -51,10 +51,12 @@ collections:
       - {label: "Site Display Order", name: "order", widget: "number", default: 100, valueType: "int", min: 1}
       - {label: "Description", name: "body", widget: "markdown"}
   - name: order
+    identifier_field: title
     label: "Bio Order"
     create: false
     folder: "content/order"
     fields: 
+      - {label: "Title", name: "title", widget: "hidden", default: "Bio Order"}
       - {label: "Category", name: "category", widget: "hidden", default: "bio-order"}
       - {label: "Positions", name: "order", allow_add: true, widget: "list", collapsed: false, hint: "Positions can be dragged to be re-ordered", 
           field: {label: "Position", name: "position", widget: "string"}
