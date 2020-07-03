@@ -1,6 +1,6 @@
 ---
 title: Big/Little Week
-date: 2020-07-03T21:35:42.819Z
+date: 2019-09-19T00:00:00.000Z
 imgsrc: assets/biglittleweek.jpg
 category: event
 pinned: false
