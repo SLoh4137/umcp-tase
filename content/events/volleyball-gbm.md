@@ -1,6 +1,6 @@
 ---
 title: "Volleyball GBM "
-date: 2020-07-04T00:00:00.000Z
+date: 2019-10-22T00:00:00.000Z
 imgsrc: assets/volleyball.jpg
 category: event
 pinned: false
