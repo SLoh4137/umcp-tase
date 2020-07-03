@@ -2,6 +2,7 @@ import React from "react"
 import {
     Container,
     Grid,
+    GridProps,
     Theme,
     createStyles,
     withStyles,
@@ -9,7 +10,7 @@ import {
 } from "@material-ui/core"
 
 // Hooks
-import useEvents, { EventHookOptions, EventArrayType, } from "hooks/useEvents"
+import { EventArrayType, } from "hooks/useEvents"
 
 // Components
 import EventPreview from "./EventPreview"
@@ -34,6 +35,11 @@ type Props = WithStyles<typeof styles> & {
         events: EventArrayType
         showDescription?: boolean
         showFullDescription?: boolean
+        xs?: GridProps["xs"],
+        sm?: GridProps["sm"],
+        md?: GridProps["md"],
+        lg?: GridProps["lg"],
+        xl?: GridProps["xl"],
     }
 
 /**
@@ -48,6 +54,11 @@ function EventsGrid(props: Props) {
         showDescription = true,
         showFullDescription = false,
         events,
+        xs = 12,
+        sm = 4,
+        md = false,
+        lg = false,
+        xl = false
     } = props
 
     const noEventsText = events.length <= 0 ? <Text variant="h5" align="center">No events to show</Text> : <></>
@@ -66,8 +77,11 @@ function EventsGrid(props: Props) {
                     <Grid
                         item
                         className={classes.item}
-                        xs={12}
-                        sm={4}
+                        xs={xs}
+                        sm={sm}
+                        md={md}
+                        lg={lg}
+                        xl={xl}
                         key={event.node.id}
                     >
                         <EventPreview

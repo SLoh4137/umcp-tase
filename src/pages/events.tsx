@@ -55,7 +55,7 @@ function EventPage(props: Props) {
             </ParallaxBackground>
             <PageContent>
                 <Section title="Important Events" maxWidth="lg">
-                    <EventsGrid events={importantEvents} />
+                    <EventsGrid events={importantEvents} sm={6}/>
                 </Section>
 
                 <Section title="Upcoming Events" maxWidth="lg">
