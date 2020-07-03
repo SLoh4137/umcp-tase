@@ -54,7 +54,7 @@ const styles = (theme: Theme) =>
 type Props = WithStyles<typeof styles> &
     StyleProps & {
         image: GatsbyTypes.BackgroundImageFragment
-        children: React.ReactNode
+        children?: React.ReactNode
         justify?: GridProps["justify"]
     }
 
