@@ -10,8 +10,13 @@ import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
 import ButtonLink from "components/Button/ButtonLink"
 
+import EventsGrid from "components/Events/EventsGrid"
 import FutureEventsGrid from "components/Events/FutureEventsGrid"
 import PastEventsGrid from "components/Events/PastEventsGrid"
+
+// Hooks
+import useEvents from "hooks/useEvents"
+import { onlyPinnedEvents } from "utils/eventUtils"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -25,6 +30,7 @@ type Props = PageProps &
 
 function EventPage(props: Props) {
     const { data, classes } = props
+    const events = useEvents({filterFunctions: [onlyPinnedEvents]})
     const { background } = data
 
     if (!background) throw new Error("Events background does not exist.")
@@ -38,6 +44,10 @@ function EventPage(props: Props) {
                 </Text>
             </ParallaxBackground>
             <PageContent>
+                <Section title="Important Events" maxWidth="lg">
+                    <EventsGrid events={events} />
+                </Section>
+
                 <Section title="Upcoming Events" maxWidth="lg">
                     <FutureEventsGrid />
                 </Section>

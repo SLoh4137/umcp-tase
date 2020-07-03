@@ -42,25 +42,3 @@ export const onlyPinnedEvents: EventFilterFunction = (edge) => {
     // Event is pinned, so return true and keep it
     return pinned !== undefined && pinned
 }
-
-export function futureEvents(): EventFilterFunction {
-    const currentTime = moment()
-
-    return (edge) => {
-        if (!edge.node.frontmatter?.date) return false
-
-        const date = moment(edge.node.frontmatter.date) // Note may need to pass in date format for some browsers
-        return date.isAfter(currentTime) // returns true if the date is after the current time, so in the future
-    }
-}
-
-export function pastEvents(): EventFilterFunction {
-    const currentTime = moment()
-
-    return (edge) => {
-        if (!edge.node.frontmatter?.date) return false
-
-        const date = moment(edge.node.frontmatter.date) // Note may need to pass in date format for some browsers
-        return date.isBefore(currentTime) // returns true if the date is before the current time, so in the past
-    }
-}
