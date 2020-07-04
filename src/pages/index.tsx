@@ -35,6 +35,9 @@ const styles = (theme: Theme) =>
                 margin: theme.spacing(2),
             },
         },
+        bottomMargin: {
+            marginBottom: theme.spacing(2),
+        },
     })
 
 type Props = PageProps &
@@ -133,7 +136,12 @@ function IndexPage(props: Props) {
                         </Grid>
                     </Section>
                     <Section>
-                        <Text variant="h5" color="white" align="center">
+                        <Text
+                            variant="h5"
+                            color="white"
+                            align="center"
+                            className={classes.bottomMargin}
+                        >
                             Check out the others
                         </Text>
                         <ButtonLink
@@ -161,6 +169,7 @@ function IndexPage(props: Props) {
                         to="contact-us"
                         color="primary"
                         variant="contained"
+                        className={classes.bottomMargin}
                     >
                         Click Here!
                     </ButtonLink>

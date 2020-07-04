@@ -64,9 +64,12 @@ function ContactUsPage(props: Props) {
             </ParallaxBackground>
 
             <PageContent>
-                <Section title="Send us a message" maxWidth="lg">
+                <Section maxWidth="lg">
                     <Grid container spacing={5} alignItems="flex-start">
                         <Grid item xs={12} md={9}>
+                            <Text variant="h3" color="textSecondary" align="center">
+                            Send us a message
+                            </Text>
                             <ContactUsForm />
                         </Grid>
                         <Grid item xs={12} md={3}>
