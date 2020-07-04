@@ -61,31 +61,29 @@ function Footer(props: Props) {
         )
 
     return (
-        <footer className={classes.root}>
-            <Container>
-                <Grid
-                    container
-                    alignItems="center"
-                    justify="space-between"
-                    wrap="nowrap"
-                >
-                    <Grid item>
-                        <IconButton href={facebook}>
-                            <FacebookIcon />
-                        </IconButton>
+        <Container className={classes.root} maxWidth="lg">
+            <Grid
+                container
+                alignItems="center"
+                justify="space-between"
+                wrap="nowrap"
+            >
+                <Grid item>
+                    <IconButton href={facebook}>
+                        <FacebookIcon />
+                    </IconButton>
 
-                        <IconButton href={instagram}>
-                            <InstagramIcon />
-                        </IconButton>
-                    </Grid>
-                    <Grid item>
-                        <Text variant="subtitle1" color="textPrimary">
-                            {copyright}
-                        </Text>
-                    </Grid>
+                    <IconButton href={instagram}>
+                        <InstagramIcon />
+                    </IconButton>
                 </Grid>
-            </Container>
-        </footer>
+                <Grid item>
+                    <Text variant="subtitle1" color="textPrimary">
+                        {copyright}
+                    </Text>
+                </Grid>
+            </Grid>
+        </Container>
     )
 }
 
