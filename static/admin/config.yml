@@ -1,63 +1,117 @@
 backend:
-  name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
-  branch: master # Branch to update
-  repo: umcptasa/19-20website # Repo for pushing new commits. Make sure to replace with your repo!
+    name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
+    branch: master # Branch to update
+    repo: umcptasa/19-20website # Repo for pushing new commits. Make sure to replace with your repo!
 
 media_folder: static/assets
 public_folder: assets
 
 collections:
-  - name: events
-    label: "Events"
-    folder: "content/events"
-    create: true # whether or not new events can be added
-    slug: "{{slug}}" # unique URL for the created event
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Cover Image", name: "imgsrc", widget: "image"}
-      - {label: "Category", name: "category", widget: "hidden", default: "event"}
-      - {label: "Pinned", name: "pinned", widget: "boolean", 
-          required: false, default: false, hint: "Pinned to front page and events page"}
-      - {label: "Tags", name: "tags", widget: "select", multiple: true,
+    - name: events
+      label: "Events"
+      folder: "content/events"
+      create: true # whether or not new events can be added
+      slug: "{{slug}}" # unique URL for the created event
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Date", name: "date", widget: "datetime" }
+          - { label: "Cover Image", name: "imgsrc", widget: "image" }
+          - {
+                label: "Category",
+                name: "category",
+                widget: "hidden",
+                default: "event",
+            }
+          - {
+                label: "Pinned",
+                name: "pinned",
+                widget: "boolean",
+                required: false,
+                default: false,
+                hint: "Pinned to front page and events page",
+            }
+          - {
+                label: "Tags",
+                name: "tags",
+                widget: "select",
+                multiple: true,
 
-        # ADD MORE EVENT TAGS HERE
-          options: ["cultural", "social", "gbm", "planning"], 
-        }
+                # ADD MORE EVENT TAGS HERE
+                options: ["cultural", "social", "gbm", "planning"],
+            }
 
-      - {label: "Facebook Event Page Link", name: "link", widget: "string", minimal: true}
-      - {label: "Description", name: "body", widget: "markdown"}
-  - name: bios
-    identifier_field: name
-    label: "Bios"
-    folder: "content/bios"
-    create: true
-    fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Category", name: "category", widget: "hidden", default: "bio"}
-      - {label: "Profile Picture", name: "imgsrc", widget: "image"}
+          - {
+                label: "Facebook Event Page Link",
+                name: "link",
+                widget: "string",
+                minimal: true,
+            }
+          - { label: "Description", name: "body", widget: "markdown" }
+    - name: bios
+      identifier_field: name
+      label: "Bios"
+      folder: "content/bios"
+      create: true
+      fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - {
+                label: "Category",
+                name: "category",
+                widget: "hidden",
+                default: "bio",
+            }
+          - { label: "Profile Picture", name: "imgsrc", widget: "image" }
 
-      # This could be changed to a select widget that provides a dropdown of possible positions. 
-      # You would have to update the list of positions in this file though
-      # https://www.netlifycms.org/docs/widgets/#select
-      - {label: "Position", name: "position", widget: "string"} 
+          # This could be changed to a select widget that provides a dropdown of possible positions.
+          # You would have to update the list of positions in this file though
+          # https://www.netlifycms.org/docs/widgets/#select
+          - { label: "Position", name: "position", widget: "string" }
 
-      - {label: "Major(s)", name: "majors", widget: "string", hint: "Separate multiple majors with commas"}
+          - {
+                label: "Major(s)",
+                name: "majors",
+                widget: "string",
+                hint: "Separate multiple majors with commas",
+            }
 
-      # Currently a sort of bad way of determining sort order since changing order of one would require going
-      # through each one and changing. 
-      # An alternative is defining our own order somewhere else and syncing up with the list of possible values here
-      # That means someone who wants to change the display order would have to change it in code though and not via Netlify CMS
-      - {label: "Site Display Order", name: "order", widget: "number", default: 100, valueType: "int", min: 1}
-      - {label: "Description", name: "body", widget: "markdown"}
-  - name: order
-    identifier_field: title
-    label: "Bio Order"
-    create: false
-    folder: "content/order"
-    fields: 
-      - {label: "Title", name: "title", widget: "hidden", default: "Bio Order"}
-      - {label: "Category", name: "category", widget: "hidden", default: "bio-order"}
-      - {label: "Positions", name: "order", allow_add: true, widget: "list", collapsed: false, hint: "Positions can be dragged to be re-ordered", 
-          field: {label: "Position", name: "position", widget: "string"}
-        }
+          # Currently a sort of bad way of determining sort order since changing order of one would require going
+          # through each one and changing.
+          # An alternative is defining our own order somewhere else and syncing up with the list of possible values here
+          # That means someone who wants to change the display order would have to change it in code though and not via Netlify CMS
+          - {
+                label: "Site Display Order",
+                name: "order",
+                widget: "number",
+                default: 100,
+                valueType: "int",
+                min: 1,
+            }
+          - { label: "Description", name: "body", widget: "markdown" }
+    - name: order
+      identifier_field: title
+      label: "Bio Order"
+      create: false
+      folder: "content/order"
+      fields:
+          - {
+                label: "Title",
+                name: "title",
+                widget: "hidden",
+                default: "Bio Order",
+            }
+          - {
+                label: "Category",
+                name: "category",
+                widget: "hidden",
+                default: "bio-order",
+            }
+          - {
+                label: "Positions",
+                name: "order",
+                allow_add: true,
+                widget: "list",
+                collapsed: false,
+                hint: "Positions can be dragged to be re-ordered",
+                field:
+                    { label: "Position", name: "position", widget: "string" },
+            }
