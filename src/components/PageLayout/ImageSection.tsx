@@ -22,6 +22,11 @@ const styles = (theme: Theme) =>
             width: "100%",
             height: "100%",
             padding: theme.spacing(10),
+
+            [theme.breakpoints.down("xs")]: {
+                paddingLeft: theme.spacing(3),
+                paddingRight: theme.spacing(3),
+            }
         },
     })
 

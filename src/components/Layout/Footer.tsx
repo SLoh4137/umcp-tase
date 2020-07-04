@@ -69,7 +69,7 @@ function Footer(props: Props) {
             <Toolbar>
                 <Container>
                     <Grid container alignItems="center" justify="space-between" wrap="nowrap">
-                        <Grid item>
+                        <Grid item wrap="nowrap">
                             <IconButton href={facebook}>
                                 <FacebookIcon />
                             </IconButton>
