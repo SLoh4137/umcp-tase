@@ -107,7 +107,12 @@ function IndexPage(props: Props) {
                         for all the latest announcements!
                     </Text>
                     <EventsGrid events={events} />
-                    <ButtonLink to="events" variant="contained" color="primary">
+                    <ButtonLink
+                        to="events"
+                        variant="contained"
+                        color="primary"
+                        className={classes.bottomMargin}
+                    >
                         Upcoming and Past Events
                     </ButtonLink>
                 </Section>
