@@ -84,21 +84,24 @@ collections:
                 label: "Major(s)",
                 name: "majors",
                 widget: "list",
+                required: true,
                 allow_add: true,
-                hint: "Separate multiple majors with commas",
+                hint: "Separate multiple majors with commas. Spaces after commas will be automatically added",
             }
-          - { label: "Description", name: "body", widget: "markdown" }
+          - {
+                label: "Description",
+                name: "body",
+                widget: "markdown",
+                required: false,
+                default: "No bio",
+            }
     - name: options
       identifier_field: title
       label: "Editable Options"
       create: false
       folder: "content/options"
       fields:
-          - {
-                label: "Title",
-                name: "title",
-                widget: "string",
-            }
+          - { label: "Title", name: "title", widget: "string" }
           - {
                 label: "Category",
                 name: "category",
@@ -111,5 +114,5 @@ collections:
                 allow_add: true,
                 widget: "list",
                 collapsed: false,
-                hint: "Order of this list determines order on site where applicable",
+                hint: "Order of this list determines order on site where applicable. Spaces after commas will be automatically added",
             }

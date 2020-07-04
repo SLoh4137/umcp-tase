@@ -66,10 +66,9 @@ export default function useBios() {
     }
 
     const sortingOrder = data.order.frontmatter.options
-    const sortingFunction = (a: BioEdge, b: BioEdge) => {
+    const sortingFunction = (a: BioEdge, b: BioEdge) =>
         sortingOrder.indexOf(a.node.frontmatter?.position) -
-            sortingOrder.indexOf(b.node.frontmatter?.position)
-    }
+        sortingOrder.indexOf(b.node.frontmatter?.position)
 
     // @ts-ignore Sort does an in-place sort and data.allMarkdownRemark.edges is a readonly array.
     // Since we're not using data.allMarkdownRemark.edges again, it's okay if we use in-place
