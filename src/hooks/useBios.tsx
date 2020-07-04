@@ -49,15 +49,33 @@ export default function useBios() {
                     }
                 }
             }
+            order: markdownRemark(
+                frontmatter: { category: { eq: "bio-order" } }
+            ) {
+                frontmatter {
+                    bio_order
+                }
+            }
         }
     `)
 
-    if (!data.allMarkdownRemark?.edges || !data.allFile?.edges) {
+    if (
+        !data.allMarkdownRemark?.edges ||
+        !data.allFile?.edges ||
+        !data.order?.frontmatter?.bio_order
+    ) {
         throw new Error("Error in formation of Bio query")
     }
 
-    return mapImgToNode<BioNode>(
-        data.allMarkdownRemark.edges,
-        data.allFile.edges
-    )
+    const sortingOrder = data.order.frontmatter.bio_order
+    const sortingFunction = (a: BioEdge, b: BioEdge) => {
+        sortingOrder.indexOf(a.node.frontmatter?.position) -
+            sortingOrder.indexOf(b.node.frontmatter?.position)
+    }
+
+    // @ts-ignore Sort does an in-place sort and data.allMarkdownRemark.edges is a readonly array.
+    // Since we're not using data.allMarkdownRemark.edges again, it's okay if we use in-place
+    const bios = data.allMarkdownRemark.edges.sort(sortingFunction)
+
+    return mapImgToNode<BioNode>(bios, data.allFile.edges)
 }
