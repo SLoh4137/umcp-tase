@@ -63,7 +63,7 @@ collections:
                 widget: "hidden",
                 default: "bio",
             }
-          - { label: "Profile Picture", name: "imgsrc", widget: "image" }
+          - { label: "Profile Picture", name: "imgsrc", widget: "image", hint: "Square images are preferred!" }
 
           # This could be changed to a select widget that provides a dropdown of possible positions.
           # You would have to update the list of positions in this file though
