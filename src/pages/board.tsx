@@ -11,9 +11,10 @@ import {
 
 import SEO from "components/seo"
 import useBios from "hooks/useBios"
-import Bio from "components/Bios/Bio"
+import BioGrid from "components/Bios/BioGrid"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
+import Section from "components/PageLayout/Section"
 import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
@@ -29,10 +30,13 @@ type Props = WithStyles<typeof styles> &
 
 function BoardPage(props: Props) {
     const { data, classes } = props
-    const bioData = useBios()
     const { boardBackground } = data
-
     if (!boardBackground) throw new Error("Board background does not exist.")
+
+    const bios = useBios()
+    const presidents = bios.slice(0, 2)
+    const rest = bios.slice(2)
+
     return (
         <>
             <SEO title="Board" />
@@ -42,28 +46,10 @@ function BoardPage(props: Props) {
                 </Text>
             </ParallaxBackground>
             <PageContent>
-                <Container maxWidth="xl">
-                    <Grid
-                        container
-                        spacing={3}
-                        alignItems="stretch"
-                        alignContent="stretch"
-                        justify="center"
-                    >
-                        {bioData.map((bio) => (
-                            <Grid
-                                item
-                                className={classes.gridItem}
-                                xs={12}
-                                sm={4}
-                                lg={3}
-                                key={bio.node.id}
-                            >
-                                <Bio bioData={bio} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Container>
+                <Section maxWidth="lg">
+                    <BioGrid bios={presidents} />
+                    <BioGrid bios={rest} />
+                </Section>
             </PageContent>
         </>
     )
