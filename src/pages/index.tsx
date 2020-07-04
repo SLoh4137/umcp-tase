@@ -169,7 +169,6 @@ function IndexPage(props: Props) {
                         to="contact-us"
                         color="primary"
                         variant="contained"
-                        className={classes.bottomMargin}
                     >
                         Click Here!
                     </ButtonLink>

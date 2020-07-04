@@ -7,6 +7,7 @@ const styles = (theme: Theme) =>
         main: {
             background: "#FFFFFF",
             position: "relative",
+            paddingBottom: theme.spacing(2),
             zIndex: 3,
         },
         mainRaised: {
