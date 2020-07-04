@@ -65,7 +65,17 @@ collections:
           # This could be changed to a select widget that provides a dropdown of possible positions.
           # You would have to update the list of positions in this file though
           # https://www.netlifycms.org/docs/widgets/#select
-          - { label: "Position", name: "position", widget: "string" }
+          - {
+                label: "Position",
+                name: "position",
+                widget: "relation",
+                collection: "order",
+                file: "bio-order",
+                hint: "New positions can be added in the Bio Order collection",
+                valueField: "bio-order.*",
+                searchFields: ["bio-order.*"],
+                default: "select",
+            }
 
           - {
                 label: "Major(s)",
@@ -107,7 +117,7 @@ collections:
             }
           - {
                 label: "Positions",
-                name: "order",
+                name: "bio-order",
                 allow_add: true,
                 widget: "list",
                 collapsed: false,

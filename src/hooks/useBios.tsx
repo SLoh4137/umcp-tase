@@ -18,7 +18,6 @@ export default function useBios() {
         query Bio {
             allMarkdownRemark(
                 filter: { frontmatter: { category: { eq: "bio" } } }
-                sort: { fields: frontmatter___order, order: ASC }
             ) {
                 edges {
                     node {
@@ -29,7 +28,6 @@ export default function useBios() {
                             position
                             imgsrc
                             category
-                            order
                         }
                         html
                     }

@@ -56,6 +56,13 @@ module.exports = {
             },
         },
         {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: "order",
+                path: `${__dirname}/content/order/`,
+            },
+        },
+        {
             resolve: `gatsby-plugin-prefetch-google-fonts`,
             options: {
                 fonts: [
