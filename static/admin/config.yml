@@ -83,19 +83,6 @@ collections:
                 widget: "string",
                 hint: "Separate multiple majors with commas",
             }
-
-          # Currently a sort of bad way of determining sort order since changing order of one would require going
-          # through each one and changing.
-          # An alternative is defining our own order somewhere else and syncing up with the list of possible values here
-          # That means someone who wants to change the display order would have to change it in code though and not via Netlify CMS
-          - {
-                label: "Site Display Order",
-                name: "order",
-                widget: "number",
-                default: 100,
-                valueType: "int",
-                min: 1,
-            }
           - { label: "Description", name: "body", widget: "markdown" }
     - name: order
       identifier_field: title
