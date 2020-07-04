@@ -30,13 +30,7 @@ type Props = WithStyles<typeof styles> & {
     xl?: GridProps["xl"]
 }
 
-/**
- * Component that displays the events in a grid.
- * Note that the data could be further abstracted from the UI aspect by moving the useEvents hook to another component
- * That way we can utilize just the Grid portion of this component
- * @param props
- */
-function EventsGrid(props: Props) {
+function BioGrid(props: Props) {
     const {
         classes,
         bios,
@@ -82,4 +76,4 @@ function EventsGrid(props: Props) {
     )
 }
 
-export default withStyles(styles)(EventsGrid)
+export default withStyles(styles)(BioGrid)
