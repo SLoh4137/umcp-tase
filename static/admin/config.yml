@@ -33,11 +33,14 @@ collections:
           - {
                 label: "Tags",
                 name: "tags",
-                widget: "select",
+                widget: "relation",
+                collection: "options",
+                file: "event-tags",
+                hint: "New tags can be added in the Editable Options collection",
+                valueField: "options.*",
+                searchFields: ["options.*"],
+                default: "select",
                 multiple: true,
-
-                # ADD MORE EVENT TAGS HERE
-                options: ["cultural", "social", "gbm", "planning"],
             }
 
           - {
@@ -69,11 +72,11 @@ collections:
                 label: "Position",
                 name: "position",
                 widget: "relation",
-                collection: "order",
+                collection: "options",
                 file: "bio-order",
-                hint: "New positions can be added in the Bio Order collection",
-                valueField: "bio-order.*",
-                searchFields: ["bio-order.*"],
+                hint: "New positions can be added in the Editable Options collection",
+                valueField: "options.*",
+                searchFields: ["options.*"],
                 default: "select",
             }
 
@@ -84,31 +87,28 @@ collections:
                 hint: "Separate multiple majors with commas",
             }
           - { label: "Description", name: "body", widget: "markdown" }
-    - name: order
+    - name: options
       identifier_field: title
-      label: "Bio Order"
+      label: "Editable Options"
       create: false
-      folder: "content/order"
+      folder: "content/options"
       fields:
           - {
                 label: "Title",
                 name: "title",
-                widget: "hidden",
-                default: "Bio Order",
+                widget: "string",
             }
           - {
                 label: "Category",
                 name: "category",
                 widget: "hidden",
-                default: "bio-order",
+                default: "options",
             }
           - {
-                label: "Positions",
-                name: "bio-order",
+                label: "Options",
+                name: "options",
                 allow_add: true,
                 widget: "list",
                 collapsed: false,
-                hint: "Positions can be dragged to be re-ordered",
-                field:
-                    { label: "Position", name: "position", widget: "string" },
+                hint: "Order of this list determines order on site where applicable",
             }

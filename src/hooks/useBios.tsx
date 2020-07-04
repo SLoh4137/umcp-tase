@@ -49,11 +49,9 @@ export default function useBios() {
                     }
                 }
             }
-            order: markdownRemark(
-                frontmatter: { category: { eq: "bio-order" } }
-            ) {
+            order: markdownRemark(fileAbsolutePath: { regex: "/bio-order/" }) {
                 frontmatter {
-                    bio_order
+                    options
                 }
             }
         }
@@ -62,12 +60,12 @@ export default function useBios() {
     if (
         !data.allMarkdownRemark?.edges ||
         !data.allFile?.edges ||
-        !data.order?.frontmatter?.bio_order
+        !data.order?.frontmatter?.options
     ) {
         throw new Error("Error in formation of Bio query")
     }
 
-    const sortingOrder = data.order.frontmatter.bio_order
+    const sortingOrder = data.order.frontmatter.options
     const sortingFunction = (a: BioEdge, b: BioEdge) => {
         sortingOrder.indexOf(a.node.frontmatter?.position) -
             sortingOrder.indexOf(b.node.frontmatter?.position)

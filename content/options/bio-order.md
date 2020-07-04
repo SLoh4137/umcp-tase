@@ -1,7 +1,7 @@
 ---
-title: Bio Order
-category: bio-order
-bio-order:
+title: Bio Positions Order
+category: options
+options:
   - Co-President
   - Secretary
   - Internal VP
