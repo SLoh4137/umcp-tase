@@ -7,4 +7,3 @@ majors:
   - Electrical Engineering
   - Computer Science
 ---
-No bio
