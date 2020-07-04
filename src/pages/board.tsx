@@ -41,8 +41,11 @@ function BoardPage(props: Props) {
         <>
             <SEO title="Board" />
             <ParallaxBackground image={boardBackground}>
-                <Text variant="h3" color="white" align="center">
+                <Text variant="h3" color="white" align="center" paragraph>
                     Meet the Board
+                </Text>
+                <Text variant="h6" color="white" align="center">
+                Check out the people who make it all happen!
                 </Text>
             </ParallaxBackground>
             <PageContent>

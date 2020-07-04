@@ -65,7 +65,7 @@ function ContactUsPage(props: Props) {
 
             <PageContent>
                 <Section maxWidth="lg">
-                    <Grid container spacing={5} alignItems="flex-start">
+                    <Grid container spacing={5} alignItems="center">
                         <Grid item xs={12} md={9}>
                             <Text variant="h3" color="textSecondary" align="center">
                             Send us a message
