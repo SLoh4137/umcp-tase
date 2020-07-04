@@ -3,6 +3,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp"
 import {
     Button,
     Container,
+    CircularProgress,
     Grid,
     Theme,
     createStyles,
@@ -12,6 +13,7 @@ import {
 } from "@material-ui/core"
 import EmailIcon from "@material-ui/icons/Email"
 import { ContainerProps } from "@material-ui/core/Container"
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -44,7 +46,7 @@ type Props = WithStyles<typeof styles> & {
 function Newsletter(props: Props) {
     const { classes, maxWidth = "lg" } = props
     const [email, setEmail] = useState<string>("")
-    const [msg, setMsg] = useState<string>()
+    const [msg, setMsg] = useState<React.ReactNode>()
     const [disabled, setDisabled] = useState<boolean>(false)
 
     const handleChange = (event: React.FormEvent<EventTarget>) =>
@@ -53,19 +55,34 @@ function Newsletter(props: Props) {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
         setDisabled(true)
-        setMsg("Sending...")
+        setMsg(
+            <Text align="center">
+                Sending... <CircularProgress size={20} />
+            </Text>
+        )
 
         const response = await addToMailchimp(email)
         if (response.result === "error") {
             if (response.msg.toLowerCase().includes("already subscribed")) {
-                setMsg("You are already on this list!")
+                setMsg(
+                    <Text color="error" align="center">
+                        You are already on this list!
+                    </Text>
+                )
             } else {
-                setMsg("Some error occured while subscribing to list.")
+                setMsg(
+                    <Text color="error" align="center">
+                        Some error occured while subscribing to list.
+                    </Text>
+                )
             }
             setDisabled(false)
         } else {
             setMsg(
-                "Successfully added to list! Please check your email and confirm registration."
+                <Text color="success" align="center">
+                    Successfully added to list! Please check your email and
+                    confirm registration.
+                </Text>
             )
         }
     }
@@ -73,7 +90,13 @@ function Newsletter(props: Props) {
     return (
         <Container maxWidth={maxWidth} className={classes.root}>
             <form onSubmit={handleSubmit}>
-                <Grid container spacing={2} alignItems="center">
+                <Grid
+                    container
+                    spacing={2}
+                    alignItems="center"
+                    alignContent="center"
+                    justify="center"
+                >
                     <Grid item xs={1}>
                         <EmailIcon className={classes.icon} />
                     </Grid>
@@ -91,6 +114,7 @@ function Newsletter(props: Props) {
                     <Grid item xs={12} sm={3}>
                         <Button
                             disabled={disabled}
+                            type="submit"
                             className={classes.button}
                             fullWidth
                             variant="contained"
@@ -99,6 +123,13 @@ function Newsletter(props: Props) {
                             Subscribe
                         </Button>
                     </Grid>
+                    {msg !== undefined ? (
+                        <Grid item xs={12}>
+                            {msg}
+                        </Grid>
+                    ) : (
+                        <></>
+                    )}
                 </Grid>
             </form>
         </Container>
