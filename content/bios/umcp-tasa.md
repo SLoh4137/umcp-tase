@@ -1,11 +1,10 @@
 ---
-name: UMCP TASA
+name: Angela Pan
 category: bio
-imgsrc: assets/jiufen-teahouse-night.jpg
+imgsrc: assets/copresident1.jpg
 position: Co-President
-majors: 
+majors:
   - Computer Science
-  - Music
+  - Psychology
 ---
-
-A wonderful position that can **test** many things
+I’m Angela Pan, TASA’s #1 fan. I’m a junior CS and psychology major and I play the villager in Smash. Go TASA.
