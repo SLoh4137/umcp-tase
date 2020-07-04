@@ -3,7 +3,7 @@ title: skribbl.io GBM
 date: 2020-04-05T00:00:49.593Z
 imgsrc: assets/skribble.jpg
 category: event
-pinned: false
+pinned: true
 tags:
   - social
   - gbm
