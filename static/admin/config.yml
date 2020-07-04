@@ -83,7 +83,8 @@ collections:
           - {
                 label: "Major(s)",
                 name: "majors",
-                widget: "string",
+                widget: "list",
+                allow_add: true,
                 hint: "Separate multiple majors with commas",
             }
           - { label: "Description", name: "body", widget: "markdown" }
