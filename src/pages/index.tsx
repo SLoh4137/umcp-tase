@@ -123,7 +123,7 @@ function IndexPage(props: Props) {
                             Want to see who makes it all happen?
                         </Text>
                         <Text variant="subtitle1" color="white" align="center">
-                            Check out our co-presidents!
+                            Meet our co-presidents!
                         </Text>
                     </Section>
                     <Section maxWidth="lg">
