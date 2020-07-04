@@ -134,17 +134,18 @@ function EventPreview(props: Props) {
                                     data.site?.siteMetadata?.dateFormat
                                 )}
                             </Text>
-                            <ClientOnly>
-                                <Collapse collapsedHeight={110} in={showFullDescription}>
-                                    {showDescription ? (
-                                        <MarkdownContent
-                                            content={event.node.html}
-                                        />
-                                    ) : (
-                                        <></>
-                                    )}
-                                </Collapse>
-                            </ClientOnly>
+                            <Collapse
+                                collapsedHeight={110}
+                                in={showFullDescription}
+                            >
+                                {showDescription ? (
+                                    <MarkdownContent
+                                        content={event.node.html}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </Collapse>
                         </CardContent>
                     </CardActionArea>
                 </Link>
