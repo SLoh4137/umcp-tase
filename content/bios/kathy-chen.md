@@ -2,5 +2,5 @@
 name: Kathy Chen
 category: bio
 imgsrc: assets/alumni2.jpg
-position: Alumni Advisor
+position: Senior Advisor
 ---
