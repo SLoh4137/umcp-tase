@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core"
-import Img from "gatsby-image"
+import Img, { GatsbyImageProps } from "gatsby-image"
+import clsx from "clsx"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -11,25 +12,25 @@ const styles = (theme: Theme) =>
         },
     })
 
-type Props = WithStyles<typeof styles> & {
-    image: GatsbyTypes.Maybe<GatsbyTypes.RaisedImageFragment>
-    name?: string
-}
+type Props = WithStyles<typeof styles> &
+    GatsbyImageProps & {
+        image: GatsbyTypes.Maybe<GatsbyTypes.RaisedImageFragment>
+    }
 
-function ImageSection(props: Props) {
-    const { classes, image, name = "Raised image" } = props
+function RaisedImage(props: Props) {
+    const { classes, className, image, ...rest } = props
     if (!image) throw new Error(`${name} does not exist`)
 
     return (
         <Img
-            className={classes.root}
+            className={clsx(classes.root, className)}
             fluid={image.childImageSharp?.fluid}
-            alt={name}
+            {...rest}
         />
     )
 }
 
-export default withStyles(styles)(ImageSection)
+export default withStyles(styles)(RaisedImage)
 
 export const raisedImageQueryFragment = graphql`
     fragment RaisedImage on File {

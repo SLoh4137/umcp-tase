@@ -148,19 +148,19 @@ function AboutPage(props: Props) {
 
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={4}>
-                            <RaisedImage image={pic1} name="Angela big little"/>
+                            <RaisedImage image={pic1} alt="Angela big little"/>
                         </Grid>
                         <Grid item xs={false} sm={4}>
-                            <RaisedImage image={pic2} name="Nathan big little"/>
+                            <RaisedImage image={pic2} alt="Nathan big little"/>
                         </Grid>
                         <Grid item xs={false} sm={4}>
-                            <RaisedImage image={pic3} name="Rebecca big little"/>
+                            <RaisedImage image={pic3} alt="Rebecca big little"/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <RaisedImage image={pic4} name="Stephan big little"/>
+                            <RaisedImage image={pic4} alt="Stephan big little"/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <RaisedImage image={pic5} name="Justin family tree"/>
+                            <RaisedImage image={pic5} alt="Justin family tree"/>
                         </Grid>
                     </Grid>
                 </Section>

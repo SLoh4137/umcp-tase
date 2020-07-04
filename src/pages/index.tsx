@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, PageProps } from "gatsby"
 import {
     Theme,
+    Grid,
     createStyles,
     withStyles,
     WithStyles,
@@ -20,9 +21,11 @@ import Newsletter from "components/Mailchimp/Newsletter"
 import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
 import ImageSection from "components/PageLayout/ImageSection"
+import BioPreview from "components/Bios/BioPreview"
 
 // Hooks
 import useEvents from "hooks/useEvents"
+import useBios from "hooks/useBios"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -43,6 +46,7 @@ function IndexPage(props: Props) {
     const { data, classes } = props
     const { mainBackground, presidentBackground, newsletterBackground } = data
     const events = useEvents({ amount: 3 })
+    const presidentBios = useBios().slice(0, 2)
 
     if (!mainBackground) throw new Error("Main background does not exist.")
     if (!presidentBackground)
@@ -113,6 +117,20 @@ function IndexPage(props: Props) {
                         <Text variant="subtitle1" color="white" align="center">
                             Check out our co-presidents!
                         </Text>
+                    </Section>
+                    <Section maxWidth="lg">
+                        <Grid
+                            container
+                            alignItems="stretch"
+                            justify="center"
+                            spacing={3}
+                        >
+                            {presidentBios.map((bio) => (
+                                <Grid item xs={12} lg={6} key={bio.node.id}>
+                                    <BioPreview bioData={bio} />
+                                </Grid>
+                            ))}
+                        </Grid>
                     </Section>
                     <Section>
                         <Text variant="h5" color="white" align="center">

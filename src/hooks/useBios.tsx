@@ -30,6 +30,7 @@ export default function useBios() {
                             category
                         }
                         html
+                        excerpt(format: HTML, truncate: true, pruneLength: 200)
                     }
                 }
             }
