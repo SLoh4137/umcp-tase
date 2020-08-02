@@ -2,7 +2,7 @@
 name: Autumn Chiu
 category: bio
 imgsrc: assets/ivp.jpg
-position: Internal VP
+position: Co-President
 majors:
   - Computer Science
 ---
