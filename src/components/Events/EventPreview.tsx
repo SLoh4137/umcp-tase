@@ -143,7 +143,7 @@ function EventPreview(props: Props) {
                     </Grid>
                     <Grid item>
                         <ButtonLink size="small" to={slug} variant="contained">
-                            Read More
+                            Event Details
                         </ButtonLink>
                     </Grid>
                 </Grid>
