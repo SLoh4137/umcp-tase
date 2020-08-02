@@ -1,8 +1,8 @@
 ---
 name: Dotson Hsing
 category: bio
-imgsrc: assets/cohistorian1.jpg
-position: Historian
+imgsrc: assets/dotson-hsing-senior-advisor.png
+position: Senior Advisor
 majors:
   - Computer Science
   - Piano Performance
