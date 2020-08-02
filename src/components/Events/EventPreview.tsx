@@ -1,14 +1,10 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import moment from "moment"
-import Img from "gatsby-image"
 import {
     Button,
     Card,
-    CardActionArea,
     CardActions,
-    CardContent,
-    Collapse,
     Grid,
     Theme,
     createStyles,
@@ -24,6 +20,11 @@ import ClientOnly from "components/General/ClientOnly"
 // Types
 import { EventType } from "hooks/useEvents"
 
+// Hooks
+import useDateFormat from "hooks/useDateFormat"
+import ColoredShadowImage from "components/General/ColoredShadowImage"
+import ButtonLink from "components/Button/ButtonLink"
+
 const styles = (theme: Theme) =>
     createStyles({
         root: {
@@ -36,13 +37,10 @@ const styles = (theme: Theme) =>
             },
         },
         content: {
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            flexShrink: 1,
+            marginTop: theme.spacing(2),
         },
-        header: {
-            paddingBottom: 0,
+        text: {
+            textAlign: "center",
         },
         link: {
             textDecoration: "none",
@@ -57,23 +55,8 @@ const styles = (theme: Theme) =>
             margin: 0,
             marginTop: theme.spacing(1),
         },
-        action: {
-            //display: "flex",
-            flexGrow: 1,
-            margin: 0,
-            marginLeft: theme.spacing(1),
-            marginRight: theme.spacing(1),
-            paddingTop: 0,
-        },
-        grow: {
-            flexGrow: 1,
-        },
         tags: {
             fontSize: "10px",
-        },
-
-        button: {
-            //marginLeft: "auto",
         },
     })
 
@@ -90,15 +73,7 @@ function EventPreview(props: Props) {
         showDescription = true,
         showFullDescription = false,
     } = props
-    const data = useStaticQuery<GatsbyTypes.DateFormatQuery>(graphql`
-        query DateFormat {
-            site {
-                siteMetadata {
-                    dateFormat
-                }
-            }
-        }
-    `)
+    const dateFormat = useDateFormat()
 
     if (!event.node.frontmatter) {
         throw new Error("Frontmatter does not exist")
@@ -108,72 +83,68 @@ function EventPreview(props: Props) {
         throw new Error("Slug not valid")
     }
 
-    const { title, tags, date } = event.node.frontmatter
+    const { title, tags, date, link } = event.node.frontmatter
     const { slug } = event.node.fields
 
     return (
-        <Card className={classes.root}>
-            <div className={classes.content}>
-                <Link className={classes.link} to={slug}>
-                    <CardActionArea>
-                        <Img fluid={event.image.childImageSharp?.fluid} />
-                        <CardContent className={classes.header}>
-                            <Text
-                                variant="h4"
-                                className={classes.title}
-                                color="textSecondary"
-                            >
-                                {title}
-                            </Text>
-                            <Text
-                                variant="subtitle1"
-                                className={classes.date}
-                                color="textPrimary"
-                            >
-                                {moment(date).format(
-                                    data.site?.siteMetadata?.dateFormat
-                                )}
-                            </Text>
-                            <Collapse
-                                collapsedHeight={110}
-                                in={showFullDescription}
-                            >
-                                {showDescription ? (
-                                    <MarkdownContent
-                                        content={event.node.html}
-                                    />
-                                ) : (
-                                    <></>
-                                )}
-                            </Collapse>
-                        </CardContent>
-                    </CardActionArea>
-                </Link>
-            </div>
+        <Card elevation={0}>
+            <Link to={slug}>
+                <ColoredShadowImage
+                    image={event.image}
+                    alt={`${title} event image`}
+                />
+            </Link>
 
-            <CardActions className={classes.action}>
-                <Grid container alignItems="flex-end" justify="space-between">
-                    <Grid item xs={6}>
-                        <div className={classes.tags}>
-                            {/* {tags ? tags.map(tag => <TagLink tag={tag} key={tag} />) : <></>} */}
-                            {tags ? (
-                                tags.map((tag) => {
-                                    ;<Text variant="caption">{tag}</Text>
-                                })
-                            ) : (
-                                <></>
-                            )}
-                        </div>
+            {/* <CardContent> */}
+
+            <Grid
+                container
+                className={classes.content}
+                direction="column"
+                alignItems="center"
+                spacing={1}
+            >
+                <Grid item>
+                    <Text variant="subtitle1" color="primary">
+                        {moment(date).format(dateFormat)}
+                    </Text>
+                </Grid>
+                <Grid item>
+                    <Text variant="h5" color="textSecondary" align="center">
+                        {title}
+                    </Text>
+                </Grid>
+                <Grid item>
+                    {/* <Collapse collapsedHeight={110} in={showFullDescription}> */}
+                    {showDescription ? (
+                        <MarkdownContent
+                            // className={classes.text}
+                            content={event.node.html}
+                        />
+                    ) : (
+                        <></>
+                    )}
+                    {/* </Collapse> */}
+                </Grid>
+            </Grid>
+            {/* </CardContent> */}
+
+            <CardActions>
+                <Grid
+                    container
+                    alignItems="center"
+                    justify="center"
+                    spacing={2}
+                >
+                    <Grid item>
+                        <Button size="small" href={link} variant="contained">
+                            FB
+                        </Button>
                     </Grid>
                     <Grid item>
-                        <Button
-                            className={classes.button}
-                            color="secondary"
-                            size="small"
-                            href={slug}
-                        >
+                        <ButtonLink size="small" to={slug} variant="contained">
                             Read More
-                        </Button>
+                        </ButtonLink>
                     </Grid>
                 </Grid>
             </CardActions>

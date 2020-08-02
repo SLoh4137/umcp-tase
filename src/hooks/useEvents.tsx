@@ -45,6 +45,7 @@ export default function useEvents(options: EventHookOptions) {
                             category
                             imgsrc
                             pinned
+                            link
                         }
                         html
                         id
@@ -59,11 +60,7 @@ export default function useEvents(options: EventHookOptions) {
                     node {
                         id
                         relativePath
-                        childImageSharp {
-                            fluid {
-                                ...GatsbyImageSharpFluid_withWebp
-                            }
-                        }
+                        ...RaisedImage
                     }
                 }
             }
