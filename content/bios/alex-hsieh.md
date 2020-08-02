@@ -1,5 +1,5 @@
 ---
-name: Rebecca LI
+name: Rebecca Li
 category: bio
 imgsrc: assets/rebecca-li-aasu.jpg
 position: AASU Rep
