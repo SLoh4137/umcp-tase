@@ -15,7 +15,6 @@ import {
 // Components
 import Text from "components/Typography/Text"
 import MarkdownContent from "components/General/MarkdownContent"
-import ClientOnly from "components/General/ClientOnly"
 
 // Types
 import { EventType } from "hooks/useEvents"
@@ -95,8 +94,6 @@ function EventPreview(props: Props) {
                 />
             </Link>
 
-            {/* <CardContent> */}
-
             <Grid
                 container
                 className={classes.content}
@@ -115,7 +112,6 @@ function EventPreview(props: Props) {
                     </Text>
                 </Grid>
                 <Grid item>
-                    {/* <Collapse collapsedHeight={110} in={showFullDescription}> */}
                     {showDescription ? (
                         <MarkdownContent
                             // className={classes.text}
@@ -124,10 +120,8 @@ function EventPreview(props: Props) {
                     ) : (
                         <></>
                     )}
-                    {/* </Collapse> */}
                 </Grid>
             </Grid>
-            {/* </CardContent> */}
 
             <CardActions>
                 <Grid
