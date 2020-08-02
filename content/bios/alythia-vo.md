@@ -2,7 +2,7 @@
 name: Alythia Vo
 category: bio
 imgsrc: assets/secretary.jpg
-position: Secretary
+position: Co-President
 majors:
   - Neurobiology and Physiology
   - Spanish
