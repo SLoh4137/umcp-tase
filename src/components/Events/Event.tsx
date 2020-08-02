@@ -72,7 +72,8 @@ function Event(props: Props) {
         showDescription = true,
         showFullDescription = false,
     } = props
-    const dateFormat = useDateFormat()
+    // const dateFormat = useDateFormat()
+    const dateFormat = "M/D"
 
     if (!event.node.frontmatter) {
         throw new Error("Frontmatter does not exist")
@@ -102,15 +103,21 @@ function Event(props: Props) {
                 spacing={1}
             >
                 <Grid item>
-                    <Text variant="subtitle1" color="primary">
+                    <Text variant="subtitle2" color="primary">
                         {moment(date).format(dateFormat)}
                     </Text>
                 </Grid>
                 <Grid item>
-                    <Text variant="h5" color="textSecondary" align="center">
-                        {title}
+                    <Text
+                        variant="h6"
+                        color="textSecondary"
+                        align="center"
+                        heading
+                    >
+                        <b>{title}</b>
                     </Text>
                 </Grid>
+
                 <Grid item>
                     {showDescription ? (
                         <MarkdownContent

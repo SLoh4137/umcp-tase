@@ -69,7 +69,12 @@ function EventPreview(props: Props) {
                 alignItems="center"
             >
                 <Grid item>
-                    <Text variant="h6" color="textSecondary" align="center">
+                    <Text
+                        variant="h6"
+                        color="textSecondary"
+                        align="center"
+                        heading
+                    >
                         <b>{title}</b>
                     </Text>
                 </Grid>
@@ -84,10 +89,10 @@ function EventPreview(props: Props) {
                     )}
                 </Grid>
                 <Grid item>
-                        <ButtonLink size="small" to={slug} variant="contained">
-                            Event Details
-                        </ButtonLink>
-                    </Grid>
+                    <ButtonLink size="small" to={slug} variant="contained">
+                        Event Details
+                    </ButtonLink>
+                </Grid>
             </Grid>
         </Card>
     )

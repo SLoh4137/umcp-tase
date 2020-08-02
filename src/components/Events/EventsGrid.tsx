@@ -46,11 +46,13 @@ function EventsGrid(props: Props) {
         <GridWithItems {...rest}>
             {events.length <= 0
                 ? [
-                      <Text variant="h5" align="center">
+                      <Text variant="h5" align="center" key={1}>
                           No events to show
                       </Text>,
                   ]
-                : events.map((event) => <Event event={event} />)}
+                : events.map((event) => (
+                      <Event event={event} key={event.node.id} />
+                  ))}
         </GridWithItems>
     )
 }

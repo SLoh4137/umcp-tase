@@ -2,6 +2,7 @@
 
 declare namespace GatsbyTypes {
 type Maybe<T> = T | undefined;
+type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 type Scalars = {
   ID: string;
@@ -1877,7 +1878,7 @@ type Query_allSitePageArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<DateQueryOperatorInput>;
+  port: Maybe<IntQueryOperatorInput>;
   host: Maybe<StringQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -1990,7 +1991,7 @@ type Query_allSitePluginArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Date']>;
+  readonly port: Maybe<Scalars['Int']>;
   readonly host: Maybe<Scalars['String']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
@@ -2002,14 +2003,6 @@ type Site = Node & {
 
 
 type Site_buildTimeArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
-};
-
-
-type Site_portArgs = {
   formatString: Maybe<Scalars['String']>;
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
@@ -2303,7 +2296,7 @@ enum SiteFieldsEnum {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<DateQueryOperatorInput>;
+  readonly port: Maybe<IntQueryOperatorInput>;
   readonly host: Maybe<StringQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -2535,9 +2528,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___aliases___root = 'pluginCreator.pluginOptions.aliases.root',
   pluginCreator___pluginOptions___name = 'pluginCreator.pluginOptions.name',
   pluginCreator___pluginOptions___path = 'pluginCreator.pluginOptions.path',
-  pluginCreator___pluginOptions___fonts = 'pluginCreator.pluginOptions.fonts',
-  pluginCreator___pluginOptions___fonts___family = 'pluginCreator.pluginOptions.fonts.family',
-  pluginCreator___pluginOptions___fonts___variants = 'pluginCreator.pluginOptions.fonts.variants',
+  pluginCreator___pluginOptions___google___families = 'pluginCreator.pluginOptions.google.families',
   pluginCreator___pluginOptions___endpoint = 'pluginCreator.pluginOptions.endpoint',
   pluginCreator___pluginOptions___timeout = 'pluginCreator.pluginOptions.timeout',
   pluginCreator___pluginOptions___maxWidth = 'pluginCreator.pluginOptions.maxWidth',
@@ -2752,9 +2743,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___aliases___root = 'pluginOptions.aliases.root',
   pluginOptions___name = 'pluginOptions.name',
   pluginOptions___path = 'pluginOptions.path',
-  pluginOptions___fonts = 'pluginOptions.fonts',
-  pluginOptions___fonts___family = 'pluginOptions.fonts.family',
-  pluginOptions___fonts___variants = 'pluginOptions.fonts.variants',
+  pluginOptions___google___families = 'pluginOptions.google.families',
   pluginOptions___endpoint = 'pluginOptions.endpoint',
   pluginOptions___timeout = 'pluginOptions.timeout',
   pluginOptions___maxWidth = 'pluginOptions.maxWidth',
@@ -2887,7 +2876,7 @@ type SitePluginPluginOptions = {
   readonly aliases: Maybe<SitePluginPluginOptionsAliases>;
   readonly name: Maybe<Scalars['String']>;
   readonly path: Maybe<Scalars['String']>;
-  readonly fonts: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsFonts>>>;
+  readonly google: Maybe<SitePluginPluginOptionsGoogle>;
   readonly endpoint: Maybe<Scalars['String']>;
   readonly timeout: Maybe<Scalars['Int']>;
   readonly maxWidth: Maybe<Scalars['Int']>;
@@ -2918,7 +2907,7 @@ type SitePluginPluginOptionsFilterInput = {
   readonly aliases: Maybe<SitePluginPluginOptionsAliasesFilterInput>;
   readonly name: Maybe<StringQueryOperatorInput>;
   readonly path: Maybe<StringQueryOperatorInput>;
-  readonly fonts: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
+  readonly google: Maybe<SitePluginPluginOptionsGoogleFilterInput>;
   readonly endpoint: Maybe<StringQueryOperatorInput>;
   readonly timeout: Maybe<IntQueryOperatorInput>;
   readonly maxWidth: Maybe<IntQueryOperatorInput>;
@@ -2936,18 +2925,12 @@ type SitePluginPluginOptionsFilterInput = {
   readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
-type SitePluginPluginOptionsFonts = {
-  readonly family: Maybe<Scalars['String']>;
-  readonly variants: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+type SitePluginPluginOptionsGoogle = {
+  readonly families: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
-type SitePluginPluginOptionsFontsFilterInput = {
-  readonly family: Maybe<StringQueryOperatorInput>;
-  readonly variants: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsFontsFilterListInput = {
-  readonly elemMatch: Maybe<SitePluginPluginOptionsFontsFilterInput>;
+type SitePluginPluginOptionsGoogleFilterInput = {
+  readonly families: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsPlugins = {
@@ -3030,37 +3013,6 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-type LogoQueryVariables = {};
-
-
-type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
-
-type SEOQueryVariables = {};
-
-
-type SEOQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
-
-type FooterQueryVariables = {};
-
-
-type FooterQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'copyright' | 'facebook' | 'instagram'>> }> };
-
-type DateFormatQueryVariables = {};
-
-
-type DateFormatQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'dateFormat'>> }> };
-
-type BioQueryVariables = {};
-
-
-type BioQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
-        & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'majors' | 'name' | 'position' | 'imgsrc' | 'category'>> }
-      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<File, 'id' | 'relativePath'>
-        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
-      ) }> }, readonly order: Maybe<{ readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'options'>> }> };
-
 type BackgroundImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<(
       GatsbyImageSharpFluid_withWebpFragment
       & GatsbyImageSharpFluidLimitPresentationSizeFragment
@@ -3070,53 +3022,10 @@ type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | '
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
 
-type NotFoundPageQueryVariables = {};
-
-
-type NotFoundPageQuery = { readonly pageBackground: Maybe<BackgroundImageFragment> };
-
-type EventsQueryVariables = {};
-
-
-type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<MarkdownRemark, 'html' | 'id'>
-        & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'category' | 'imgsrc' | 'pinned' | 'link'>> }
-      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<File, 'id' | 'relativePath'>
-        & RaisedImageFragment
-      ) }> } };
-
-type ArchivePageQueryVariables = {};
-
-
-type ArchivePageQuery = { readonly background: Maybe<BackgroundImageFragment> };
-
-type ContactUsPageQueryVariables = {};
-
-
-type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'facebook' | 'instagram'>> }> };
-
-type HomePageQueryVariables = {};
-
-
-type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
-
-type BoardPageQueryVariables = {};
-
-
-type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
-
-type RaisedImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> };
-
-type AboutPageQueryVariables = {};
-
-
-type AboutPageQuery = { readonly background: Maybe<BackgroundImageFragment>, readonly pic1: Maybe<RaisedImageFragment>, readonly pic2: Maybe<RaisedImageFragment>, readonly pic3: Maybe<RaisedImageFragment>, readonly pic4: Maybe<RaisedImageFragment>, readonly pic5: Maybe<RaisedImageFragment> };
-
-type IndividualEventPageQueryVariables = {
+type IndividualEventPageQueryVariables = Exact<{
   slug: Maybe<Scalars['String']>;
   imgsrc: Maybe<Scalars['String']>;
-};
+}>;
 
 
 type IndividualEventPageQuery = { readonly markdownRemark: Maybe<(
@@ -3124,65 +3033,46 @@ type IndividualEventPageQuery = { readonly markdownRemark: Maybe<(
     & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'link'>> }
   )>, readonly file: Maybe<BackgroundImageFragment> };
 
-type EventPageQueryVariables = {};
+type NotFoundPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NotFoundPageQuery = { readonly pageBackground: Maybe<BackgroundImageFragment> };
+
+type RaisedImageFragment = { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> };
+
+type AboutPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AboutPageQuery = { readonly background: Maybe<BackgroundImageFragment>, readonly pic1: Maybe<RaisedImageFragment>, readonly pic2: Maybe<RaisedImageFragment>, readonly pic3: Maybe<RaisedImageFragment>, readonly pic4: Maybe<RaisedImageFragment>, readonly pic5: Maybe<RaisedImageFragment> };
+
+type ArchivePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ArchivePageQuery = { readonly background: Maybe<BackgroundImageFragment> };
+
+type BoardPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BoardPageQuery = { readonly boardBackground: Maybe<BackgroundImageFragment> };
+
+type ContactUsPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ContactUsPageQuery = { readonly contactBackground: Maybe<BackgroundImageFragment>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'facebook' | 'instagram'>> }> };
+
+type EventPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type EventPageQuery = { readonly background: Maybe<BackgroundImageFragment> };
 
-type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
+type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
-type GatsbyImageSharpFixed_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
 
-type GatsbyImageSharpFixed_withWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
 
-type GatsbyImageSharpFixed_withWebp_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type GatsbyImageSharpFixed_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
-
-type GatsbyImageSharpFixed_withWebp_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-type GatsbyImageSharpFluid_tracedSVGFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GatsbyImageSharpResolutionsFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-type GatsbyImageSharpResolutions_tracedSVGFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-type GatsbyImageSharpResolutions_withWebpFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type GatsbyImageSharpResolutions_withWebp_tracedSVGFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type GatsbyImageSharpResolutions_noBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>;
-
-type GatsbyImageSharpResolutions_withWebp_noBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type GatsbyImageSharpSizesFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-type GatsbyImageSharpSizes_tracedSVGFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-type GatsbyImageSharpSizes_withWebpFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type PagesQueryQueryVariables = {};
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type SiteTitleQueryVariables = {};
-
-
-type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }

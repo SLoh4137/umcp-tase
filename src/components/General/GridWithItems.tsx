@@ -58,7 +58,7 @@ function GridWithItems(props: Props) {
                 justify={justify}
                 {...rest}
             >
-                {children.map((child) => (
+                {children.map((child, index) => (
                     <Grid
                         item
                         className={classes.item}
@@ -67,6 +67,7 @@ function GridWithItems(props: Props) {
                         md={md}
                         lg={lg}
                         xl={xl}
+                        key={index}
                     >
                         {child}
                     </Grid>
