@@ -2,7 +2,7 @@
 name: Stephan Loh
 category: bio
 imgsrc: assets/senior4.jpg
-position: Senior Advisor
+position: Alumni Advisor
 majors:
   - Computer Science
 ---
