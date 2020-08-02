@@ -1,10 +1,10 @@
 ---
 name: Angela Pan
 category: bio
-imgsrc: assets/copresident1.jpg
-position: Co-President
+imgsrc: assets/angela-pan-senior-advisor.jpg
+position: Senior Advisor
 majors:
   - Computer Science
   - Psychology
 ---
-I’m Angela Pan, TASA’s #1 fan. I’m a junior CS and psychology major and I play the villager in Smash. Go TASA.
+I'm just here for the ride. 台灣NO 1.
