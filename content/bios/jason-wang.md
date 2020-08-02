@@ -4,6 +4,6 @@ category: bio
 imgsrc: assets/jason-wang-video.jpeg
 position: Videographer
 majors:
-  - Mechanical Engineering
+  - Computer Engineering
 ---
 that video guy
