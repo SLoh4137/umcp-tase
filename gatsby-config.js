@@ -67,12 +67,8 @@ module.exports = {
             options: {
                 fonts: [
                     {
-                        family: `Poppins`,
+                        family: `Roboto`,
                         variants: [`400`, `700`],
-                    },
-                    {
-                        family: `Passion One`,
-                        variants: [`400`],
                     },
                     {
                         family: `Roboto Slab`,
