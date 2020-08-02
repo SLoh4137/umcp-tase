@@ -1,9 +1,9 @@
 ---
 name: Sarah Yang
 category: bio
-imgsrc: assets/evp.jpg
-position: External VP
+imgsrc: assets/sarah-yang-secretary.png
+position: Secretary
 majors:
   - Philosophy
 ---
-Howdy!! I'm Sarah, a sophomore philosophy major on the pre-med track. Catch me around campus giving tours, at the diner eating soft serve, or in class trying not to fall asleep. I like curating Spotify playlists, skincare, memes, food, and hanging with friends + family. I'm super friendly so don't be shy and say hi!! Can't wait to welcome yalls into our TASA fam :^)
+Howdy yalls!! I'm Sarah and I'm a junior philosophy major on the pre-med track. Outside of TASA, I'm also a campus tour guide! Some of my hobbies include curating Spotify playlists, doing my 10 step skincare routine, and eating ice cream. I'm super friendly and love making new friends so I can't wait to meet y'all and make you guys part of our TASA fam :^))
