@@ -1,6 +1,6 @@
 backend:
     name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
-    branch: master # Branch to update
+    branch: add-short-event-descriptions # Branch to update
     repo: umcptasa/19-20website # Repo for pushing new commits. Make sure to replace with your repo!
 
 media_folder: static/assets
@@ -49,7 +49,19 @@ collections:
                 widget: "string",
                 minimal: true,
             }
-          - { label: "Description", name: "body", widget: "markdown" }
+          - {
+                label: "Blurb",
+                name: "blurb",
+                widget: "markdown",
+                required: false,
+                hint: "Optional short description used in the previews on the front page and all events page. If not used, then the full description is used instead",
+            }
+          - {
+                label: "Description",
+                name: "body",
+                widget: "markdown",
+                hint: "Longer description shown on the full individual event page",
+            }
     - name: bios
       identifier_field: name
       label: "Bios"
@@ -63,7 +75,12 @@ collections:
                 widget: "hidden",
                 default: "bio",
             }
-          - { label: "Profile Picture", name: "imgsrc", widget: "image", hint: "Square images are preferred!" }
+          - {
+                label: "Profile Picture",
+                name: "imgsrc",
+                widget: "image",
+                hint: "Square images are preferred!",
+            }
 
           # This could be changed to a select widget that provides a dropdown of possible positions.
           # You would have to update the list of positions in this file though
