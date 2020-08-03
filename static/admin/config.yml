@@ -42,14 +42,18 @@ collections:
                 default: "select",
                 multiple: true,
             }
-
           - {
                 label: "Facebook Event Page Link",
                 name: "link",
                 widget: "string",
                 minimal: true,
             }
-          - { label: "Description", name: "body", widget: "markdown" }
+          - {
+                label: "Description",
+                name: "body",
+                widget: "markdown",
+                hint: "Descriptions will get truncated for previews. The full description will be used on the individual event page",
+            }
     - name: bios
       identifier_field: name
       label: "Bios"
@@ -63,7 +67,12 @@ collections:
                 widget: "hidden",
                 default: "bio",
             }
-          - { label: "Profile Picture", name: "imgsrc", widget: "image", hint: "Square images are preferred!" }
+          - {
+                label: "Profile Picture",
+                name: "imgsrc",
+                widget: "image",
+                hint: "Square images are preferred!",
+            }
 
           # This could be changed to a select widget that provides a dropdown of possible positions.
           # You would have to update the list of positions in this file though

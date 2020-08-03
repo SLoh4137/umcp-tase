@@ -7,18 +7,6 @@ pinned: false
 tags:
   - social
 link: https://www.facebook.com/events/748890675535423/
-blurb: >-
-  Hear ye, hear ye…\
-
-  The zombie kingdoms of TASA and FCA have decided to ally together and create a new, unified TASA x FCA empire! They want to expand and have decided on UMD as their next targeted conquest.\
-
-  \
-
-  Their mission? Turn all the students into zombies. To do this, they will be sending out 10 of their best zombie taggers from the TASA x FCA empire to turn everyone undead.\
-
-  \
-
-  Your mission? Travel throughout campus, complete tasks, and avoid being turned into a zombie at all costs!
 ---
 Hear ye, hear ye…\
 \

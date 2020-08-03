@@ -7,12 +7,6 @@ pinned: false
 tags:
   - social
 link: https://www.facebook.com/events/1633400176799427/
-blurb: Are you secretly a talented popstar/piano prodigy/really good dancer? Or
-  maybe you want to sing a cute song with your friends! Or do you want to come
-  out for a night of refreshments, performances by your friends and family, and
-  cute wholesome fun? Join UMCP TASA at our annual Charity Coffeehouse on
-  Friday, February 28 in the Stamp Atrium at 8pm! All proceeds will be donated
-  to charity.
 ---
 Are you secretly a talented popstar/piano prodigy/really good dancer? Or maybe you want to sing a cute song with your friends! Or do you want to come out for a night of refreshments, performances by your friends and family, and cute wholesome fun?\
 \

@@ -7,13 +7,6 @@ pinned: true
 tags:
   - cultural
 link: https://www.facebook.com/events/541271669998383/
-blurb: >-
-  Want to experience a piece of Taiwan without leaving CP and spending $$$?\
-
-  TASA’s annual Tour of Taiwan presents our first ever theme: All Aboard!
-
-
-  Travel on Taiwan’s train system and experience the sights, sounds, and smells of various cities! Performances, games, food, and RAFFLE PRIZES TOO.
 ---
 Want to experience a piece of Taiwan without leaving CP and spending $$$?\
 TASA’s annual Tour of Taiwan presents our first ever theme: All Aboard!
