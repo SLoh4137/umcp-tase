@@ -62,19 +62,6 @@ module.exports = {
                 path: `${__dirname}/content/options/`,
             },
         },
-        // {
-        //     resolve: `gatsby-plugin-prefetch-google-fonts`,
-        //     options: {
-        //         fonts: [
-        //             {
-        //                 family: `Roboto`,
-        //             },
-        //             {
-        //                 family: `Roboto Slab`,
-        //             },
-        //         ],
-        //     },
-        // },
         {
             resolve: "gatsby-plugin-web-font-loader",
             options: {

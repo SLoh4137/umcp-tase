@@ -38,7 +38,7 @@ export default function useEvents(options: EventHookOptions) {
                         fields {
                             slug
                         }
-                        frontmatter {
+                        frontmatter { 
                             title
                             tags
                             date
