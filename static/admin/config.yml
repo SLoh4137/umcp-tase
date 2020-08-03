@@ -42,7 +42,6 @@ collections:
                 default: "select",
                 multiple: true,
             }
-
           - {
                 label: "Facebook Event Page Link",
                 name: "link",
@@ -50,17 +49,10 @@ collections:
                 minimal: true,
             }
           - {
-                label: "Blurb",
-                name: "blurb",
-                widget: "markdown",
-                required: false,
-                hint: "Optional short description used in the previews on the front page and all events page. If not used, then the full description is used instead",
-            }
-          - {
                 label: "Description",
                 name: "body",
                 widget: "markdown",
-                hint: "Longer description shown on the full individual event page",
+                hint: "Descriptions will get truncated for previews. The full description will be used on the individual event page",
             }
     - name: bios
       identifier_field: name

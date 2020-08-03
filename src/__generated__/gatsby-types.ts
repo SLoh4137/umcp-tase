@@ -703,7 +703,6 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___position = 'childMarkdownRemark.frontmatter.position',
   childMarkdownRemark___frontmatter___majors = 'childMarkdownRemark.frontmatter.majors',
   childMarkdownRemark___frontmatter___options = 'childMarkdownRemark.frontmatter.options',
-  childMarkdownRemark___frontmatter___blurb = 'childMarkdownRemark.frontmatter.blurb',
   childMarkdownRemark___excerpt = 'childMarkdownRemark.excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark.rawMarkdownBody',
   childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark.fileAbsolutePath',
@@ -1491,7 +1490,6 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___position = 'frontmatter.position',
   frontmatter___majors = 'frontmatter.majors',
   frontmatter___options = 'frontmatter.options',
-  frontmatter___blurb = 'frontmatter.blurb',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
   fileAbsolutePath = 'fileAbsolutePath',
@@ -1630,7 +1628,6 @@ type MarkdownRemarkFrontmatter = {
   readonly position: Maybe<Scalars['String']>;
   readonly majors: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly options: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly blurb: Maybe<Scalars['String']>;
 };
 
 
@@ -1653,7 +1650,6 @@ type MarkdownRemarkFrontmatterFilterInput = {
   readonly position: Maybe<StringQueryOperatorInput>;
   readonly majors: Maybe<StringQueryOperatorInput>;
   readonly options: Maybe<StringQueryOperatorInput>;
-  readonly blurb: Maybe<StringQueryOperatorInput>;
 };
 
 type MarkdownRemarkGroupConnection = {
@@ -3078,5 +3074,16 @@ type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type HomePageQuery = { readonly mainBackground: Maybe<BackgroundImageFragment>, readonly presidentBackground: Maybe<BackgroundImageFragment>, readonly newsletterBackground: Maybe<BackgroundImageFragment> };
+
+type EventsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<MarkdownRemark, 'html' | 'excerpt' | 'id'>
+        & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'category' | 'imgsrc' | 'pinned' | 'link'>> }
+      ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<File, 'id' | 'relativePath'>
+        & RaisedImageFragment
+      ) }> } };
 
 }

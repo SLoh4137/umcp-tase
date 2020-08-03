@@ -8,12 +8,6 @@ tags:
   - social
   - gbm
 link: https://www.facebook.com/events/539796376843024/
-blurb: It’s time.... to du-du-du-du-du- play Volleyball!! For our next GBM we
-  will be having a 7 v 7 volleyball competition! HAH GOTEEEM! We will be having
-  it at Eppley Recreation Center on the volleyball court side (duh) from 8-10PM.
-  It’ll honestly be a great time to learn, have fun, compete and bond with
-  everyone in TASA! Bring your friends, children, family, pet squirtle, everyone
-  is invited (who has a UMD ID since they’d need to get into eppley).
 ---
 It’s time.... to du-du-du-du-du- play Volleyball!! For our next GBM we will be having a 7 v 7 volleyball competition! HAH GOTEEEM! We will be having it at Eppley Recreation Center on the volleyball court side (duh) from 8-10PM. It’ll honestly be a great time to learn, have fun, compete and bond with everyone in TASA! Bring your friends, children, family, pet squirtle, everyone is invited (who has a UMD ID since they’d need to get into eppley).\
 \

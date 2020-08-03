@@ -82,7 +82,7 @@ function EventPreview(props: Props) {
                     {showDescription ? (
                         <MarkdownContent
                             // className={classes.text}
-                            content={event.node.html}
+                            content={event.node.excerpt}
                         />
                     ) : (
                         <></>
