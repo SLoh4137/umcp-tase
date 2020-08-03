@@ -7,6 +7,14 @@ pinned: true
 tags:
   - cultural
 link: https://www.facebook.com/events/400784194029883
+blurb: >-
+  UMCP TASA is proud to present our biggest event of the year: Night Market!
+
+
+  If you’ve ever wondered what an authentic Taiwanese Night Market is like, or if you’re just missing the bright lights and bustling nights of Taiwan’s nightlife, well now’s your chance to live or relive it!
+
+
+  Come savor a night filled with food, games (and prizes!), performances, culture, and fun! We’ll also be raffling away FREE prizes!
 ---
 The event that never was
 
