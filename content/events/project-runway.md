@@ -8,6 +8,22 @@ tags:
   - social
   - gbm
 link: https://www.facebook.com/events/760631264362712/
+blurb: >-
+  Have u ever thought to urself\
+
+  HOT DANG I could be a super model\
+
+  OR EVEN BETTER\
+
+  holy John Mulaney I COULD BE A DESIGNER\
+
+  If you’ve never had those thoughts even cross your mind\
+
+  You are a prime candidate and competitor of this weeks FAM COMPETITON!\
+
+  Come join ur family in racing to make and model the best outfits using toilet paper and tape.\
+
+  7:00 PM @ TWS 0130 11/4
 ---
 Have u ever thought to urself\
 HOT DANG I could be a super model\
