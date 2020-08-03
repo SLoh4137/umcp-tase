@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, PageProps } from "gatsby"
+import { PageProps, graphql } from "gatsby"
 import {
     Container,
     Grid,
@@ -11,7 +11,11 @@ import {
 
 import SEO from "components/seo"
 import useBios from "hooks/useBios"
-import Bio from "components/Bios/Bio"
+import BioGrid from "components/Bios/BioGrid"
+import PageContent from "components/PageLayout/PageContent"
+import ParallaxBackground from "components/PageLayout/ParallaxBackground"
+import Section from "components/PageLayout/Section"
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -19,38 +23,50 @@ const styles = (theme: Theme) =>
         gridItem: {},
     })
 
-type Props = WithStyles<typeof styles> & PageProps
+type Props = WithStyles<typeof styles> &
+    PageProps & {
+        data: GatsbyTypes.BoardPageQuery
+    }
 
 function BoardPage(props: Props) {
-    const { classes } = props
-    const data = useBios()
+    const { data, classes } = props
+    const { boardBackground } = data
+    if (!boardBackground) throw new Error("Board background does not exist.")
+
+    const bios = useBios()
+    const presidents = bios.slice(0, 2)
+    const rest = bios.slice(2)
+
     return (
         <>
             <SEO title="Board" />
-            <Container maxWidth="xl">
-                <Grid
-                    container
-                    spacing={3}
-                    alignItems="stretch"
-                    alignContent="stretch"
-                    justify="center"
-                >
-                    {data.map((bio) => (
-                        <Grid
-                            item
-                            className={classes.gridItem}
-                            xs={12}
-                            sm={4}
-                            lg={3}
-                            key={bio.node.id}
-                        >
-                            <Bio bioData={bio} />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
+            <ParallaxBackground image={boardBackground}>
+                <Text variant="h3" color="white" align="center" paragraph>
+                    Meet the Board
+                </Text>
+                <Text variant="h6" color="white" align="center">
+                Check out the people who make it all happen!
+                </Text>
+            </ParallaxBackground>
+            <PageContent>
+                <Section maxWidth="lg">
+                    <Text variant="subtitle1" color="textSecondary" align="center" paragraph>
+                        Tip: Learn more about the board by hovering or tapping over their picture!
+                    </Text>
+                    <BioGrid bios={presidents} />
+                    <BioGrid bios={rest} />
+                </Section>
+            </PageContent>
         </>
     )
 }
+
+export const query = graphql`
+    query BoardPage {
+        boardBackground: file(relativePath: { eq: "board.jpg" }) {
+            ...BackgroundImage
+        }
+    }
+`
 
 export default withStyles(styles)(BoardPage)

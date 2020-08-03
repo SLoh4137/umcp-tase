@@ -7,6 +7,7 @@ This is a template for the backend portion of a student organization website. It
     1. [Gatsby](#gatsby)
 2. [Files to Change](#files-to-change)
 3. [Customizing Theme and Styling](#customizing-theme-and-styling)
+    1. [Text](#text)
 4. [Mailchimp Integration](#mailchimp-integration)
 5. [Netlify CMS](#netlify-cms)
 6. [Adding New Pages](#adding-new-pages)
@@ -81,6 +82,11 @@ const theme = createMuiTheme({
 })
 ```
 
+## Text
+In order to add a white color option, I created a [`Text.tsx`](src/components/Typography/Text.tsx) component that wraps the [`Typography`](https://material-ui.com/api/typography/) component from Material-UI. Also, since it has a shorter name, it's more likely to fit on one line.
+
+We use Typography so that we can get the benefits of responsive text sizing and unified styling. As noted above, we can customize how all heading elemnts look, and we have to use Typography components to benefit from that styling. 
+
 # Mailchimp Integration
 
 1. Add the Mailchimp endpoint to `gatsby-config.js` by following the instructions listed on [gatsby-plugin-mailchimp](https://www.gatsbyjs.org/packages/gatsby-plugin-mailchimp/)
@@ -121,7 +127,27 @@ The [`EventPreview.tsx`](/src/components/Events/EventPreview.tsx) component disp
 
 # Editing Bios
 
-Similar to adding events, go to the Netlify CMS admin panel. Click on the bios section on the side, and you should be able to add new bios and edit existing ones.
+Similar to adding events, go to the Netlify CMS admin panel. Click on the bios section on the side, and you should be able to add new bios and edit existing ones. Each bio has a section for site display order which determines what order the bios are shown on the bios page. It's a bit of a hacky way to do it right now since adding a position would require going through every bio and pushing up the positions after it up by one. An alternative is defining our own order in an array somewhere then sorting after we pull the data down from graphql. But then you can't change the order through Netlify CMS.
+
+|Position|Index|
+|:---:|:---:|
+|Co-President| 1 |
+|Secretary| 2 |
+|Internal VP| 3 | 
+|External VP| 4 |
+|Treasurer| 5 |
+|Public Relations| 6 |
+|AASU Rep | 7 |
+|Historian | 8 |
+|Webmaster | 9 |
+|Co-Fundraising Chair| 10 |
+|Sports Chair| 11 |
+|Culture Chair| 12 |
+|Videographer| 13 |
+|ITASA Rep| 14 |
+|Senior Advisor| 15 |
+|Alumni Advisor| 16 |
+
 
 ## How does it work?
 
@@ -168,3 +194,45 @@ Change in tsconfig.json
 
 ## Making the Header stay at the top of the screen
 That's pretty easy! Just set the position prop of the AppBar to "fixed" instead of "relative". If you want the header to respond to scroll actions (ex: changing from transparent to opaque), utilize the scrollTrigger boolean passed in from the Layout component. You can set different styles depending on whether or not scrollTrigger is true or false. Check out the commented code for an example.
+
+## Material Kit React
+This interface is based off of https://github.com/creativetimofficial/material-kit-react 
+
+## GraphQL Fragments
+In order to re-use the same query for all our background iamges, we create a fragment in [`ParallaxBackground.tsx`](src/components/General/ParallaxBackground.tsx) that can be used in all those queries.
+```javascript
+export const imageQueryFragment = graphql`
+    fragment BackgroundImage on File {
+        childImageSharp {
+            fluid(quality: 100) {
+                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluidLimitPresentationSize
+            }
+        }
+    }
+`
+```
+As described in the [Gatsby docs on fragments](https://www.gatsbyjs.org/docs/using-graphql-fragments/), the `ParallaxBackground` component won't actually use this query for data. But since Gatsby preprocesses all graphql queries, it'll generate this fragment that we can then use in other queries. The fragment name is `BackgroundImage` and it can be used in queries under the type `File`. For example, in [`index.tsx`](src/pages/index.tsx) we use the fragment by writing
+```javascript
+export const query = graphql`
+    query HomePage {
+        mainBackground: file(relativePath: { eq: "Taiwan.jpg" }) {
+            ...BackgroundImage
+        }
+        presidentBackground: file(relativePath: { eq: "bg10.jpg" }) {
+            ...BackgroundImage
+        }
+        newsletterBackground: file(relativePath: { eq: "Taiwan2.jpg" }) {
+            ...BackgroundImage
+        }
+`
+```
+
+## React Rehydration
+If styles look like they work on first load but don't on subsequent loads or vice versa, the problem is likely with server side rendering. In order to serve faster pages, Gatsby first pre-compiles during build the DOM from our React code on build. Gatsby uses the functions wrapRootElement and wrapPageElement in [`gatsby-ssr.js`](gatsby-ssr.js) during this time, which is why those two functions have to be the same as the ones in [`gatsby-browser.js`](gatsby-browser.js) which is the file that determines what the site uses on the client side. 
+
+Because React uses rehydration instead of re-rendering to reconcile the differences between server and client side rendering, things can start to get wonky. Rehydration relies on the assumption that the DOM stays the same which sometimes isn't the case if we have dynamic content. So if styles look wonky between first load, which is what the server provides to the user, and the second load, where the client usually kicks in to render the page, it's likely that some element isn't in the right place in the DOM. To be honest, I'm not sure if this is exactly why things don't look right, but it seems to be the best explanation I've found.
+
+That's where the [`ClientOnly`](src/components/General/ClientOnly.tsx) component comes in! It utilizes useEffect to only mount the component when the page is loaded. Since this only happens for the client, then the DOM stays the same between when the page is compiled during server-side rendering and when the client gets the page. Rehydration works, and then, the client can add the content that's missing after rehydration occurs. This is called two-pass rendering! 
+
+The code for the component as well as a better explanation about this issue can be found on Josh W Comeau's blog post [The Perils of Rehydration](https://joshwcomeau.com/react/the-perils-of-rehydration/)

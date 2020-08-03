@@ -56,27 +56,28 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-prefetch-google-fonts`,
+            resolve: "gatsby-source-filesystem",
             options: {
-                fonts: [
-                    {
-                        family: `Poppins`,
-                        variants: [`400`, `700`],
-                    },
-                    {
-                        family: `Passion One`,
-                        variants: [`400`],
-                    },
-                ],
+                name: "order",
+                path: `${__dirname}/content/options/`,
             },
         },
-        // {
-        //   resolve: 'gatsby-plugin-mailchimp',
-        //   options: {
-        //     endpoint: '', // string; add your MC list endpoint here; see instructions below
-        //     timeout: 3500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
-        //   },
-        // },
+        {
+            resolve: "gatsby-plugin-web-font-loader",
+            options: {
+                google: {
+                    families: ["Roboto", "Roboto Slab"],
+                },
+            },
+        },
+        {
+            resolve: "gatsby-plugin-mailchimp",
+            options: {
+                endpoint:
+                    "https://umcptasa.us15.list-manage.com/subscribe/post?u=61d5181acf601a2c75626d426&amp;id=c778997225", // string; add your MC list endpoint here; see instructions below
+                timeout: 3500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
+            },
+        },
         {
             resolve: "gatsby-transformer-remark",
             options: {
@@ -109,7 +110,7 @@ module.exports = {
                 background_color: "#663399",
                 theme_color: "#663399",
                 display: "minimal-ui",
-                icon: config.siteLogo, // This path is relative to the root of the site.
+                icon: "static/logo.png", // This path is relative to the root of the site.
             },
         },
 

@@ -9,7 +9,9 @@ const styles = createStyles({
     },
 })
 
-type Props = WithStyles<typeof styles>
+type Props = WithStyles<typeof styles> & {
+    white?: boolean,
+}
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -23,29 +25,36 @@ type Props = WithStyles<typeof styles>
  */
 
 function Logo(props: Props) {
-    const { classes } = props
+    const { classes, white = false } = props
     const data = useStaticQuery<GatsbyTypes.LogoQuery>(graphql`
         query Logo {
-            file(relativePath: { eq: "logo.png" }) {
+            black: file(relativePath: { eq: "logo.png" }) {
                 childImageSharp {
                     fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_withWebp
+                    }
+                }
+            }
+            white: file(relativePath: { eq: "logo_white.png" }) {
+                childImageSharp {
+                    fixed(width: 50, height: 50) {
+                        ...GatsbyImageSharpFixed_withWebp
                     }
                 }
             }
         }
     `)
 
-    if (!data.file?.childImageSharp?.fixed) {
-        throw new Error("Image can't be found")
-    }
+    const image = white ? data.white?.childImageSharp?.fixed : data.black?.childImageSharp?.fixed
+
+    if (!image) throw new Error("Image doesn't exist.")
 
     return (
         <>
             <Img
                 className={classes.root}
                 alt="Logo"
-                fixed={data.file.childImageSharp.fixed}
+                fixed={image}
             />
         </>
     )

@@ -18,7 +18,6 @@ export default function useBios() {
         query Bio {
             allMarkdownRemark(
                 filter: { frontmatter: { category: { eq: "bio" } } }
-                sort: { fields: frontmatter___order, order: ASC }
             ) {
                 edges {
                     node {
@@ -29,9 +28,9 @@ export default function useBios() {
                             position
                             imgsrc
                             category
-                            order
                         }
                         html
+                        excerpt(format: HTML, truncate: true, pruneLength: 200)
                     }
                 }
             }
@@ -45,21 +44,36 @@ export default function useBios() {
                         relativePath
                         childImageSharp {
                             fluid {
-                                ...GatsbyImageSharpFluid
+                                ...GatsbyImageSharpFluid_withWebp
                             }
                         }
                     }
                 }
             }
+            order: markdownRemark(fileAbsolutePath: { regex: "/bio-order/" }) {
+                frontmatter {
+                    options
+                }
+            }
         }
     `)
 
-    if (!data.allMarkdownRemark?.edges || !data.allFile?.edges) {
+    if (
+        !data.allMarkdownRemark?.edges ||
+        !data.allFile?.edges ||
+        !data.order?.frontmatter?.options
+    ) {
         throw new Error("Error in formation of Bio query")
     }
 
-    return mapImgToNode<BioNode>(
-        data.allMarkdownRemark.edges,
-        data.allFile.edges
-    )
+    const sortingOrder = data.order.frontmatter.options
+    const sortingFunction = (a: BioEdge, b: BioEdge) =>
+        sortingOrder.indexOf(a.node.frontmatter?.position) -
+        sortingOrder.indexOf(b.node.frontmatter?.position)
+
+    // @ts-ignore Sort does an in-place sort and data.allMarkdownRemark.edges is a readonly array.
+    // Since we're not using data.allMarkdownRemark.edges again, it's okay if we use in-place
+    const bios = data.allMarkdownRemark.edges.sort(sortingFunction)
+
+    return mapImgToNode<BioNode>(bios, data.allFile.edges)
 }

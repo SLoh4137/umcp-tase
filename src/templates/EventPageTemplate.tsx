@@ -1,39 +1,19 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 import {
-    Card,
-    CardContent,
-    CardActions,
+    Container,
     Theme,
     createStyles,
     withStyles,
     WithStyles,
-    CardActionArea,
 } from "@material-ui/core"
 
-import { Container } from "@material-ui/core"
+import ParallaxBackground from "components/PageLayout/ParallaxBackground"
+import PageContent from "components/PageLayout/PageContent"
+import MarkdownContent from "components/General/MarkdownContent"
+import Section from "components/PageLayout/Section"
 
-import Img from "gatsby-image"
-
-const styles = (theme: Theme) =>
-    createStyles({
-        image: {
-            padding: theme.spacing(1),
-        },
-        title: {
-            color: theme.palette.primary.main,
-        },
-        description: {
-            "& p": {
-                fontSize: "14px",
-                color: theme.palette.secondary.main,
-            },
-
-            "& a": {
-                color: theme.palette.secondary.dark,
-            },
-        },
-    })
+const styles = (theme: Theme) => createStyles({})
 
 // Note this has to be synchronized with gatsby-node in createPage
 type PageContext = {
@@ -46,7 +26,7 @@ type PageContext = {
 }
 
 type Props = {
-    data: GatsbyTypes.EventPageQuery
+    data: GatsbyTypes.IndividualEventPageQuery
     pageContext: PageContext
 } & PageProps &
     WithStyles<typeof styles>
@@ -65,24 +45,19 @@ function EventPageTemplate(props: Props) {
     if (!data.markdownRemark.html) throw new Error("No description")
 
     return (
-        <Container maxWidth="lg">
-            <Img
-                className={classes.image}
-                fluid={data.file.childImageSharp?.fluid}
-            />
-            <h1 className={classes.title}>{data.markdownRemark.frontmatter.title}</h1>
-            <div
-                className={classes.description}
-                dangerouslySetInnerHTML={{
-                    __html: data.markdownRemark.html,
-                }}
-            />
-        </Container>
+        <>
+            <ParallaxBackground image={data.file} imageHeight="60vh" />
+            <PageContent>
+                <Section title={data.markdownRemark.frontmatter.title}>
+                    <MarkdownContent content={data.markdownRemark.html} />
+                </Section>
+            </PageContent>
+        </>
     )
 }
 
 export const query = graphql`
-    query EventPage($slug: String, $imgsrc: String) {
+    query IndividualEventPage($slug: String, $imgsrc: String) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
             html
             id
@@ -94,11 +69,7 @@ export const query = graphql`
             }
         }
         file(relativePath: { eq: $imgsrc }) {
-            childImageSharp {
-                fluid {
-                    ...GatsbyImageSharpFluid
-                }
-            }
+            ...BackgroundImage
         }
     }
 `

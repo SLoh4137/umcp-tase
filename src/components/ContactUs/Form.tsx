@@ -8,7 +8,9 @@ import {
     withStyles,
     WithStyles,
 } from "@material-ui/core"
+
 // Components
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -22,14 +24,6 @@ const styles = (theme: Theme) =>
         backdrop: {
             zIndex: theme.zIndex.drawer + 1,
             color: "#fff",
-        },
-        success: {
-            color: theme.palette.primary.dark,
-            textAlign: "center",
-        },
-        failure: {
-            color: "#f44336",
-            textAlign: "center",
         },
     })
 
@@ -67,6 +61,7 @@ function Form(props: Props) {
             className={classes.submit}
             type="submit"
             color="primary"
+            variant="contained"
             fullWidth
         >
             <b>Submit</b>
@@ -87,16 +82,16 @@ function Form(props: Props) {
         })
             .then(() => {
                 setSubmitContent(
-                    <h3 className={classes.success}>
+                    <Text variant="h4" align="center" color="success">
                         Success! Thank you for your message!
-                    </h3>
+                    </Text>
                 )
             })
             .catch((error) => {
                 setSubmitContent(
-                    <h3 className={classes.failure}>
+                    <Text variant="h4" color="error" align="center">
                         Failed to send message! {error}
-                    </h3>
+                    </Text>
                 )
             })
 
@@ -118,7 +113,7 @@ function Form(props: Props) {
                     label="Name"
                     name="name"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="dense"
                     fullWidth
                     value={state.name}
@@ -130,7 +125,7 @@ function Form(props: Props) {
                     label="Email"
                     name="email"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="dense"
                     fullWidth
                     value={state.email}
@@ -142,7 +137,7 @@ function Form(props: Props) {
                     label="Subject"
                     name="subject"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="normal"
                     fullWidth
                     value={state.subject}
@@ -154,7 +149,7 @@ function Form(props: Props) {
                     label="Body"
                     name="body"
                     variant="outlined"
-                    color="secondary"
+                    color="primary"
                     margin="normal"
                     fullWidth
                     multiline

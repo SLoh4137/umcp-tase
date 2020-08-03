@@ -1,7 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import {
-    AppBar,
+    Container,
+    Grid,
     IconButton,
     withStyles,
     Toolbar,
@@ -12,18 +13,15 @@ import {
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 
+import Text from "components/Typography/Text"
+
 const styles = (theme: Theme) =>
     createStyles({
         root: {
-            padding: theme.spacing(1),
-            paddingRight: theme.spacing(2),
-        },
-        grow: {
-            flexGrow: 1,
-        },
-        copyright: {
-            marginLeft: theme.spacing(3),
-            color: theme.palette.primary.main,
+            [theme.breakpoints.up("sm")]: {
+                padding: theme.spacing(1),
+                paddingRight: theme.spacing(2),
+            },
         },
     })
 
@@ -63,26 +61,29 @@ function Footer(props: Props) {
         )
 
     return (
-        <AppBar
-            position={"relative"}
-            color={"transparent"}
-            elevation={0}
-            className={classes.root}
-        >
-            <Toolbar>
-                <div className={classes.grow} />
+        <Container className={classes.root} maxWidth="lg">
+            <Grid
+                container
+                alignItems="center"
+                justify="space-between"
+                wrap="nowrap"
+            >
+                <Grid item>
+                    <IconButton href={facebook}>
+                        <FacebookIcon />
+                    </IconButton>
 
-                <IconButton href={facebook} color="primary">
-                    <FacebookIcon />
-                </IconButton>
-
-                <IconButton href={instagram} color="primary">
-                    <InstagramIcon />
-                </IconButton>
-
-                <h4 className={classes.copyright}>{copyright}</h4>
-            </Toolbar>
-        </AppBar>
+                    <IconButton href={instagram}>
+                        <InstagramIcon />
+                    </IconButton>
+                </Grid>
+                <Grid item>
+                    <Text variant="subtitle1" color="textPrimary">
+                        {copyright}
+                    </Text>
+                </Grid>
+            </Grid>
+        </Container>
     )
 }
 

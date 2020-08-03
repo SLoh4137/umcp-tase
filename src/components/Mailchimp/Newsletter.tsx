@@ -3,6 +3,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp"
 import {
     Button,
     Container,
+    CircularProgress,
     Grid,
     Theme,
     createStyles,
@@ -10,21 +11,42 @@ import {
     withStyles,
     TextField,
 } from "@material-ui/core"
+import EmailIcon from "@material-ui/icons/Email"
+import { ContainerProps } from "@material-ui/core/Container"
+import Text from "components/Typography/Text"
 
 const styles = (theme: Theme) =>
     createStyles({
-        root: {},
-        title: {
-            color: theme.palette.primary.main,
+        root: {
+            marginTop: theme.spacing(2),
+            backgroundColor: "white",
+            padding: theme.spacing(2),
+            paddingLeft: theme.spacing(3),
+            width: "100%",
+            borderRadius: theme.shape.borderRadius,
+        },
+        textField: {
+            marginBottom: theme.spacing(1),
+            [theme.breakpoints.down("xs")]: {
+                marginLeft: theme.spacing(2),
+            },
+        },
+        icon: {
+            marginTop: theme.spacing(1),
+        },
+        button: {
+            height: "100%",
         },
     })
 
-type Props = {} & WithStyles<typeof styles>
+type Props = WithStyles<typeof styles> & {
+    maxWidth?: ContainerProps["maxWidth"]
+}
 
 function Newsletter(props: Props) {
-    const { classes } = props
+    const { classes, maxWidth = "lg" } = props
     const [email, setEmail] = useState<string>("")
-    const [msg, setMsg] = useState<string>()
+    const [msg, setMsg] = useState<React.ReactNode>()
     const [disabled, setDisabled] = useState<boolean>(false)
 
     const handleChange = (event: React.FormEvent<EventTarget>) =>
@@ -33,45 +55,81 @@ function Newsletter(props: Props) {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
         setDisabled(true)
-        setMsg("Sending...")
+        setMsg(
+            <Text align="center">
+                Sending... <CircularProgress size={20} />
+            </Text>
+        )
 
         const response = await addToMailchimp(email)
         if (response.result === "error") {
             if (response.msg.toLowerCase().includes("already subscribed")) {
-                setMsg("You are already on this list!")
+                setMsg(
+                    <Text color="error" align="center">
+                        You are already on this list!
+                    </Text>
+                )
             } else {
-                setMsg("Some error occured while subscribing to list.")
+                setMsg(
+                    <Text color="error" align="center">
+                        Some error occured while subscribing to list.
+                    </Text>
+                )
             }
             setDisabled(false)
         } else {
             setMsg(
-                "Successfully added to list! Please check your email and confirm registration."
+                <Text color="success" align="center">
+                    Successfully added to list! Please check your email and
+                    confirm registration.
+                </Text>
             )
         }
     }
 
     return (
-        <Container maxWidth="lg" className={classes.root}>
-            <h1 className={classes.title}>Sign up for our newsletter!</h1>
-
+        <Container maxWidth={maxWidth} className={classes.root}>
             <form onSubmit={handleSubmit}>
-                <Grid container spacing={1} alignItems="center">
-                    <Grid item xs={12} sm={3}>
+                <Grid
+                    container
+                    spacing={2}
+                    alignItems="center"
+                    alignContent="center"
+                    justify="center"
+                >
+                    <Grid item xs={1}>
+                        <EmailIcon className={classes.icon} />
+                    </Grid>
+                    <Grid item xs={10} sm={8}>
                         <TextField
                             required
+                            className={classes.textField}
                             label="Email"
                             name="email"
-                            variant="outlined"
                             fullWidth
                             value={email}
                             onChange={handleChange}
                         />
                     </Grid>
-                    <Grid item xs={12} sm={1}>
-                        <Button disabled={disabled} fullWidth>
-                            Sign up
+                    <Grid item xs={12} sm={3}>
+                        <Button
+                            disabled={disabled}
+                            type="submit"
+                            className={classes.button}
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Subscribe
                         </Button>
                     </Grid>
+                    {msg !== undefined ? (
+                        <Grid item xs={12}>
+                            {msg}
+                        </Grid>
+                    ) : (
+                        <></>
+                    )}
                 </Grid>
             </form>
         </Container>
