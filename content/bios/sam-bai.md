@@ -2,7 +2,7 @@
 name: Sam Bai
 category: bio
 imgsrc: assets/sam-bai-historian.jpg
-position: Historian
+position: Co-Historian
 majors:
   - Computer Science
 ---
