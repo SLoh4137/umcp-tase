@@ -2,7 +2,7 @@
 name: Matthew Wu
 category: bio
 imgsrc: assets/matthew-wu-night-market.jpg
-position: Webmaster
+position: Night Market Director
 majors:
   - Computer Science
   - Mechanical Engineering
