@@ -3,19 +3,21 @@ title: Bio Positions Order
 category: options
 options:
   - Co-President
-  - Secretary
   - Internal VP
   - External VP
-  - Treasurer
-  - Public Relations
-  - AASU Rep
-  - Historian
-  - Webmaster
-  - Co-Fundraising Chair
-  - Sports Chair
+  - Secretary
   - Culture Chair
-  - Videographer
+  - Public Relations
   - ITASA Rep
+  - AASU Rep
+  - Treasurer
+  - Co-Fundraising Chair
+  - Videographer
+  - Co-Historian
+  - Webmaster
+  - Graphic Designer
+  - Sports Chair
+  - Night Market Director
   - Senior Advisor
   - Alumni Advisor
 ---
