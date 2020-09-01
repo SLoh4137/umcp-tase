@@ -73,7 +73,7 @@ function Bio(props: Props) {
                     alignItems="flex-start"
                     spacing={1}
                 >
-                    {majors.map((major) => (
+                    {majors.map((major: string) => (
                         <Grid item key={name + major}>
                             <Chip label={major} color="primary" />
                         </Grid>
