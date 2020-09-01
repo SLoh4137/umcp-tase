@@ -8,6 +8,7 @@ import {
     WithStyles,
     Container,
 } from "@material-ui/core"
+import { useSpring, animated } from "react-spring"
 
 // Components
 import SEO from "components/seo"
@@ -27,8 +28,6 @@ import BioPreview from "components/Bios/BioPreview"
 // Hooks
 import useEvents from "hooks/useEvents"
 import useBios from "hooks/useBios"
-
-
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -60,26 +59,38 @@ function IndexPage(props: Props) {
     if (!newsletterBackground)
         throw new Error("Newsletter background does not exist.")
 
+    const springStyle = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+        config: { duration: 2000 },
+    })
+
     return (
         <>
             <SEO title="Home" />
             <ParallaxBackground image={mainBackground} imageHeight="100vh">
                 {/* <Welcome /> */}
-                <Container maxWidth="lg" className={classes.titleRoot}>
-                    <Text variant="h3" color="white">
-                        University of Maryland College Park
-                    </Text>
-                    <Text variant="h3" color="white">
-                        Taiwanese American Student Association
-                    </Text>
-                    <Text variant="subtitle1" color="white">
-                        Dedicated to promoting Taiwan's rich culture and
-                        heritage
-                    </Text>
-                    <ButtonLink to="events" variant="contained" color="primary">
-                        Upcoming Events
-                    </ButtonLink>
-                </Container>
+                <animated.div style={springStyle}>
+                    <Container maxWidth="lg" className={classes.titleRoot}>
+                        <Text variant="h3" color="white">
+                            University of Maryland College Park
+                        </Text>
+                        <Text variant="h3" color="white">
+                            Taiwanese American Student Association
+                        </Text>
+                        <Text variant="subtitle1" color="white">
+                            Dedicated to promoting Taiwan's rich culture and
+                            heritage
+                        </Text>
+                        <ButtonLink
+                            to="events"
+                            variant="contained"
+                            color="primary"
+                        >
+                            Upcoming Events
+                        </ButtonLink>
+                    </Container>
+                </animated.div>
             </ParallaxBackground>
 
             <PageContent>
@@ -111,9 +122,10 @@ function IndexPage(props: Props) {
                     </Text>
 
                     <GridWithItems>
-                        {events.map(event => <EventPreview event={event} key={event.node.id}/>)}
+                        {events.map((event) => (
+                            <EventPreview event={event} key={event.node.id} />
+                        ))}
                     </GridWithItems>
-
 
                     {/* <EventsGrid events={events} /> */}
                     <ButtonLink
