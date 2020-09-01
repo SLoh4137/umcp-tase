@@ -103,7 +103,7 @@ function Event(props: Props) {
                 spacing={1}
             >
                 <Grid item>
-                    <Text variant="subtitle2" color="primary">
+                    <Text variant="subtitle2" color="textSecondary">
                         {moment(date).format(dateFormat)}
                     </Text>
                 </Grid>
