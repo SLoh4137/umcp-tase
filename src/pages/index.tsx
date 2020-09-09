@@ -23,11 +23,11 @@ import Section from "components/PageLayout/Section"
 import ButtonLink from "components/Button/ButtonLink"
 import ImageSection from "components/PageLayout/ImageSection"
 import BioPreview from "components/Bios/BioPreview"
+import AnimateOnVisible from "components/General/AnimateOnVisible"
 
 // Hooks
 import useEvents from "hooks/useEvents"
 import useBios from "hooks/useBios"
-import usePrefersReducedMotion from "hooks/usePrefersReducedMotion"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -143,7 +143,9 @@ function IndexPage(props: Props) {
                         >
                             {presidentBios.map((bio) => (
                                 <Grid item xs={12} lg={6} key={bio.node.id}>
-                                    <BioPreview bioData={bio} />
+                                    <AnimateOnVisible once partialVisibility>
+                                        <BioPreview bioData={bio} />
+                                    </AnimateOnVisible>
                                 </Grid>
                             ))}
                         </Grid>

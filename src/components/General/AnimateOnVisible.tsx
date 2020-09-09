@@ -4,16 +4,13 @@ import { useSpring, animated as a } from "react-spring"
 
 import usePrefersReducedMotion from "hooks/usePrefersReducedMotion"
 
+type ReactNodes = React.ReactNode | React.ReactNodeArray
+
 type Props = {
     animated?: boolean
     once?: boolean
     partialVisibility?: boolean
-    children:
-        | React.ReactNode
-        | React.ReactNodeArray
-        | ((
-              args: React.CSSProperties
-          ) => React.ReactNode | React.ReactNodeArray)
+    children: ReactNodes | ((args: React.CSSProperties) => ReactNodes)
 }
 
 export default (props: Props) => {
