@@ -12,7 +12,7 @@ import { useSpring, animated, config } from "react-spring"
 
 // Components
 import SEO from "components/seo"
-import EventPreview from "components/Events/EventPreview"
+import Event from "components/Events/Event"
 import GridWithItems from "components/General/GridWithItems"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
@@ -110,7 +110,7 @@ function IndexPage(props: Props) {
 
                     <GridWithItems>
                         {events.map((event) => (
-                            <EventPreview event={event} key={event.node.id} />
+                            <Event event={event} key={event.node.id} preview/>
                         ))}
                     </GridWithItems>
 

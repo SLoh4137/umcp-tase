@@ -20,7 +20,7 @@ export default (props: Props) => {
         partialVisibility = false,
         children,
     } = props
-    const [isVisible, setVisible] = useState(false)
+    const [isVisible, setVisible] = useState(!animated)
     const springStyle = useSpring({
         to: {
             opacity: isVisible ? 1 : 0,
@@ -33,7 +33,7 @@ export default (props: Props) => {
         <VisibilitySensor
             onChange={(isVisible) => setVisible(isVisible)}
             partialVisibility={partialVisibility}
-            active={!once || !isVisible}
+            active={animated && (!once || !isVisible)}
         >
             {children instanceof Function ? (
                 children(springStyle)

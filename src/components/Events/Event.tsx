@@ -28,33 +28,8 @@ import usePrefersReducedMotion from "hooks/usePrefersReducedMotion"
 
 const styles = (theme: Theme) =>
     createStyles({
-        root: {
-            display: "flex",
-            height: "100%",
-            flexDirection: "column",
-            margin: theme.spacing(1),
-            [theme.breakpoints.down("sm")]: {
-                margin: theme.spacing(0),
-            },
-        },
         content: {
             marginTop: theme.spacing(2),
-        },
-        text: {
-            textAlign: "center",
-        },
-        link: {
-            textDecoration: "none",
-            color: "#ffffff",
-        },
-        title: {
-            marginTop: 0,
-            marginBottom: 0,
-            padding: 0,
-        },
-        date: {
-            margin: 0,
-            marginTop: theme.spacing(1),
         },
         tags: {
             fontSize: "10px",
@@ -64,16 +39,11 @@ const styles = (theme: Theme) =>
 type Props = WithStyles<typeof styles> & {
     event: EventType
     showDescription?: boolean
-    showFullDescription?: boolean
+    preview?: boolean
 }
 
 function Event(props: Props) {
-    const {
-        classes,
-        event,
-        showDescription = true,
-        showFullDescription = false,
-    } = props
+    const { classes, event, showDescription = true, preview = false } = props
     // const dateFormat = useDateFormat()
     const dateFormat = "M/D"
 
@@ -118,11 +88,16 @@ function Event(props: Props) {
                     alignItems="center"
                     spacing={1}
                 >
-                    <Grid item>
-                        <Text variant="subtitle2" color="textSecondary">
-                            {moment(date).format(dateFormat)}
-                        </Text>
-                    </Grid>
+                    {preview ? (
+                        <></>
+                    ) : (
+                        <Grid item>
+                            <Text variant="subtitle2" color="textSecondary">
+                                {moment(date).format(dateFormat)}
+                            </Text>
+                        </Grid>
+                    )}
+
                     <Grid item>
                         <Text
                             variant="h6"
@@ -136,10 +111,7 @@ function Event(props: Props) {
 
                     <Grid item>
                         {showDescription ? (
-                            <MarkdownContent
-                                // className={classes.text}
-                                content={event.node.excerpt}
-                            />
+                            <MarkdownContent content={event.node.excerpt} />
                         ) : (
                             <></>
                         )}
