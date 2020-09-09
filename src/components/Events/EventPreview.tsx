@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import {
     Card,
@@ -8,17 +8,19 @@ import {
     withStyles,
     WithStyles,
 } from "@material-ui/core"
+import { useSpring, animated as a } from "react-spring"
 
 // Components
 import Text from "components/Typography/Text"
 import MarkdownContent from "components/General/MarkdownContent"
+import ColoredShadowImage from "components/General/ColoredShadowImage"
+import ButtonLink from "components/Button/ButtonLink"
 
 // Types
 import { EventType } from "hooks/useEvents"
 
 // Hooks
-import ColoredShadowImage from "components/General/ColoredShadowImage"
-import ButtonLink from "components/Button/ButtonLink"
+import usePrefersReducedMotion from "hooks/usePrefersReducedMotion"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -53,48 +55,63 @@ function EventPreview(props: Props) {
     const { title, tags, date, link } = event.node.frontmatter
     const { slug } = event.node.fields
 
-    return (
-        <Card elevation={0}>
-            <Link to={slug}>
-                <ColoredShadowImage
-                    image={event.image}
-                    alt={`${title} event image`}
-                />
-            </Link>
+    const [isHover, setHover] = useState(false)
+    const springStyle = useSpring({
+        to: {
+            transform: isHover ? "scale(1.1)" : "scale(1.0)",
+        },
+        immediate: usePrefersReducedMotion(),
+    })
 
-            <Grid
-                container
-                className={classes.content}
-                direction="column"
-                alignItems="center"
+    return (
+        <>
+            <Link
+                to={slug}
+                onMouseOver={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
             >
-                <Grid item>
-                    <Text
-                        variant="h6"
-                        color="textSecondary"
-                        align="center"
-                        heading
-                    >
-                        <b>{title}</b>
-                    </Text>
+                <a.div style={springStyle}>
+                    <ColoredShadowImage
+                        image={event.image}
+                        alt={`${title} event image`}
+                    />
+                </a.div>
+            </Link>
+            <Card elevation={0}>
+                <Grid
+                    container
+                    className={classes.content}
+                    direction="column"
+                    alignItems="center"
+                >
+                    <Grid item>
+                        <Text
+                            variant="h6"
+                            color="textSecondary"
+                            align="center"
+                            heading
+                        >
+                            <b>{title}</b>
+                        </Text>
+                    </Grid>
+                    <Grid item>
+                        {showDescription ? (
+                            <MarkdownContent
+                                // className={classes.text}
+                                content={event.node.excerpt}
+                            />
+                        ) : (
+                            <></>
+                        )}
+                    </Grid>
+                    <Grid item>
+                        <ButtonLink size="small" to={slug} variant="contained">
+                            Event Details
+                        </ButtonLink>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    {showDescription ? (
-                        <MarkdownContent
-                            // className={classes.text}
-                            content={event.node.excerpt}
-                        />
-                    ) : (
-                        <></>
-                    )}
-                </Grid>
-                <Grid item>
-                    <ButtonLink size="small" to={slug} variant="contained">
-                        Event Details
-                    </ButtonLink>
-                </Grid>
-            </Grid>
-        </Card>
+            </Card>
+        </>
     )
 }
 
