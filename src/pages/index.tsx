@@ -8,13 +8,12 @@ import {
     WithStyles,
     Container,
 } from "@material-ui/core"
-import { useSpring, animated } from "react-spring"
+import { useSpring, animated, config } from "react-spring"
 
 // Components
 import SEO from "components/seo"
 import EventPreview from "components/Events/EventPreview"
 import GridWithItems from "components/General/GridWithItems"
-import Welcome from "components/General/Welcome"
 import PageContent from "components/PageLayout/PageContent"
 import ParallaxBackground from "components/PageLayout/ParallaxBackground"
 import Text from "components/Typography/Text"
@@ -28,6 +27,7 @@ import BioPreview from "components/Bios/BioPreview"
 // Hooks
 import useEvents from "hooks/useEvents"
 import useBios from "hooks/useBios"
+import usePrefersReducedMotion from "hooks/usePrefersReducedMotion"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -60,16 +60,16 @@ function IndexPage(props: Props) {
         throw new Error("Newsletter background does not exist.")
 
     const springStyle = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: 1 },
-        config: { duration: 2000 },
+        from: { opacity: 0, transform: "translate(-30px)" },
+        to: { opacity: 1, transform: "translate(0px)" },
+        config: { clamp: true, ...config.molasses },
+        immediate: usePrefersReducedMotion(),
     })
 
     return (
         <>
             <SEO title="Home" />
             <ParallaxBackground image={mainBackground} imageHeight="100vh">
-                {/* <Welcome /> */}
                 <animated.div style={springStyle}>
                     <Container maxWidth="lg" className={classes.titleRoot}>
                         <Text variant="h3" color="white">
