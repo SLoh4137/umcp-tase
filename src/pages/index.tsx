@@ -59,38 +59,25 @@ function IndexPage(props: Props) {
     if (!newsletterBackground)
         throw new Error("Newsletter background does not exist.")
 
-    const springStyle = useSpring({
-        from: { opacity: 0, transform: "translate(-30px)" },
-        to: { opacity: 1, transform: "translate(0px)" },
-        config: { clamp: true, ...config.molasses },
-        immediate: usePrefersReducedMotion(),
-    })
-
     return (
         <>
             <SEO title="Home" />
             <ParallaxBackground image={mainBackground} imageHeight="100vh">
-                <animated.div style={springStyle}>
-                    <Container maxWidth="lg" className={classes.titleRoot}>
-                        <Text variant="h3" color="white">
-                            University of Maryland College Park
-                        </Text>
-                        <Text variant="h3" color="white">
-                            Taiwanese American Student Association
-                        </Text>
-                        <Text variant="subtitle1" color="white">
-                            Dedicated to promoting Taiwan's rich culture and
-                            heritage
-                        </Text>
-                        <ButtonLink
-                            to="events"
-                            variant="contained"
-                            color="primary"
-                        >
-                            Upcoming Events
-                        </ButtonLink>
-                    </Container>
-                </animated.div>
+                <Container maxWidth="lg" className={classes.titleRoot}>
+                    <Text variant="h3" color="white">
+                        University of Maryland College Park
+                    </Text>
+                    <Text variant="h3" color="white">
+                        Taiwanese American Student Association
+                    </Text>
+                    <Text variant="subtitle1" color="white">
+                        Dedicated to promoting Taiwan's rich culture and
+                        heritage
+                    </Text>
+                    <ButtonLink to="events" variant="contained" color="primary">
+                        Upcoming Events
+                    </ButtonLink>
+                </Container>
             </ParallaxBackground>
 
             <PageContent>

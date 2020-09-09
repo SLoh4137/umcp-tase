@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
     Container,
     ContainerProps,
@@ -8,8 +8,13 @@ import {
     withStyles,
     WithStyles,
 } from "@material-ui/core"
+import VisibilitySensor from "react-visibility-sensor"
+import { useSpring, animated } from "react-spring"
 
 import Text, { TextColorOptions } from "components/Typography/Text"
+import usePrefersReducedMotion from "hooks/usePrefersReducedMotion"
+
+const AnimatedText = animated(Text)
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -38,6 +43,15 @@ function Section(props: Props) {
         children,
     } = props
 
+    const [isVisible, setVisible] = useState(false)
+    const springStyle = useSpring({
+        to: {
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0px)" : "translateY(-10px)",
+        },
+        immediate: usePrefersReducedMotion(),
+    })
+
     return (
         <Container maxWidth={maxWidth} className={classes.root}>
             <Grid
@@ -48,15 +62,21 @@ function Section(props: Props) {
                 spacing={3}
             >
                 {title ? (
-                    <Text
-                        variant="h3"
-                        color={color}
-                        align="center"
-                        className={classes.title}
-                        heading
+                    <VisibilitySensor
+                        onChange={(isVisible) => setVisible(isVisible)}
+                        active={!isVisible}
                     >
-                        {title}
-                    </Text>
+                        <AnimatedText
+                            variant="h3"
+                            color={color}
+                            align="center"
+                            className={classes.title}
+                            heading
+                            style={springStyle}
+                        >
+                            {title}
+                        </AnimatedText>
+                    </VisibilitySensor>
                 ) : (
                     <></>
                 )}
