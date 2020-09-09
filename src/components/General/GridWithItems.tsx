@@ -9,6 +9,7 @@ import {
     withStyles,
     WithStyles,
 } from "@material-ui/core"
+import AnimateOnVisible from "components/General/AnimateOnVisible"
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -25,6 +26,7 @@ export interface GridWithItemsProps extends GridProps {
 type Props = WithStyles<typeof styles> &
     GridWithItemsProps & {
         children: React.ReactNodeArray
+        animated?: boolean
     }
 
 /**
@@ -45,6 +47,7 @@ function GridWithItems(props: Props) {
         alignItems = "stretch",
         alignContent = "stretch",
         justify = "center",
+        animated = true,
         ...rest
     } = props
 
@@ -67,9 +70,15 @@ function GridWithItems(props: Props) {
                         md={md}
                         lg={lg}
                         xl={xl}
-                        key={index}
+                        key={`animated-grid-${index}`}
                     >
-                        {child}
+                        <AnimateOnVisible
+                            animated={animated}
+                            partialVisibility
+                            once
+                        >
+                            {child}
+                        </AnimateOnVisible>
                     </Grid>
                 ))}
             </Grid>
