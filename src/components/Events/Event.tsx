@@ -18,6 +18,7 @@ import Text from "components/Typography/Text"
 import MarkdownContent from "components/General/MarkdownContent"
 import ColoredShadowImage from "components/General/ColoredShadowImage"
 import ButtonLink from "components/Button/ButtonLink"
+import GridWithItems from "components/General/GridWithItems"
 
 // Types
 import { EventType } from "hooks/useEvents"
@@ -81,69 +82,57 @@ function Event(props: Props) {
                 </a.div>
             </Link>
             <Card elevation={0}>
-                <Grid
-                    container
+                <GridWithItems
                     className={classes.content}
                     direction="column"
                     alignItems="center"
                     spacing={1}
+                    xs={false}
+                    sm={false}
+                    itemMargins={false}
                 >
                     {preview ? (
                         <></>
                     ) : (
-                        <Grid item>
-                            <Text variant="subtitle2" color="textSecondary">
-                                {moment(date).format(dateFormat)}
-                            </Text>
-                        </Grid>
+                        <Text variant="subtitle2" color="textSecondary">
+                            {moment(date).format(dateFormat)}
+                        </Text>
                     )}
 
-                    <Grid item>
-                        <Text
-                            variant="h6"
-                            color="textSecondary"
-                            align="center"
-                            heading
-                        >
-                            <b>{title}</b>
-                        </Text>
-                    </Grid>
+                    <Text
+                        variant="h6"
+                        color="textSecondary"
+                        align="center"
+                        heading
+                    >
+                        <b>{title}</b>
+                    </Text>
 
-                    <Grid item>
-                        {showDescription ? (
-                            <MarkdownContent content={event.node.excerpt} />
-                        ) : (
-                            <></>
-                        )}
-                    </Grid>
-                </Grid>
+                    {showDescription ? (
+                        <MarkdownContent content={event.node.excerpt} />
+                    ) : (
+                        <></>
+                    )}
+                </GridWithItems>
 
                 <CardActions>
-                    <Grid
+                    <GridWithItems
                         container
                         alignItems="center"
                         justify="center"
                         spacing={2}
+                        xs={false}
+                        sm={false}
+                        itemMargins={false}
                     >
-                        <Grid item>
-                            <Button
-                                size="small"
-                                href={link}
-                                variant="contained"
-                            >
-                                FB
-                            </Button>
-                        </Grid>
-                        <Grid item>
-                            <ButtonLink
-                                size="small"
-                                to={slug}
-                                variant="contained"
-                            >
-                                Event Details
-                            </ButtonLink>
-                        </Grid>
-                    </Grid>
+                        <Button size="small" href={link} variant="contained">
+                            FB
+                        </Button>
+
+                        <ButtonLink size="small" to={slug} variant="contained">
+                            Event Details
+                        </ButtonLink>
+                    </GridWithItems>
                 </CardActions>
             </Card>
         </>

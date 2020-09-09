@@ -17,12 +17,14 @@ const styles = (theme: Theme) =>
         },
     })
 
-export interface GridWithItemsProps extends GridProps {}
+export interface GridWithItemsProps extends GridProps {
+    animated?: boolean,
+    itemMargins?: boolean,
+}
 
 type Props = WithStyles<typeof styles> &
     GridWithItemsProps & {
         children: React.ReactNodeArray
-        animated?: boolean
     }
 
 /**
@@ -43,6 +45,7 @@ function GridWithItems(props: Props) {
         alignContent = "stretch",
         justify = "center",
         animated = true,
+        itemMargins = true,
         ...rest
     } = props
 
@@ -58,7 +61,7 @@ function GridWithItems(props: Props) {
             {children.map((child, index) => (
                 <Grid
                     item
-                    className={classes.item}
+                    className={itemMargins ? classes.item : ""}
                     xs={xs}
                     sm={sm}
                     md={md}
