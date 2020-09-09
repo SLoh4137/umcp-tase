@@ -3085,6 +3085,13 @@ type SiteTitleQueryVariables = Exact<{ [key: string]: never; }>;
 
 type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
+type GatsbyImageSharpFixed_withWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type LogoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+
 type SEOQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3105,7 +3112,7 @@ type EventsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type EventsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<MarkdownRemark, 'html' | 'id'>
+        Pick<MarkdownRemark, 'html' | 'excerpt' | 'id'>
         & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'date' | 'category' | 'imgsrc' | 'pinned' | 'link'>> }
       ) }> }, readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<File, 'id' | 'relativePath'>
@@ -3116,12 +3123,5 @@ type DateFormatQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type DateFormatQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'dateFormat'>> }> };
-
-type GatsbyImageSharpFixed_withWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type LogoQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LogoQuery = { readonly black: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }>, readonly white: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
 
 }

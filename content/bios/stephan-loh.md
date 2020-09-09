@@ -1,15 +1,15 @@
 ---
 name: Stephan Loh
 category: bio
-imgsrc: assets/senior4.jpg
-position: Senior Advisor
+imgsrc: assets/stephan_loh.jpg
+position: Alumni Advisor
 majors:
   - Computer Science
 ---
-Stephan Loh, senior\
+Hi I'm Stephan Loh\
 Love Honey Nut Cheerios\
-Colored ambience\
-\
-Me CS major\
-Now abroad in Edinburgh\
-See you all in Spring!
+I'll be your 朋友 
+
+Colored ambiance\
+Bike and budding plant lover\
+Haikus are so fun

@@ -1,10 +1,10 @@
 ---
 name: Titus Wong
 category: bio
-imgsrc: assets/sports.jpg
-position: Sports Chair
+imgsrc: assets/titus-wong-historian.jpg
+position: Co-Historian
 majors:
   - Finance
   - Information Systems
 ---
-Titus' Athletic Student Association
+Hey my name's Titus, I'm a rising senior and recently became a weeb

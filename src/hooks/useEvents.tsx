@@ -48,6 +48,7 @@ export default function useEvents(options: EventHookOptions) {
                             link
                         }
                         html
+                        excerpt(format: HTML, pruneLength: 300)
                         id
                     }
                 }

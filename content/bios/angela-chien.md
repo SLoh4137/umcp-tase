@@ -1,10 +1,10 @@
 ---
 name: Angela Chien
 category: bio
-imgsrc: assets/treasurer.jpg
-position: Treasurer
+imgsrc: assets/angela-chien-senior-advisor.jpg
+position: Senior Advisor
 majors:
   - Finance
   - Management
 ---
-Hi! I’m Angela and I’m currently a sophomore double majoring in finance and management. I love traveling, jamming out to music (especially DPR LIVE and Zion.T), and obviously Taiwan. I’m excited to make TASA the best org on campus.
+My two loves are Taiwan and Trader Joe's so I'm always down for a trip to either.
